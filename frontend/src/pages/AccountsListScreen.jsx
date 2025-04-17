@@ -1,5 +1,4 @@
-import React, { useState, useEffect, use } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 import CustomInputField from "../components/ui/CustomInputField";
 import AccountCard from "../components/common/AccountCard";
@@ -12,6 +11,18 @@ import Footer from "../components/common/Footer";
 const AccountsListScreen = () => {
   const { isModalOpen, openModal, closeModal } = useToggleModal();
   const { items, addItem, updateAccount, deleteAccount } = useCreateAccount();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [filteredAccounts, setFilteredAccounts] = useState(items);
+  useEffect(() => {
+    const filtered = items.filter(
+      (account) =>
+        account.ign.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        account.userName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredAccounts(filtered);
+  }, [searchTerm, items]);
 
   return (
     <>
@@ -31,6 +42,8 @@ const AccountsListScreen = () => {
               type="search"
               placeholder="Search"
               showIcon={true}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
 
             <button
@@ -42,7 +55,7 @@ const AccountsListScreen = () => {
           </div>
           <div>
             <AccountCard
-              accounts={items}
+              accounts={filteredAccounts}
               onUpdateAccount={updateAccount}
               onDeleteAccount={deleteAccount}
             />
