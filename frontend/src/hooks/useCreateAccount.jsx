@@ -9,6 +9,7 @@ import cardImage5 from "../assets/reyna1.avif";
 
 const useCreateAccount = () => {
   const [accounts, setAccounts] = useState([]);
+
   const updateAccount = (id, account) => {
     setAccounts((prevItems) =>
       prevItems.map((item) => (item.id === id ? { ...item, ...account } : item))

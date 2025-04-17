@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const useUpdateAccount = (onUpdateItem) => {
-  const [selectedAccount, setSelectedAccount] = useState(null);
+const useUpdateAccount = (onUpdateItem = () => {}) => {
+  const [selectedAccount, setSelectedAccount] = useState([]);
 
   const updateAccount = async (id, account) => {
     try {

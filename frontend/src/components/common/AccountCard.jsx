@@ -4,11 +4,7 @@ import useToggleModal from "../../hooks/useToggleModal";
 import useUpdateAccount from "../../hooks/useUpdateAccount";
 import useDeleteAccount from "../../hooks/useDeleteAccount";
 
-const AccountCard = ({
-  accounts = [],
-  onUpdateItem: onUpdateAccount,
-  onDeleteAccount,
-}) => {
+const AccountCard = ({ accounts = [], onUpdateAccount, onDeleteAccount }) => {
   const {
     isModalOpen: isEditModalOpen,
     openModal: openEditModal,
@@ -74,9 +70,10 @@ const AccountCard = ({
       {isEditModalOpen && (
         <EditModal
           closeModal={closeEditModal}
-          onUpdateItem={(updatedAccount) =>
-            handleUpdateAccount(updatedAccount, closeEditModal)
-          }
+          onUpdateItem={(updatedAccount) => {
+            handleUpdateAccount(updatedAccount);
+            closeEditModal();
+          }}
           editModalTitle="Add your account"
           editModalDescription="A:"
           account={selectedAccount}
