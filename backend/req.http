@@ -1,7 +1,3 @@
-PATCH  http://localhost:5000/valorantAccount/14
+GET http://localhost:5000/valorantAccount?page=1&limit=5
 Content-Type: application/json
 
-{
-  "username": "example",
-  "password": "examplePassword"
-}
