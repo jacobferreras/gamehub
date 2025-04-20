@@ -19,23 +19,24 @@ const AccountsListScreen = () => {
 
   const [filteredAccounts, setFilteredAccounts] = useState(items);
   useEffect(() => {
-    console.log("Selected Rank:", selectedRank);
-    const filtered = items.filter(
-      (account) =>
-        account.ign.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        account.userName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    if (selectedRank) {
+    let filtered = items;
+
+    if (searchTerm) {
       filtered = filtered.filter(
         (account) =>
-          account.rank &&
-          account.rank.trim().toLowerCase() ===
-            selectedRank.trim().toLowerCase()
+          account.ign.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          account.userName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedRank) {
+      filtered = filtered.filter((account) =>
+        account.rank.toLowerCase().includes(selectedRank.toLowerCase())
       );
     }
 
     setFilteredAccounts(filtered);
-  }, [searchTerm, items, selectedRank]);
+  }, [searchTerm, selectedRank, items]);
 
   return (
     <>
@@ -51,7 +52,7 @@ const AccountsListScreen = () => {
           <div className="flex justify-center items-center my-20">
             <h1 className="font-bold text-6xl text-white">Valorant Account</h1>
           </div>
-          <div className="flex justify-center items-center gap-5 pb-10">
+          <div className="flex justify-center items-center gap-3 pb-10">
             <CustomInputField
               type="search"
               placeholder="Search"
@@ -60,9 +61,10 @@ const AccountsListScreen = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <DropdownInputField
-              selected={selectedRank}
-              setSelected={setSelectedRank}
+              value={selectedRank}
+              onChange={(e) => setSelectedRank(e.target.value)}
             />
+
             <button
               className={`btn btn-active  bg-blue-600`}
               onClick={openModal}
