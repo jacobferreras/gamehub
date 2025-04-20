@@ -13,7 +13,15 @@ import Navbar from "../components/common/Navbar";
 
 const AccountsListScreen = () => {
   const { isModalOpen, openModal, closeModal } = useToggleModal();
-  const { items, addItem, updateAccount, deleteAccount } = useCreateAccount();
+  const {
+    items,
+    addItem,
+    updateAccount,
+    deleteAccount,
+    currentPage,
+    totalPages,
+    setCurrentPage,
+  } = useCreateAccount();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRank, setSelectedRank] = useState("");
 
@@ -80,7 +88,11 @@ const AccountsListScreen = () => {
             />
           </div>
           <div className="flex justify-center items-center my-10">
-            <Pagination />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </div>
         </div>
       </div>
