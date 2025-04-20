@@ -17,7 +17,12 @@ const getValorantAccountById = async (req, res, next) => {
 
 const getAllValorantAccounts = async (req, res, next) => {
   try {
-    const result = await valorantaAccountService.getAllValorantAccounts();
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
+    const result = await valorantaAccountService.getAllValorantAccounts({
+      limit: limit,
+      page: page,
+    });
     res.status(200).json(result);
   } catch (error) {
     next(error);

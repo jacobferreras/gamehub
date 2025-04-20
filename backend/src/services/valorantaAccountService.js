@@ -65,15 +65,21 @@ const deleteValorantAccountById = async (id) => {
   };
 };
 
-const getAllValorantAccounts = async () => {
-  const query = "SELECT * FROM user_accounts";
-  const result = await db.promise().query(query);
-  if (result[0].length === 0) {
-    throw new Error("No Valorant accounts found");
-  }
+const getAllValorantAccounts = async ({ page = 1, limit = 5 }) => {
+  const offset = (page - 1) * limit;
+
+  const countSql = "SELECT COUNT(*) as total FROM user_accounts";
+  const countResult = await db.promise().query(countSql);
+  const totalAccounts = countResult[0][0].total;
+
+  const totalPages = Math.ceil(totalAccounts / limit);
+  const sql = `SELECT * FROM user_accounts LIMIT ${limit} OFFSET ${offset}`;
+  const result = await db.promise().query(sql);
+
   return {
-    message: "Valorant accounts found",
     data: result[0],
+    totalPages,
+    currentPage: page,
   };
 };
 
