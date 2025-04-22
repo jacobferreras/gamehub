@@ -1,7 +1,6 @@
 import React from "react";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  // Create an array of page numbers [1, 2, ..., totalPages]
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   const handlePrevious = () => {
@@ -18,33 +17,30 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   return (
     <div className="join">
-      {/* Previous Button */}
       <button
         className="join-item btn btn-sm"
         onClick={handlePrevious}
-        disabled={currentPage === 1} // Disable if on the first page
+        disabled={currentPage === 1}
       >
         «
       </button>
 
-      {/* Page Number Buttons */}
       {pageNumbers.map((page) => (
         <button
           key={page}
           className={`join-item btn btn-sm ${
-            currentPage === page ? "btn-active" : "" // Add btn-active if it's the current page
+            currentPage === page ? "btn-active text-red-500" : ""
           }`}
-          onClick={() => onPageChange(page)} // Call onPageChange with the page number
+          onClick={() => onPageChange(page)}
         >
           {page}
         </button>
       ))}
 
-      {/* Next Button */}
       <button
         className="join-item btn btn-sm"
         onClick={handleNext}
-        disabled={currentPage === totalPages} // Disable if on the last page
+        disabled={currentPage === totalPages}
       >
         »
       </button>

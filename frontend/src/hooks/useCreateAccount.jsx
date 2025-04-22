@@ -57,7 +57,16 @@ const useCreateAccount = () => {
       ...newItem,
       image: getRandomImage(newItem.id),
     };
-    setAccounts((prevItems) => [...prevItems, itemWithImage]);
+    setAccounts(function (prevItems) {
+      if (currentPage !== totalPages) {
+        return prevItems;
+      }
+      if (prevItems.length >= limit) {
+        return prevItems;
+      }
+
+      return [...prevItems, itemWithImage];
+    });
   };
 
   return {
