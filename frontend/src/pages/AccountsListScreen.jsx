@@ -21,30 +21,11 @@ const AccountsListScreen = () => {
     currentPage,
     totalPages,
     setCurrentPage,
+    ranks,
+    setRanks,
+    search,
+    setSearch,
   } = useCreateAccount();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedRank, setSelectedRank] = useState("");
-
-  const [filteredAccounts, setFilteredAccounts] = useState(items);
-  useEffect(() => {
-    let filtered = items;
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (account) =>
-          account.ign.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          account.userName.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    if (selectedRank) {
-      filtered = filtered.filter((account) =>
-        account.rank.toLowerCase().includes(selectedRank.toLowerCase())
-      );
-    }
-
-    setFilteredAccounts(filtered);
-  }, [searchTerm, selectedRank, items]);
 
   return (
     <>
@@ -65,12 +46,12 @@ const AccountsListScreen = () => {
               type="search"
               placeholder="Search"
               showIcon={true}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
             <DropdownInputField
-              value={selectedRank}
-              onChange={(e) => setSelectedRank(e.target.value)}
+              value={ranks}
+              onChange={(e) => setRanks(e.target.value)}
             />
 
             <button
@@ -82,7 +63,7 @@ const AccountsListScreen = () => {
           </div>
           <div>
             <AccountCard
-              accounts={filteredAccounts}
+              accounts={items}
               onUpdateAccount={updateAccount}
               onDeleteAccount={deleteAccount}
             />

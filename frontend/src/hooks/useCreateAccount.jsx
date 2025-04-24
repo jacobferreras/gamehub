@@ -11,6 +11,8 @@ const useCreateAccount = () => {
   const [accounts, setAccounts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [ranks, setRanks] = useState("");
+  const [search, setSearch] = useState("");
   const limit = 5;
 
   const updateAccount = (id, account) => {
@@ -27,7 +29,7 @@ const useCreateAccount = () => {
     const fetchAccounts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/valorantAccount?page=${currentPage}&limit=${limit}`
+          `http://localhost:5000/valorantAccount?page=${currentPage}&limit=${limit}&rank=${ranks}&search=${search}`
         );
 
         setAccounts(
@@ -43,7 +45,7 @@ const useCreateAccount = () => {
     };
 
     fetchAccounts();
-  }, [currentPage]);
+  }, [currentPage, limit, ranks, search]);
 
   const images = [cardImage1, cardImage2, cardImage3, cardImage4, cardImage5];
 
@@ -77,6 +79,10 @@ const useCreateAccount = () => {
     currentPage,
     setCurrentPage,
     totalPages,
+    ranks,
+    setRanks,
+    search,
+    setSearch,
   };
 };
 
