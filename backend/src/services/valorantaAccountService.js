@@ -65,7 +65,12 @@ const deleteValorantAccountById = async (id) => {
   };
 };
 
-const getAllValorantAccounts = async ({ page = 1, limit = 5 }) => {
+const getAllValorantAccounts = async ({
+  page = 1,
+  limit = 5,
+  rank = "",
+  search = "",
+}) => {
   const offset = (page - 1) * limit;
 
   const countSql = "SELECT COUNT(*) as total FROM user_accounts";
@@ -73,7 +78,16 @@ const getAllValorantAccounts = async ({ page = 1, limit = 5 }) => {
   const totalAccounts = countResult[0][0].total;
 
   const totalPages = Math.ceil(totalAccounts / limit);
-  const sql = `SELECT * FROM user_accounts LIMIT ${limit} OFFSET ${offset}`;
+  let sql = `SELECT * FROM user_accounts`;
+  if (rank) {
+    sql += ` WHERE rank LIKE '%${rank}%'`;
+  }
+  if (rank && search) {
+    sql += ` AND (ign LIKE '%${search}%' OR userName LIKE '%${search}%')`;
+  } else if (search) {
+    sql += ` WHERE ign LIKE '%${search}%' OR userName LIKE '%${search}%'`;
+  }
+  sql += ` LIMIT ${limit} OFFSET ${offset}`;
   const result = await db.promise().query(sql);
 
   return {
