@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -27,13 +28,15 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Homepage</a>
+              <Link to="/account/home">Homepage</Link>
             </li>
+
             <li>
-              <a>Portfolio</a>
+              <Link to="/account/valorant">Valorant</Link>
             </li>
+
             <li>
-              <a>About</a>
+              <Link to="/account/dota2">Dota 2</Link>
             </li>
           </ul>
         </div>
