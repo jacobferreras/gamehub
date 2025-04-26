@@ -3,7 +3,7 @@ import { createConnection } from "mysql2";
 import cors from "cors";
 import pkg from "body-parser";
 import { config } from "dotenv";
-import valorantAccountRoute from "./src/routes/valorantAccountRoute.js";
+import valorantAccountRoute from "./src/routes/valorantRoutes/valorantAccountRoute.js";
 
 const { json } = pkg;
 
