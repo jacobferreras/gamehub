@@ -73,22 +73,27 @@ const getAllValorantAccounts = async ({
 }) => {
   const offset = (page - 1) * limit;
 
-  const countSql = "SELECT COUNT(*) as total FROM user_accounts";
-  const countResult = await db.promise().query(countSql);
-  const totalAccounts = countResult[0][0].total;
-
-  const totalPages = Math.ceil(totalAccounts / limit);
+  let condition = ``;
   let sql = `SELECT * FROM user_accounts`;
   if (rank) {
-    sql += ` WHERE rank LIKE '%${rank}%'`;
+    condition += ` WHERE rank LIKE '%${rank}%'`;
   }
   if (rank && search) {
-    sql += ` AND (ign LIKE '%${search}%' OR userName LIKE '%${search}%')`;
+    condition += ` AND (ign LIKE '%${search}%' OR userName LIKE '%${search}%')`;
   } else if (search) {
-    sql += ` WHERE ign LIKE '%${search}%' OR userName LIKE '%${search}%'`;
+    condition += ` WHERE ign LIKE '%${search}%' OR userName LIKE '%${search}%'`;
   }
+  if (condition) {
+    sql += condition;
+  }
+
   sql += ` LIMIT ${limit} OFFSET ${offset}`;
   const result = await db.promise().query(sql);
+
+  const countSql = "SELECT COUNT(*) as total FROM user_accounts" + condition;
+  const countResult = await db.promise().query(countSql);
+  const totalAccounts = countResult[0][0].total;
+  const totalPages = Math.ceil(totalAccounts / limit);
 
   return {
     data: result[0],
