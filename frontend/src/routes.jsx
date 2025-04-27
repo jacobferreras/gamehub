@@ -1,7 +1,6 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 
 import ValorantAccountScreen from "./pages/ValorantAccountScreen";
-import Navbar from "./components/common/Navbar";
 import LoginPage from "./pages/LoginPage";
 import Dota2AccountScreen from "./pages/Dota2AccountScreen";
 import HomePage from "./pages/HomePage";

@@ -1,10 +1,13 @@
 import React from "react";
-
+import backgroundImage from "../assets/DOTA4.jpg";
 const Dota2AccountScreen = () => {
   return (
-    <div className="flex justify-center items-center py-100">
-      Dota2AccountScreen
-    </div>
+    <div
+      className="hero min-h-screen relative"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    ></div>
   );
 };
 

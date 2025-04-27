@@ -1,4 +1,4 @@
-import valorantaAccountService from "../services/valorantaAccountService.js";
+import valorantaAccountService from "../../services/valorantService/valorantaAccountService.js";
 
 const getValorantAccountById = async (req, res, next) => {
   try {

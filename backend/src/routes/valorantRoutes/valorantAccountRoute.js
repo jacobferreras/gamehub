@@ -1,5 +1,5 @@
 import { Router } from "express";
-import valorantAccountController from "../controllers/valorantAccountController.js";
+import valorantAccountController from "../../controllers/valorantController/valorantAccountController.js";
 
 const router = Router();
 

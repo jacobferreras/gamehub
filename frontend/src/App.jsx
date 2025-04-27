@@ -2,7 +2,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import AppRoutes from "./routes";
 import Footer from "./components/common/Footer";
-import ValorantAccountScreen from "./pages/ValorantAccountScreen";
 
 function App() {
   return (
@@ -14,8 +13,6 @@ function App() {
         <Footer />
       </Router>
     </div>
-
-    // <ValorantAccountScreen />
   );
 }
 
