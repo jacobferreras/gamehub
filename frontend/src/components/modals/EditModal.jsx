@@ -22,7 +22,7 @@ const EditModal = ({ closeModal, onUpdateItem, account }) => {
     setRank(account.rank);
   }, []);
 
-  const handleUpdateItem = async () => {
+  const handleUpdteItem = async () => {
     if (ign.trim() && userName.trim() && password.trim() && rank) {
       onUpdateItem({ ign, userName, password, rank });
       resetInputs();
