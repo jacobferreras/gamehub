@@ -12,33 +12,35 @@ import NbaIcon from "../assets/2k_logo.png";
 
 const HomePage = () => {
   return (
-    <div className="bg-cover bg-no-repeat bg-center bg-[url('/assets/HomeBgMobile.png')]  sm:bg-[url('/assets/HomeBg640.png')] lg:bg-[url('/assets/HomeBg.png')]  min-h-screen bg-black opacity-90">
-      <div className="absolute inset-0 items-center justify-center text-center pt-55">
-        <h1 className="font-bold text-5xl text-white font-[Bebas Neue] pb-5 sm:pt-30">
+    <div className="bg-cover bg-no-repeat bg-center min-h-screen bg-black opacity-90 bg-[url('/assets/HomeBgMobile.png')]  sm:bg-[url('/assets/HomeBg640.png')]  lg:bg-[url('/assets/HomeBg1024.png')]  2xl:bg-[url('/assets/HomeBg.png')]">
+      <div className="absolute inset-0 items-center justify-center text-center pt-55 lg:text-start lg:justify-center lg:items-center lg:px-4 lg:pt-38 ">
+        <h1 className="font-bold text-5xl text-white font-[Bebas Neue] pb-5 sm:pt-30 sm:text-6xl md:text-7xl md:pb-2 lg:text-7xl lg:pr-80 lg:pb-2 2xl:text-8xl 2xl:pr-300 2xl:pl-8">
           Welcome to GameHub
         </h1>
-        <h2 className=" text-md text-white font-semibold pb-5 sm:text-xl ">
+        <h2 className=" text-lg text-white font-semibold pb-5 px-4 sm:text-xl lg:text-lg lg:pl-2 lg:pr-158 2xl:pl-10 2xl:text-2xl ">
           Tournaments, News, Builds, and Community — All in One Place
         </h2>
-        <button className="btn bg-transparent backdrop-blur-sm border-white font-bold">
-          ENTER HUB
-        </button>
+        <div className="lg:pl-2 2xl:pl-10">
+          <button className="btn bg-transparent backdrop-blur-sm border-white font-bold 2xl:btn-xl">
+            ENTER HUB
+          </button>
+        </div>
       </div>
 
-      <div className="pt-134 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-168 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4">
-        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-86 md:w-auto">
+      <div className="pt-134 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-168 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4 lg:px-10 lg:gap-0 2xl:pr-30 2xl:pt-150 2xl:grid 2xl:grid-cols-2 2xl:gap-x-0 2xl:gap-y-4 ">
+        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-86 md:w-auto 2xl:w-86">
           <div className="card-body flex flex-row items-center justify-start">
             <figure>
               <img src={ValorantIcon} alt="" className="rounded-xl" />
             </figure>
             <div className="flex flex-col">
               <h1 className="card-title text-sm font-bold">Valorant</h1>
-              <p>Agent Guides, News & Updates, Patch Notes, and Pro Play</p>
+              <p>Agent Guides, News & Updates, and Patch Notes,</p>
             </div>
           </div>
         </div>
 
-        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-auto md:w-auto ">
+        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-auto md:w-auto 2xl:w-86">
           <div className="card-body flex flex-row items-center justify-start">
             <figure>
               <img src={DotaIcon} alt="" className="rounded-xl" />
@@ -50,7 +52,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-auto">
+        <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-auto md:w-auto 2xl:w-86">
           <div className="card-body flex flex-row items-center justify-start">
             <figure>
               <img src={NbaIcon} alt="" className="rounded-xl" />
