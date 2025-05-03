@@ -11,3 +11,28 @@
   --breakpoint-2xl: 1440px;
   --breakpoint-3xl: 1536px;
 }
+
+@keyframes typewriter {
+  0% {
+    width: 0%;
+    visibility: hidden;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+
+.typing-effect {
+  animation:
+    typewriter 2s steps(20) infinite alternate,
+    blink 0.7s infinite;
+}
