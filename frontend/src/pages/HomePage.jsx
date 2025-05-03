@@ -27,7 +27,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="pt-134 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-168 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4 lg:px-10 lg:gap-0 2xl:pr-30 2xl:pt-150 2xl:grid 2xl:grid-cols-2 2xl:gap-x-0 2xl:gap-y-4 ">
+      <div className="pt-134 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-168 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4 lg:px-10 lg:gap-0 2xl:pt-154 2xl:flex-wrap 2xl:flex-row 2xl:pr-280 2xl:gap-y-4 ">
         <div className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-86 md:w-auto 2xl:w-86">
           <div className="card-body flex flex-row items-center justify-start">
             <figure>
