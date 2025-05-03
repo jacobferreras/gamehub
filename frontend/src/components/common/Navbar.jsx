@@ -28,15 +28,15 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to="/account/home">Homepage</Link>
+              <Link to="/app/home">Homepage</Link>
             </li>
 
             <li>
-              <Link to="/account/valorant">Valorant</Link>
+              <Link to="/app/valorant">Valorant</Link>
             </li>
 
             <li>
-              <Link to="/account/dota2">Dota 2</Link>
+              <Link to="/app/dota2">Dota 2</Link>
             </li>
           </ul>
         </div>
