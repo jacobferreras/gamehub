@@ -28,15 +28,15 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to="/app/home">Home</Link>
+              <Link to="/app/home">HOME</Link>
             </li>
 
             <li>
-              <Link to="/app/valorant">Valorant</Link>
+              <Link to="/app/valorant">VALORANT</Link>
             </li>
 
             <li>
-              <Link to="/app/dota2">Dota 2</Link>
+              <Link to="/app/dota2">DOTA 2</Link>
             </li>
             <li>
               <Link to="/app/pubg">PUBG</Link>
@@ -45,26 +45,26 @@ const Navbar = () => {
         </div>
         <div>
           <a className="btn btn-ghost text-xl hidden lg:block xl:block 2xl:block 3xl:block">
-            Account Storage
+            GameHub
           </a>
         </div>
       </div>
 
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl block lg:hidden xl:hidden 2xl:hidden 3xl:hidden">
-          Account Storage
+          GameHub
         </a>
         <ul class="menu menu-horizontal px-1 hidden lg:flex xl:flex 2xl:flex 3xl:flex">
           <li>
-            <Link to="/app/home">Home</Link>
+            <Link to="/app/home">HOME</Link>
           </li>
 
           <li>
-            <Link to="/app/valorant">Valorant</Link>
+            <Link to="/app/valorant">VALORANT</Link>
           </li>
 
           <li>
-            <Link to="/app/dota2">Dota 2</Link>
+            <Link to="/app/dota2">DOTA 2</Link>
           </li>
           <li>
             <Link to="/app/pubg">PUBG</Link>
