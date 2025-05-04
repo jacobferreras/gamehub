@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import backgroundImage from "../assets/jett_background.jpg";
 
 export const LoginPage = () => {
@@ -27,9 +28,11 @@ export const LoginPage = () => {
               placeholder="Password"
             />
 
-            <button className="btn btn-neutral btn-lg w-full mt-4">
-              Login
-            </button>
+            <Link to="/app/landing">
+              <button className="btn btn-neutral btn-lg w-full mt-4">
+                Login
+              </button>
+            </Link>
           </fieldset>
         </div>
       </div>
