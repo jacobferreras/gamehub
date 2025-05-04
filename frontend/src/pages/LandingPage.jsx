@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import ValorantIcon from "../assets/valorant_icon.png";
 import DotaIcon from "../assets/dota2_icon.png";
-import NbaIcon from "../assets/2k_logo.png";
+import PubgIcon from "../assets/PubgIcon.png";
 
 const LandingPage = () => {
   return (
@@ -46,7 +46,7 @@ const LandingPage = () => {
         </motion.div>
       </div>
 
-      <div className="pt-134 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-168 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4 lg:px-12 lg:gap-0 xl:px-24 3xl:pt-154 3xl:items-start 3xl:place-items-start 3xl:flex-wrap 3xl:flex-row 3xl:pr-280 3xl:gap-y-4">
+      <div className="pt-136 flex flex-col justify-center items-center gap-2 sm:flex-row sm:pt-170 sm:gap-1 sm:justify-around xs:px-4 sm:px-2 md:px-4 lg:px-12 lg:gap-2 xl:px-24 3xl:pt-154 3xl:items-start 3xl:place-items-start 3xl:flex-wrap 3xl:flex-row 3xl:pr-280 3xl:gap-y-4">
         <motion.div
           className="card w-96 bg-base-100 card-xs shadow-sm xs:w-full sm:w-86 md:w-auto"
           whileHover={{ scale: 1.08 }}
@@ -86,10 +86,10 @@ const LandingPage = () => {
         >
           <div className="card-body flex flex-row items-center justify-start">
             <figure>
-              <img src={NbaIcon} alt="" className="rounded-xl" />
+              <img src={PubgIcon} alt="" className="rounded-xl" />
             </figure>
             <div className="flex flex-col">
-              <h1 className="card-title text-sm font-bold">NBA2K</h1>
+              <h1 className="card-title text-sm font-bold">PUBG</h1>
               <p>Build Lab, 2K Newsroom, and Gameplay Patch Notes</p>
             </div>
           </div>
