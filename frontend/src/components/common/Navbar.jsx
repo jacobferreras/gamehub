@@ -38,6 +38,9 @@ const Navbar = () => {
             <li>
               <Link to="/app/dota2">Dota 2</Link>
             </li>
+            <li>
+              <Link to="/app/pubg">PUBG</Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -62,6 +65,9 @@ const Navbar = () => {
 
           <li>
             <Link to="/app/dota2">Dota 2</Link>
+          </li>
+          <li>
+            <Link to="/app/pubg">PUBG</Link>
           </li>
         </ul>
       </div>
