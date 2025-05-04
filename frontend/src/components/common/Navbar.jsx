@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-transparent backdrop-blur-sm fixed top-0 z-10">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown block lg:hidden xl:hidden 2xl:hidden 3xl:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to="/app/home">Homepage</Link>
+              <Link to="/app/home">Home</Link>
             </li>
 
             <li>
@@ -40,10 +40,32 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <div>
+          <a className="btn btn-ghost text-xl hidden lg:block xl:block 2xl:block 3xl:block">
+            Account Storage
+          </a>
+        </div>
       </div>
+
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Account Storage</a>
+        <a className="btn btn-ghost text-xl block lg:hidden xl:hidden 2xl:hidden 3xl:hidden">
+          Account Storage
+        </a>
+        <ul class="menu menu-horizontal px-1 hidden lg:flex xl:flex 2xl:flex 3xl:flex">
+          <li>
+            <Link to="/app/home">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/app/valorant">Valorant</Link>
+          </li>
+
+          <li>
+            <Link to="/app/dota2">Dota 2</Link>
+          </li>
+        </ul>
       </div>
+
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
           <div
@@ -82,3 +104,29 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <a>Link</a>
+      </li>
+      <li>
+        <details>
+          <summary>Parent</summary>
+          <ul class="bg-base-100 rounded-t-none p-2">
+            <li>
+              <a>Link 1</a>
+            </li>
+            <li>
+              <a>Link 2</a>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>;
