@@ -3,8 +3,8 @@ import React from "react";
 const NewsCard = ({ Title, Description, ImageUrl, Width }) => {
   return (
     <div
-      className="card bg-transparent w-200 shadow-sm"
-      style={{ width: Width }}
+      className="card bg-transparent shadow-sm"
+      style={{ width: `${Width}px` }}
     >
       <figure>
         <img src={ImageUrl} alt="Shoes" />
