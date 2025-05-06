@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import backgroundImage from "../assets/jett_background.jpg";
+import backgroundImage from "../assets/HomeBg.png";
 
 export const LoginPage = () => {
   return (
@@ -11,9 +11,9 @@ export const LoginPage = () => {
       }}
     >
       <div className="hero-overlay"></div>
-      <div className="hero-content text-neutral-content text-center">
-        <div className="max-w-lg">
-          <fieldset className="fieldset w-96 border border-base-300 p-8 rounded-box bg-transparent backdrop-blur-sm">
+      <div className=" text-neutral-content text-center pr-280">
+        <div className="max-w-lg ">
+          <fieldset className="fieldset w-96 border border-base-380 p-8 rounded-box bg-transparent backdrop-blur-sm">
             <h2 className="text-xl font-bold mb-6">Login</h2>
 
             <input
@@ -28,7 +28,7 @@ export const LoginPage = () => {
               placeholder="Password"
             />
 
-            <Link to="/app/landing">
+            <Link to="/app/home">
               <button className="btn btn-neutral btn-lg w-full mt-4">
                 Login
               </button>
