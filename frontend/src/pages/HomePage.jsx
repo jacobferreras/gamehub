@@ -93,41 +93,90 @@ const HomePage = () => {
         <h1 className="flex justify-start pl-4 pb-2 text-2xl font-semibold">
           Latest News
         </h1>
-        <div className="flex justify-start pb-3">
-          <HeadNewsCard
-            Title="DOTA 2"
-            Description="awdawdaaswwa"
-            ImageUrl="https://static.gosugamers.net/51/ee/b9/8e1b988745d3f49092838d35bf306c4878ffe13a257acd104ab522ead8.webp?w=1600"
-          />
-        </div>
-        <div className="block px-2">
-          <div className="pb-2">
-            <NewsCard
+        <div className="block lg:hidden">
+          <div className="justify-start pb-3">
+            <HeadNewsCard
               Title="DOTA 2"
-              Description="ADAASDASD"
-              ImageUrl="https://hawk.live/storage/post-images/nightfall-left-tundr-esports-17946.jpg"
+              Description="awdawdaaswwa"
+              ImageUrl="https://static.gosugamers.net/51/ee/b9/8e1b988745d3f49092838d35bf306c4878ffe13a257acd104ab522ead8.webp?w=1600"
+              Width="430"
             />
           </div>
-          <div className="pb-2">
-            <NewsCard
-              Title="Valorant"
-              Description="ADAASDASD"
-              ImageUrl="https://od2-image-api.abs-cbn.com/prod/editorImage/1746436948630050525_Paper%20Rex.jpg"
+          <div className="block px-2 md:px-4">
+            <div className="pb-2">
+              <NewsCard
+                Title="DOTA 2"
+                Description="ADAASDASD"
+                ImageUrl="https://hawk.live/storage/post-images/nightfall-left-tundr-esports-17946.jpg"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://od2-image-api.abs-cbn.com/prod/editorImage/1746436948630050525_Paper%20Rex.jpg"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="PUBG"
+                Description="ADAASDASD"
+                ImageUrl="https://wstatic-prod-boc.krafton.com/common/news/20250504/80tgBPXe.jpg"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden lg:flex lg:flex-row lg:gap-1 ">
+          <div className="pl-1">
+            <HeadNewsCard
+              Title="DOTA 2"
+              Description="awdawdaaswwa"
+              ImageUrl="https://static.gosugamers.net/51/ee/b9/8e1b988745d3f49092838d35bf306c4878ffe13a257acd104ab522ead8.webp?w=1600"
+              Width="600"
             />
           </div>
-          <div className="pb-2">
-            <NewsCard
-              Title="PUBG"
-              Description="ADAASDASD"
-              ImageUrl="https://wstatic-prod-boc.krafton.com/common/news/20250504/80tgBPXe.jpg"
-            />
-          </div>
-          <div className="pb-2">
-            <NewsCard
-              Title="Valorant"
-              Description="ADAASDASD"
-              ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
-            />
+
+          <div className="">
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+                Width="396"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+                Width="396"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+                Width="396"
+              />
+            </div>
+            <div className="pb-2">
+              <NewsCard
+                Title="Valorant"
+                Description="ADAASDASD"
+                ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+                Width="396"
+              />
+            </div>
           </div>
         </div>
       </div>
