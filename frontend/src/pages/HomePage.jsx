@@ -184,6 +184,12 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+        <div className="my-6 border-t border-gray-600 opacity-50"></div>
+
+        <div>
+          <h1>Top</h1>
+        </div>
       </div>
     </>
   );
