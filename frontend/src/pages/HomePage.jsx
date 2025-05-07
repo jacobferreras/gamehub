@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
 import ValorantIcon from "../assets/valorant_icon.png";
 import DotaIcon from "../assets/dota2_icon.png";
 import PubgIcon from "../assets/PubgIcon.png";
@@ -134,23 +133,21 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex lg:flex-row lg:gap-1 ">
-          <div className="pl-1">
+        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-2 ">
+          <div className="pl-4 row-span-2">
             <HeadNewsCard
               Title="DOTA 2"
               Description="awdawdaaswwa"
               ImageUrl="https://static.gosugamers.net/51/ee/b9/8e1b988745d3f49092838d35bf306c4878ffe13a257acd104ab522ead8.webp?w=1600"
-              Width="600"
             />
           </div>
 
-          <div className="">
+          <div className="pr-4">
             <div className="pb-2">
               <NewsCard
                 Title="Valorant"
                 Description="ADAASDASD"
                 ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
-                Width="396"
               />
             </div>
             <div className="pb-2">
@@ -158,7 +155,6 @@ const HomePage = () => {
                 Title="Valorant"
                 Description="ADAASDASD"
                 ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
-                Width="396"
               />
             </div>
             <div className="pb-2">
@@ -166,7 +162,6 @@ const HomePage = () => {
                 Title="Valorant"
                 Description="ADAASDASD"
                 ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
-                Width="396"
               />
             </div>
             <div className="pb-2">
@@ -174,7 +169,6 @@ const HomePage = () => {
                 Title="Valorant"
                 Description="ADAASDASD"
                 ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
-                Width="396"
               />
             </div>
           </div>
