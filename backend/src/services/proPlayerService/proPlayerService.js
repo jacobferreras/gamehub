@@ -1,6 +1,6 @@
 import { db } from "../../../server.js";
 
-const getAll = async ({ limit = 10 }) => {
+const getAll = async ({ limit = 10, game = "" }) => {
   const query = "SELECT * FROM proplayers LIMIT ?";
   const values = [parseInt(limit)];
   const result = await db.promise().query(query, values);
