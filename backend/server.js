@@ -4,7 +4,7 @@ import cors from "cors";
 import pkg from "body-parser";
 import { config } from "dotenv";
 import valorantAccountRoute from "./src/routes/valorantRoutes/valorantAccountRoute.js";
-import homeRoute from "./src/routes/homeRoutes/homeRoute.js";
+import proPlayerRoute from "./src/routes/proPlayerRoutes/proPlayerRoute.js";
 
 const { json } = pkg;
 
@@ -39,7 +39,7 @@ db.connect((err) => {
 
 //routes
 app.use("/valorantAccount", valorantAccountRoute);
-app.use("/valorantPro", homeRoute);
+app.use("/proplayers", proPlayerRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
