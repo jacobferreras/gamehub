@@ -6,6 +6,7 @@ import PubgIcon from "../assets/PubgIcon.png";
 import HeadNewsCard from "../components/common/HeadNewsCard";
 import NewsCardSide from "../components/common/NewsCardSide";
 import NewsCard from "../components/common/NewsCard";
+import Carousel from "../components/ui/Carousel";
 
 const HomePage = () => {
   return (
@@ -187,9 +188,7 @@ const HomePage = () => {
 
         <div className="my-6 border-t border-gray-600 opacity-50"></div>
 
-        <div>
-          <h1>Top</h1>
-        </div>
+        <Carousel />
       </div>
     </>
   );
