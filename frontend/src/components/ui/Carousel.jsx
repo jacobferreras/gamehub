@@ -82,7 +82,10 @@ const Carousel = () => {
                     />
                   </figure>
                   <div className="card-body h-50 overflow-hidden">
-                    <h2 className="card-title">{card.ign}</h2>
+                    <h2 className="card-title">
+                      {card.ign}
+                      <div className="badge badge-secondary">{card.game}</div>
+                    </h2>
                     <p>{card.about}</p>
                     <div className="card-actions justify-end">
                       <div className="badge badge-outline">{card.team}</div>
