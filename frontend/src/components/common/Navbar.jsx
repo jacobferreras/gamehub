@@ -54,7 +54,7 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl block lg:hidden xl:hidden 2xl:hidden 3xl:hidden">
           GameHub
         </a>
-        <ul class="menu menu-horizontal px-1 hidden lg:flex xl:flex 2xl:flex 3xl:flex">
+        <ul className="menu menu-horizontal px-1 hidden lg:flex xl:flex 2xl:flex 3xl:flex">
           <li>
             <Link to="/app/home">HOME</Link>
           </li>
@@ -110,29 +110,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-<div class="navbar bg-base-100 shadow-sm">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li>
-        <a>Link</a>
-      </li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul class="bg-base-100 rounded-t-none p-2">
-            <li>
-              <a>Link 1</a>
-            </li>
-            <li>
-              <a>Link 2</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-    </ul>
-  </div>
-</div>;
