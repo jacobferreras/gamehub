@@ -13,7 +13,7 @@ const Carousel = () => {
     const fetchCards = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/proplayers?limit=10"
+          "http://localhost:5000/proplayers?limit=10&random=true"
         );
         setCards(Array.isArray(response.data.data) ? response.data.data : []);
       } catch (error) {
@@ -78,7 +78,7 @@ const Carousel = () => {
                     <img
                       src={card.image}
                       alt={card.ign}
-                      className="h-auto w-full"
+                      className="h-60 w-full"
                     />
                   </figure>
                   <div className="card-body h-50 overflow-hidden">
