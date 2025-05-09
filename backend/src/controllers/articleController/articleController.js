@@ -1,4 +1,4 @@
-import articleService from "../../services/articleService/articleService";
+import articleService from "../../services/articleService/articleService.js";
 
 const getAll = async (req, res, next) => {
   try {
