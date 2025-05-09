@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const HeadNewsCard = () => {
+const HeadNewsCard = ({ Title, Description, Date, Author, ImageUrl }) => {
   const [news, setNews] = useState(null);
 
   useEffect(() => {
@@ -27,16 +27,16 @@ const HeadNewsCard = () => {
 
   return (
     <div className="shadow-sm w-full relative">
-      <div className="absolute z-10 flex flex-col justify-center items-start p-4 text-white bottom-2 left-0 3xl:bottom-6">
-        <h2 className="font-bold text-lg">{news.title}</h2>
-        <p className="text-sm font-semibold">{news.date}</p>
-        <p className="text-sm font-semibold">by: {news.author}</p>
-        <p className="text-sm font-semibold">{news.description}</p>
+      <div className="absolute z-10 flex flex-col justify-center items-start p-4 text-white bottom-2 left-0 3xl:bottom-0 gap-0">
+        <h2 className="font-bold text-lg">{Title}</h2>
+        <p className="text-sm font-semibold">{Date}</p>
+        <p className="text-sm font-semibold">by: {Author}</p>
+        <p className="text-sm font-semibold">{Description}</p>
       </div>
       <div className="relative">
         <img
           className="w-full h-auto rounded-md  sm:rounded-md md:rounded-lg lg:rounded-xl"
-          src="https://owcdn.net/img/681d0d93169d3.jpg"
+          src={ImageUrl}
           alt="Shoes"
         />
         <div className="absolute inset-0 bg-black opacity-65 hover:opacity-70 rounded-md sm:rounded-md md:rounded-xl lg:rounded-xl"></div>
