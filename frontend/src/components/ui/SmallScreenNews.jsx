@@ -1,14 +1,37 @@
 import HeadNewsCard from "../common/HeadNewsCard";
 import NewsCardSide from "../common/NewsCardSide";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const SmallScreenNews = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/articles?limit=4"
+        );
+        setArticles(
+          Array.isArray(response.data.data) ? response.data.data : []
+        );
+      } catch (error) {
+        console.error("Error fetching cards:", error);
+        setArticles([]);
+      }
+    };
+
+    fetchArticle();
+  }, []);
   return (
     <div className="block sm:hidden">
       <div className="justify-start pb-3 px-2">
         <HeadNewsCard
-          Title="DOTA 2"
-          Description="ADAASDASD"
-          ImageUrl="https://hawk.live/storage/post-images/nightfall-left-tundr-esports-17946.jpg"
+          Title={articles[0]?.title}
+          Description=""
+          Date={articles[0]?.date}
+          Author={articles[0]?.author}
+          ImageUrl={articles[0]?.image}
         />
       </div>
       <div className="block px-2 md:px-4">
@@ -21,9 +44,9 @@ const SmallScreenNews = () => {
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title="Valorant"
-            Description="ADAASDASD"
-            ImageUrl="https://od2-image-api.abs-cbn.com/prod/editorImage/1746436948630050525_Paper%20Rex.jpg"
+            Title={articles[1]?.title}
+            Description={articles[1]?.description}
+            ImageUrl={articles[1]?.image}
           />
         </div>
         <div className="pb-2">
