@@ -1,23 +1,21 @@
-import React from "react";
-
-const NewsCardSide = ({ Title, Description, ImageUrl }) => {
+const NewsCard = ({ Title, Description, Date, Author, ImageUrl }) => {
   return (
-    <div className="card card-side bg-base-100 shadow-sm 3xl:w-160 relative">
-      <figure className="relative w-[150px] h-[150px]">
-        <img
-          src={ImageUrl}
-          alt="Movie"
-          style={{ width: "150px", height: "150px", objectFit: "cover" }}
-        />
+    <div className="card bg-base-100 w-auto h-full shadow-sm relative">
+      <figure className="relative aspect-[16/9] w-full">
+        <img src={ImageUrl} alt="News" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black opacity-40 hover:opacity-50"></div>
       </figure>
 
-      <div className="card-body">
-        <h2 className="card-title">{Title}</h2>
-        <p>{Description}</p>
+      <div className="card-body gap-0 ">
+        <div className="bottom-0">
+          <h2 className="card-title">{Title}</h2>
+          <p>{Description}</p>
+          <p>{Date}</p>
+          <p>by: {Author}</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default NewsCardSide;
+export default NewsCard;
