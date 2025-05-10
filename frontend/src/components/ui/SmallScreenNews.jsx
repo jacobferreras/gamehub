@@ -10,7 +10,7 @@ const SmallScreenNews = () => {
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/articles?limit=4"
+          "http://localhost:5000/articles?limit=5"
         );
         setArticles(
           Array.isArray(response.data.data) ? response.data.data : []
@@ -37,30 +37,38 @@ const SmallScreenNews = () => {
       <div className="block px-2 md:px-4">
         <div className="pb-2">
           <NewsCardSide
-            Title="DOTA 2"
-            Description="ADAASDASD"
-            ImageUrl="https://hawk.live/storage/post-images/nightfall-left-tundr-esports-17946.jpg"
-          />
-        </div>
-        <div className="pb-2">
-          <NewsCardSide
             Title={articles[1]?.title}
-            Description={articles[1]?.description}
+            Description=""
+            Date={articles[1]?.date}
+            Author={articles[1]?.author}
             ImageUrl={articles[1]?.image}
           />
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title="PUBG"
-            Description="ADAASDASD"
-            ImageUrl="https://wstatic-prod-boc.krafton.com/common/news/20250504/80tgBPXe.jpg"
+            Title={articles[2]?.title}
+            Description=""
+            Date={articles[2]?.date}
+            Author={articles[2]?.author}
+            ImageUrl={articles[2]?.image}
           />
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title="Valorant"
-            Description="ADAASDASD"
-            ImageUrl="https://esportsinsider.com/wp-content/uploads/2025/05/edg-valorant-masters-toronto-failure-large.jpg"
+            Title={articles[3]?.title}
+            Description=""
+            Date={articles[3]?.date}
+            Author={articles[3]?.author}
+            ImageUrl={articles[3]?.image}
+          />
+        </div>
+        <div className="pb-2">
+          <NewsCardSide
+            Title={articles[4]?.title}
+            Description=""
+            Date={articles[4]?.date}
+            Author={articles[4]?.author}
+            ImageUrl={articles[4]?.image}
           />
         </div>
       </div>
