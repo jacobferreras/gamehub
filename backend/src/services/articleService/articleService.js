@@ -2,7 +2,7 @@ import { db } from "../../../server.js";
 
 const getAll = async ({ limit = 10, type = "" }) => {
   let condition = ``;
-  let sql = `SELECT * FROM valorant_article`;
+  let sql = `SELECT * FROM valorant_article ORDER BY created_at DESC`;
   if (type) {
     condition = ` WHERE game LIKE '%${type}%'`;
   }
