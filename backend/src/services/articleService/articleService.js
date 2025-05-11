@@ -1,16 +1,11 @@
 import { db } from "../../../server.js";
 
 const getAll = async ({ limit = 10, type = "" }) => {
-  let condition = ``;
-  let sql = `SELECT * FROM valorant_article ORDER BY created_at DESC`;
+  let sql = `SELECT * FROM valorant_article`;
   if (type) {
-    condition = ` WHERE game LIKE '%${type}%'`;
+    sql += ` WHERE type LIKE '%${type}%'`;
   }
-  if (condition) {
-    sql += condition;
-  }
-
-  sql += ` LIMIT ${limit}`;
+  sql += ` ORDER BY created_at DESC LIMIT ${limit}`;
   const result = await db.promise().query(sql);
 
   return {

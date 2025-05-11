@@ -3,7 +3,7 @@ import articleService from "../../services/articleService/articleService.js";
 const getAll = async (req, res, next) => {
   try {
     const limit = req.query.limit || 10;
-    const type = req.query.game || "";
+    const type = req.query.type || "";
 
     const result = await articleService.getAll({
       limit: limit,
