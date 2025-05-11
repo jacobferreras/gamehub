@@ -6,6 +6,7 @@ import PubgIcon from "../assets/PubgIcon.png";
 import Carousel from "../components/ui/Carousel";
 import LargeScreenNews from "../components/ui/LargeScreenNews";
 import SmallScreenNews from "../components/ui/SmallScreenNews";
+import GuideSection from "../components/ui/GuideSection";
 
 const HomePage = () => {
   return (
@@ -97,6 +98,11 @@ const HomePage = () => {
         <LargeScreenNews />
         <div className="my-6 border-t border-gray-600 opacity-50"></div>
         <Carousel />
+        <div className="my-6 border-t border-gray-600 opacity-50"></div>
+        <h1 className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl">
+          Game Highlights
+        </h1>
+        <GuideSection />
       </div>
     </>
   );
