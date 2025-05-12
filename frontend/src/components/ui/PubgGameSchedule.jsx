@@ -25,7 +25,7 @@ const PubgGameSchedule = () => {
     <div className="flex justify-center">
       {schedules.map((schedule, index) => (
         <div
-          className="card bg-neutral text-neutral-content w-96"
+          className="card bg-zinc-800 text-neutral-content w-96"
           key={schedule.id || index}
         >
           <div className="card-body items-center text-center">

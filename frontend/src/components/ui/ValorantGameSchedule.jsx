@@ -29,7 +29,9 @@ const ValorantGameSchedule = () => {
           key={schedule.id || index}
           className="card bg-zinc-800 w-auto lg:w-auto 3xl:w-auto shadow-xl text-center text-white items-center mb-5"
         >
-          <h2 className="card-title mt-2 text-xl">{schedule.match_event}</h2>
+          <h2 className="card-title mt-2 text-lg px-2">
+            {schedule.match_event}
+          </h2>
           <div className="card-body items-center text-center min-h-64 flex flex-col justify-center">
             <div className="flex items-center justify-between w-full">
               {/* Team 1 */}
