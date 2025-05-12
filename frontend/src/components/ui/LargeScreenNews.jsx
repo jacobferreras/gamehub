@@ -6,6 +6,8 @@ import axios from "axios";
 
 const LargeScreenNews = () => {
   const [valorantArticles, setValorantArticles] = useState([]);
+  const [dotaArticles, setDotaArticles] = useState([]);
+  const [pubgArticles, setPubgArticles] = useState([]);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -22,14 +24,42 @@ const LargeScreenNews = () => {
       }
     };
 
-    fetchArticle();
+    const fetchDotaArticle = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/dotaArticles?limit=5"
+        );
+        setDotaArticles(
+          Array.isArray(response.data.data) ? response.data.data : []
+        );
+      } catch (error) {
+        console.error("Error fetching cards:", error);
+        setDotaArticles([]);
+      }
+    };
+
+    const fetchPubgArticle = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/pubgArticles?limit=5"
+        );
+        setPubgArticles(
+          Array.isArray(response.data.data) ? response.data.data : []
+        );
+      } catch (error) {
+        console.error("Error fetching cards:", error);
+        setPubgArticles([]);
+      }
+    };
+
+    fetchArticle(), fetchDotaArticle(), fetchPubgArticle();
   }, []);
   return (
     <div className="hidden sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
       <div className="row-span-2 col-span-2">
         <HeadNewsCard
           Title={valorantArticles[0]?.title}
-          Description=""
+          Description={valorantArticles[0]?.description}
           Date={valorantArticles[0]?.date}
           Author={valorantArticles[0]?.author}
           ImageUrl={valorantArticles[0]?.image}
@@ -58,20 +88,20 @@ const LargeScreenNews = () => {
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title={valorantArticles[3]?.title}
-            Description={valorantArticles[3]?.description}
-            Date={valorantArticles[3]?.date}
-            Author={valorantArticles[3]?.author}
-            ImageUrl={valorantArticles[3]?.image}
+            Title={dotaArticles[1]?.title}
+            Description={dotaArticles[1]?.description}
+            Date={dotaArticles[1]?.date}
+            Author={dotaArticles[1]?.author}
+            ImageUrl={dotaArticles[1]?.image}
           />
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title={valorantArticles[4]?.title}
-            Description={valorantArticles[4]?.description}
-            Date={valorantArticles[4]?.date}
-            Author={valorantArticles[4]?.author}
-            ImageUrl={valorantArticles[4]?.image}
+            Title={pubgArticles[0]?.title}
+            Description={pubgArticles[0]?.description}
+            Date={pubgArticles[0]?.date}
+            Author={pubgArticles[0]?.author}
+            ImageUrl={pubgArticles[0]?.image}
           />
         </div>
         <div className="pb-2 lg:hidden">
