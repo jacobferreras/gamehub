@@ -9,6 +9,7 @@ import SmallScreenNews from "../components/ui/SmallScreenNews";
 import HighlightSection from "../components/ui/HighlightSection";
 import ValorantGameSchedule from "../components/ui/ValorantGameSchedule";
 import DotaGamesSchedule from "../components/ui/dotaGameSchedule";
+import PubgGameSchedule from "../components/ui/pubgGameSchedule";
 
 const HomePage = () => {
   return (
@@ -99,14 +100,18 @@ const HomePage = () => {
         <SmallScreenNews />
         <LargeScreenNews />
         <div className="my-6 border-t border-gray-600 opacity-50"></div>
-        <h1 className="flex justify-center pl-2  text-2xl font-semibold md:pl-8 3xl:text-4xl ">
+        <h1 className="flex justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl ">
           Valorant Game Schedule
         </h1>
         <ValorantGameSchedule />
-        <h1 className="flex justify-center pl-2  text-2xl font-semibold md:pl-8 3xl:text-4xl ">
+        <h1 className="flex justify-center pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl ">
           Dota 2 Game Schedule
         </h1>
         <DotaGamesSchedule />
+        <h1 className="flex justify-center pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl ">
+          PUBG Game Schedule
+        </h1>
+        <PubgGameSchedule />
         <div className="my-6 border-t border-gray-600 opacity-50"></div>
         <Carousel />
         <div className="my-6 border-t border-gray-600 opacity-50"></div>
