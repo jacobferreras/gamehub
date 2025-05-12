@@ -8,6 +8,8 @@ import proPlayerRoute from "./src/routes/proPlayerRoutes/proPlayerRoute.js";
 import articleRoute from "./src/routes/articleRoutes/articleRoute.js";
 import gameHighlightsRoutes from "./src/routes/gameHighlightsRoutes/gameHighlightsRoute.js";
 import upcomingGameRoute from "./src/routes/upcomingGameRoutes/upcomingGameRoute.js";
+import dotaArticleRoutes from "./src/routes/dotaArticleRoutes/dotaArticleRoute.js";
+import pubgArticleRoutes from "./src/routes/pubgArticleRoutes/pubgArticleRoute.js";
 
 const { json } = pkg;
 
@@ -46,6 +48,8 @@ app.use("/proplayers", proPlayerRoute);
 app.use("/articles", articleRoute);
 app.use("/gameHighlights", gameHighlightsRoutes);
 app.use("/upcomingGames", upcomingGameRoute);
+app.use("/dotaArticles", dotaArticleRoutes);
+app.use("/pubgArticles", pubgArticleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
