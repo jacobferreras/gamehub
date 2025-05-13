@@ -50,6 +50,7 @@ const DotaGamesSchedule = () => {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
+                      timeZone: "UTC",
                     }
                   )}
                 </h2>
@@ -59,8 +60,7 @@ const DotaGamesSchedule = () => {
                     {
                       hour: "2-digit",
                       minute: "2-digit",
-                      hour12: true,
-                      timeZone: "Asia/Manila",
+                      timeZone: "UTC",
                     }
                   )}{" "}
                   PHT

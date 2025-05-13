@@ -52,19 +52,21 @@ const ValorantGameSchedule = () => {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
+                      timeZone: "UTC",
                     }
                   )}
                 </h2>
                 <p className="game-time text-3xl font-bold mb-5">
-                  {new Date(schedule.unix_timestamp).toLocaleTimeString(
-                    "en-PH",
-                    {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                      timeZone: "Asia/Manila",
-                    }
-                  )}{" "}
+                  {schedule.unix_timestamp
+                    ? new Date(schedule.unix_timestamp).toLocaleTimeString(
+                        "en-PH",
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          timeZone: "UTC",
+                        }
+                      )
+                    : ""}
                   PHT
                 </p>
               </div>
