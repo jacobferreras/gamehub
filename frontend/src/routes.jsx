@@ -1,11 +1,10 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import ValorantAccountScreen from "./pages/ValorantScreen";
-// import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import Dota2AccountScreen from "./pages/Dota2Screen";
-import PubgScreen from "./pages/PubgScreen";
-import HomeScreen from "./pages/HomeScreen";
+import ValorantAccountScreen from "./Screen/ValorantScreen";
+import LoginPage from "./Screen/LoginPage";
+import Dota2AccountScreen from "./Screen/Dota2Screen";
+import PubgScreen from "./Screen/PubgScreen";
+import HomeScreen from "./Screen/HomeScreen";
 import Layout from "./layout";
 
 const AppRoutes = () => {
