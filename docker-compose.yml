@@ -30,6 +30,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
+      TZ: Asia/Manila
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: game_hub
     ports:
