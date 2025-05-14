@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import ValorantIcon from "../assets/valorant_icon.png";
-import DotaIcon from "../assets/dota2_icon.png";
-import PubgIcon from "../assets/PubgIcon.png";
+import BackgroundNews from "../assets/Home/bg.png";
+import TrophyIcon from "../assets/trophy_icon.png";
+import NewsIcon from "../assets/news_icon.png";
+import GuidesIcon from "../assets/guide_icon.png";
 import Carousel from "../components/ui/HomeScreen/Carousel";
 import LargeScreenNews from "../components/ui/HomeScreen/LargeScreenNews";
 import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
@@ -31,7 +32,8 @@ const HomePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            Tournaments, News, Builds, and Community — All in One Place
+            Your Ultimate Valorant Hub — News, Tournaments, Agent Guides & Pro
+            Players
           </motion.h2>
 
           <motion.div
@@ -50,11 +52,11 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row">
               <figure>
-                <img src={ValorantIcon} alt="" className="rounded-xl" />
+                <img src={TrophyIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">Valorant</h1>
-                <p>Agent Guides, News & Updates, and Patch Notes</p>
+                <h1 className="card-title text-sm font-bold">Tournament</h1>
+                <p>Challengers to Champions, match schedules, and results</p>
               </div>
             </div>
           </motion.div>
@@ -66,11 +68,15 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row items-center justify-start">
               <figure>
-                <img src={DotaIcon} alt="" className="rounded-xl" />
+                <img src={NewsIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">Dota 2</h1>
-                <p> Hero Guide, News & Esports, and Patch Notes</p>
+                <h1 className="card-title text-sm font-bold">News</h1>
+                <p>
+                  {" "}
+                  Catch the latest Valorant news, roster changes, and patch
+                  updates
+                </p>
               </div>
             </div>
           </motion.div>
@@ -82,39 +88,34 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row">
               <figure>
-                <img src={PubgIcon} alt="" className="rounded-xl" />
+                <img src={GuidesIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">PUBG</h1>
-                <p>Build Lab, 2K Newsroom, and Gameplay Patch Notes</p>
+                <h1 className="card-title text-sm font-bold">Guides</h1>
+                <p>
+                  Valorant guides — perfect for beginners, master every agent,
+                  and mechanics
+                </p>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="pt-8 bg-neutral-900">
+      <div className="pt-8 bg-neutral-950">
         <h1 className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl">
           Latest News
         </h1>
         <SmallScreenNews />
         <LargeScreenNews />
-        <div className="my-6 border-t border-gray-600 opacity-50"></div>
+        <div className="my-4 border-t border-gray-600 opacity-50"></div>
         <h1 className="flex justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl ">
-          Valorant Game Schedule
+          Game Schedule
         </h1>
         <ValorantGameSchedule />
-        <h1 className="flex justify-center pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl ">
-          Dota 2 Game Schedule
-        </h1>
-        <DotaGamesSchedule />
-        <h1 className="flex justify-center pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl ">
-          PUBG Game Schedule
-        </h1>
-        <PubgGameSchedule />
-        <div className="my-6 border-t border-gray-600 opacity-50"></div>
+        <div className="my-4 border-t border-gray-600 opacity-50"></div>
         <Carousel />
-        <div className="my-6 border-t border-gray-600 opacity-50"></div>
+        <div className="my-4 border-t border-gray-600 opacity-50"></div>
         <h1 className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl">
           Game Highlights
         </h1>
