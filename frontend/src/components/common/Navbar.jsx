@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HomeIcon from "../../assets/home_icon.png";
 
 const Navbar = () => {
   return (
@@ -37,8 +38,16 @@ const Navbar = () => {
               <li>
                 <Link to="/app/home">HOME</Link>
               </li>
-              <li>
-                <Link to="/app/matches">MATCHES</Link>
+              <li className="relative group">
+                <span className="cursor-pointer">MATCHES</span>
+                <ul className="absolute left-0 top-full z-20 hidden min-w-[150px] bg-transparent rounded-t-none  group-hover:block">
+                  <li>
+                    <Link to="/app/matches">Upcoming Matches</Link>
+                  </li>
+                  <li>
+                    <Link to="/app/matches/result">Match Result</Link>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link to="/app/news">NEWS</Link>
@@ -70,13 +79,22 @@ const Navbar = () => {
             <Link to="/app/home">HOME</Link>
           </li>
           <li>
-            <Link to="/app/valorant">VALORANT</Link>
+            <Link to="/app/matches">MATCHES</Link>
           </li>
           <li>
-            <Link to="/app/dota2">DOTA 2</Link>
+            <Link to="/app/news">NEWS</Link>
           </li>
           <li>
-            <Link to="/app/pubg">PUBG</Link>
+            <Link to="/app/guide">GUIDES</Link>
+          </li>
+          <li>
+            <Link to="/app/ranking">RANKINGS</Link>
+          </li>
+          <li>
+            <Link to="/app/highlights">HIGHLIGHTS</Link>
+          </li>
+          <li>
+            <Link to="/app/players">PLAYERS</Link>
           </li>
         </ul>
       </div>
@@ -85,3 +103,29 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+<div className="navbar bg-base-100 shadow-sm">
+  <div className="flex-1">
+    <a className="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div className="flex-none">
+    <ul className="menu menu-horizontal px-1">
+      <li>
+        <a>Link</a>
+      </li>
+      <li>
+        <details>
+          <summary>Parent</summary>
+          <ul className="bg-base-100 rounded-t-none p-2">
+            <li>
+              <a>Link 1</a>
+            </li>
+            <li>
+              <a>Link 2</a>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>;

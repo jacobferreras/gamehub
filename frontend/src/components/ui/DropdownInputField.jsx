@@ -10,14 +10,10 @@ export const DropdownInputField = ({ value, onChange }) => {
       <option value="" className="text-pcg-outline">
         All Regions
       </option>
+      <option value="EMEA">EMEA</option>
+      <option value="Americas">AMERICAS</option>
+      <option value="PACIFIC">PACIFIC</option>
       <option value="Global">GLOBAL</option>
-      <option value="Emea">EMEA</option>
-      <option value="North America">NORTH AMERICA</option>
-      <option value="Apac">APAC</option>
-      <option value="Brazil">BRAZIL</option>
-      <option value="Latin America">LATIN AMERICA</option>
-      <option value="Japan">JAPAN</option>
-      <option value="Korea">KOREA</option>
     </select>
   );
 };
