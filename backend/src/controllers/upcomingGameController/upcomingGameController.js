@@ -1,12 +1,14 @@
 import upcomingGameService from "../../services/upcomingGameService/upcomingGameService.js";
 
 const getAll = async (req, res) => {
-  const { limit, game, random } = req.query;
+  const { page, limit, game, random, region } = req.query;
   try {
     const result = await upcomingGameService.getAll({
-      limit: limit || 10,
+      page: page || 1,
+      limit: limit || 8,
       game: game || "",
       random: random || false,
+      region: region || "",
     });
     return res.status(200).json(result);
   } catch (error) {
