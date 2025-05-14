@@ -2,10 +2,13 @@ import { Navigate, Routes, Route } from "react-router-dom";
 
 import MatchesScreen from "./Screen/MatchesScreen";
 import LoginPage from "./Screen/LoginPage";
-import Dota2AccountScreen from "./Screen/Dota2Screen";
-import PubgScreen from "./Screen/PubgScreen";
+import NewsScreen from "./Screen/NewsScreen";
+import GuideScreen from "./Screen/GuideScreen";
 import HomeScreen from "./Screen/HomeScreen";
 import Layout from "./layout";
+import RankingScreen from "./Screen/RankingScreen";
+import HighlightScreen from "./Screen/HighlightScreen";
+import PlayerScreen from "./Screen/PlayerScreen";
 
 const AppRoutes = () => {
   return (
@@ -13,9 +16,12 @@ const AppRoutes = () => {
       {/* <Route path="/app/home" element={<HomePage />} /> */}
       <Route path="/app" element={<Layout />}>
         <Route path="home" element={<HomeScreen />} />
-        <Route path="valorant" element={<MatchesScreen />} />
-        <Route path="dota2" element={<Dota2AccountScreen />} />
-        <Route path="pubg" element={<PubgScreen />} />
+        <Route path="matches" element={<MatchesScreen />} />
+        <Route path="news" element={<NewsScreen />} />
+        <Route path="guide" element={<GuideScreen />} />
+        <Route path="ranking" element={<RankingScreen />} />
+        <Route path="highlights" element={<HighlightScreen />} />
+        <Route path="players" element={<PlayerScreen />} />
       </Route>
       <Route path="*" element={<LoginPage />} />
     </Routes>
