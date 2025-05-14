@@ -13,7 +13,7 @@ const Carousel = () => {
     const fetchCards = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/proplayers?limit=10&random=true"
+          "http://localhost:5000/proplayers?limit=10&game=valorant&random=true"
         );
         setCards(Array.isArray(response.data.data) ? response.data.data : []);
       } catch (error) {
