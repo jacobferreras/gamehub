@@ -9,6 +9,7 @@ import Layout from "./layout";
 import RankingScreen from "./Screen/RankingScreen";
 import HighlightScreen from "./Screen/HighlightScreen";
 import PlayerScreen from "./Screen/PlayerScreen";
+import MatchResultScreen from "./Screen/MatchResultScreen";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
       <Route path="/app" element={<Layout />}>
         <Route path="home" element={<HomeScreen />} />
         <Route path="matches" element={<MatchesScreen />} />
+        <Route path="matches/result" element={<MatchResultScreen />} />
         <Route path="news" element={<NewsScreen />} />
         <Route path="guide" element={<GuideScreen />} />
         <Route path="ranking" element={<RankingScreen />} />
