@@ -28,7 +28,7 @@ const GuideSection = () => {
       {higlights.map((highlight, index) => (
         <div
           key={highlight.id || index}
-          className="card lg:card-side w-100 lg:w-auto sm:w-90 bg-base-100 shadow-sm mb-0"
+          className="card lg:card-side w-auto lg:w-auto sm:w-90 bg-base-100 shadow-sm mb-0"
         >
           <figure className="w-full lg:w-1/2 flex justify-center items-center">
             <iframe
