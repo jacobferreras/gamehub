@@ -1,6 +1,6 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import ValorantAccountScreen from "./Screen/ValorantScreen";
+import MatchesScreen from "./Screen/MatchesScreen";
 import LoginPage from "./Screen/LoginPage";
 import Dota2AccountScreen from "./Screen/Dota2Screen";
 import PubgScreen from "./Screen/PubgScreen";
@@ -13,7 +13,7 @@ const AppRoutes = () => {
       {/* <Route path="/app/home" element={<HomePage />} /> */}
       <Route path="/app" element={<Layout />}>
         <Route path="home" element={<HomeScreen />} />
-        <Route path="valorant" element={<ValorantAccountScreen />} />
+        <Route path="valorant" element={<MatchesScreen />} />
         <Route path="dota2" element={<Dota2AccountScreen />} />
         <Route path="pubg" element={<PubgScreen />} />
       </Route>
