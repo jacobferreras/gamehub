@@ -8,17 +8,16 @@ export const DropdownInputField = ({ value, onChange }) => {
       className="select rounded-xl font-normal mr-5 w-50"
     >
       <option value="" className="text-pcg-outline">
-        All Ranks
+        All Regions
       </option>
-      <option value="Iron">Iron</option>
-      <option value="Bronze">Bronze</option>
-      <option value="Silver">Silver</option>
-      <option value="Gold">Gold</option>
-      <option value="Platinum">Platinum</option>
-      <option value="Diamond">Diamond</option>
-      <option value="Ascendant">Ascendant</option>
-      <option value="Immortal">Immortal</option>
-      <option value="Radiant">Radiant</option>
+      <option value="Global">GLOBAL</option>
+      <option value="Emea">EMEA</option>
+      <option value="North America">NORTH AMERICA</option>
+      <option value="Apac">APAC</option>
+      <option value="Brazil">BRAZIL</option>
+      <option value="Latin America">LATIN AMERICA</option>
+      <option value="Japan">JAPAN</option>
+      <option value="Korea">KOREA</option>
     </select>
   );
 };
