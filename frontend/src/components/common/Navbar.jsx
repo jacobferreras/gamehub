@@ -38,22 +38,22 @@ const Navbar = () => {
                 <Link to="/app/home">HOME</Link>
               </li>
               <li>
-                <Link to="/app/valorant">MATCHES</Link>
+                <Link to="/app/matches">MATCHES</Link>
               </li>
               <li>
-                <Link to="/app/dota2">NEWS</Link>
+                <Link to="/app/news">NEWS</Link>
               </li>
               <li>
-                <Link to="/app/pubg">GUIDES</Link>
+                <Link to="/app/guide">GUIDES</Link>
               </li>
               <li>
-                <Link to="/app/pubg">RANKINGS</Link>
+                <Link to="/app/ranking">RANKINGS</Link>
               </li>
               <li>
-                <Link to="/app/pubg">HIGHLIGHTS</Link>
+                <Link to="/app/highlights">HIGHLIGHTS</Link>
               </li>
               <li>
-                <Link to="/app/pubg">PLAYERS</Link>
+                <Link to="/app/players">PLAYERS</Link>
               </li>
             </ul>
           </div>
