@@ -1,5 +1,5 @@
-import HeadNewsCard from "../../common/HeadNewsCard";
-import NewsCardSide from "../../common/NewsCardSide";
+import HeadNewsCard from "../../common/HomeScreen/HeadNewsCard";
+import NewsCardSide from "../../common/HomeScreen/NewsCardSide";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
