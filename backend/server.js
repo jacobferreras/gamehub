@@ -11,6 +11,7 @@ import upcomingGameRoute from "./src/routes/upcomingGameRoutes/upcomingGameRoute
 import dotaArticleRoutes from "./src/routes/dotaArticleRoutes/dotaArticleRoute.js";
 import pubgArticleRoutes from "./src/routes/pubgArticleRoutes/pubgArticleRoute.js";
 import pubgScheduleRoute from "./src/routes/pubgScheduleRoutes/pubgScheduleRoute.js";
+import matchResultRoute from "./src/routes/matchResultRoutes/matchResultRoute.js";
 
 const { json } = pkg;
 
@@ -52,6 +53,7 @@ app.use("/upcomingGames", upcomingGameRoute);
 app.use("/dotaArticles", dotaArticleRoutes);
 app.use("/pubgArticles", pubgArticleRoutes);
 app.use("/pubgSchedule", pubgScheduleRoute);
+app.use("/matchResults", matchResultRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
