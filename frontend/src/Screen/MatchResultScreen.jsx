@@ -48,7 +48,6 @@ const MatchResultScreen = () => {
             </h2>
             <div className="card-body items-center text-center min-h-64 flex flex-col justify-center ">
               <div className="flex w-full">
-                {/* Team 1 */}
                 <div className="flex flex-col items-center w-1/3">
                   <img
                     src={schedule.logo1}
@@ -57,14 +56,36 @@ const MatchResultScreen = () => {
                   />
                   <p className="team-name text-sm mt-2">{schedule.team1}</p>
                 </div>
-                {/* Score Section */}
+
                 <div className="flex flex-col items-center justify-center w-1/3 mx-10">
                   <h1 className="font-bold texl-3xl">Final</h1>
-                  <h2>
-                    {schedule.score1} : {schedule.score2}
-                  </h2>
+                  <div className="flex flex-row gap-4">
+                    <h1
+                      className={
+                        schedule.score1 > schedule.score2
+                          ? "text-3xl text-green-500"
+                          : schedule.score1 < schedule.score2
+                            ? "text-3xl text-red-500"
+                            : "text-3xl text-yellow-500"
+                      }
+                    >
+                      {schedule.score1}
+                    </h1>
+                    <h1 className="text-3xl">:</h1>
+                    <h1
+                      className={
+                        schedule.score2 > schedule.score1
+                          ? "text-3xl text-green-500"
+                          : schedule.score2 < schedule.score1
+                            ? "text-3xl text-red-500"
+                            : "text-3xl text-yellow-500"
+                      }
+                    >
+                      {schedule.score2}
+                    </h1>
+                  </div>
                 </div>
-                {/* Team 2 */}
+
                 <div className="flex flex-col items-center w-1/3">
                   <img
                     src={schedule.logo2}
