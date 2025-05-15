@@ -11,7 +11,7 @@ const getMatchResults = async ({ page = 1, limit = 8, region = "" }) => {
     params.push(`%${region}%`);
   }
 
-  let sql = `SELECT * FROM game_results${conditon}`;
+  let sql = `SELECT * FROM game_results${conditon} ORDER BY id DESC`;
 
   sql += ` LIMIT ? OFFSET ?`;
   params.push(Number(limit));

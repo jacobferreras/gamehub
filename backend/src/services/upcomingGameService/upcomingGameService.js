@@ -1,3 +1,4 @@
+import cron from "node-cron";
 import { db } from "../../../server.js";
 
 const getAll = async ({
@@ -44,6 +45,18 @@ const getAll = async ({
     currentPage: page,
   };
 };
+
+const moveToGameResults = async () => {
+  await db.promise().query(
+    `INSERT INTO game_results(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
+       SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < NOW()`
+  );
+
+  await db.promise().query(`
+    DELETE FROM upcoming_games WHERE unix_timestamp < NOW()
+  `);
+};
+cron.schedule("* * * * *", moveToGameResults);
 
 export default {
   getAll,
