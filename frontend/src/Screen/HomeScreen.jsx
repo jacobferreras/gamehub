@@ -46,7 +46,7 @@ const HomePage = () => {
 
         <div className="pt-110 flex flex-col px-4 gap-2 xs:items-center sm:flex-row sm:pt-112  xs:px-4  md:pt-110 md:gap-2  lg:pt-120 lg:px-20 lg:gap-4 xl:pt-140 xl:px-24 3xl:pt-140 3xl:px-108">
           <motion.div
-            className="card w-96 bg-base-100 card-xs shadow-sm sm:w-106"
+            className="card w-auto bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -62,7 +62,7 @@ const HomePage = () => {
           </motion.div>
 
           <motion.div
-            className="card w-96 bg-base-100 card-xs shadow-sm sm:w-106"
+            className="card w-auto bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -82,7 +82,7 @@ const HomePage = () => {
           </motion.div>
 
           <motion.div
-            className="card w-96 bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
+            className="card w-auto md:w-120 bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 1.05 }}
           >
