@@ -26,11 +26,11 @@ const NewsScreen = () => {
 
   return (
     <div className="bg-neutral-950 min-h-screen ">
-      <div className="px-8 pt-40 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-2 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">
+      <div className="px-8 pt-36 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {news.map((article, index) => (
           <div
             key={article.id || index}
-            className="card bg-base-100 image-full w-auto lg:w-full shadow-sm relative group overflow-hidden"
+            className="card bg-base-100 image-fit w-auto lg:w-full shadow-sm relative group overflow-hidden"
           >
             <figure className="relative">
               <img
@@ -42,20 +42,26 @@ const NewsScreen = () => {
             </figure>
 
             <div className="absolute bottom-0 w-full z-10 px-2 pointer-events-none">
-              <div className="transition-all duration-300 transform group-hover:-translate-y-12">
+              <div className="transition-all duration-500 ease-in-out delay-100">
                 <h1 className="text-xs text-white">{article.date}</h1>
-                <h2 className="card-title text-lg text-white">
+                <h2 className="card-title text-xl text-white">
                   {article.title}
                 </h2>
-              </div>
-              <div className="opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-white -mt-12">
-                {/* -mt-3 reduces the gap */}
-                <p className="text-sm">by: {article.author}</p>
-                <p className="text-sm">{article.description}</p>
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out delay-100 group-hover:max-h-32 group-hover:opacity-100">
+                  <p className="text-sm text-white">by: {article.author}</p>
+                  <p className="text-sm text-white">{article.description}</p>
+                </div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex justify-center py-4">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );
