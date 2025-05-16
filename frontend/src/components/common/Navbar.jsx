@@ -50,7 +50,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link to="/app/news">NEWS</Link>
+                <Link to="/app/news/article">NEWS</Link>
               </li>
               <li>
                 <Link to="/app/guide">GUIDES</Link>

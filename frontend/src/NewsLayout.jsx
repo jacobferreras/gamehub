@@ -16,7 +16,6 @@ const NewsLayout = () => {
         }}
       >
         <NewsNavigation />
-        {/* <div className="border-t border-gray-600 opacity-2"></div> */}
         <Outlet />
       </div>
     </>
