@@ -1,6 +1,6 @@
 import updateService from "../../services/updateService/updateService.js";
 
-const getAllUpdates = async (req, res, next) => {
+const getAllUpdates = async (req, res) => {
   try {
     const page = req.query.page || 1;
     const limit = req.query.limit || 10;

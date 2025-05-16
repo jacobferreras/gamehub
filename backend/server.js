@@ -55,7 +55,7 @@ app.use("/dotaArticles", dotaArticleRoutes);
 app.use("/pubgArticles", pubgArticleRoutes);
 app.use("/pubgSchedule", pubgScheduleRoute);
 app.use("/matchResults", matchResultRoute);
-app.use("/update", updateRoutes);
+app.use("/updates", updateRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

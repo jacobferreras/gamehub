@@ -3,6 +3,6 @@ import updateController from "../../controllers/updateController/updateControlle
 
 const route = Router();
 
-route.post("/", updateController.update);
+route.get("/", updateController.getAllUpdates);
 
 export default route;
