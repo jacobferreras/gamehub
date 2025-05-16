@@ -1,4 +1,4 @@
-GET http://localhost:5000/pubgSchedule?limit=50
+GET http://localhost:5000/updates?page=1&limit=10
 Content-Type: application/json
 
     
