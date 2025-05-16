@@ -12,6 +12,7 @@ import PlayerScreen from "./Screen/PlayerScreen";
 import MatchResultScreen from "./Screen/MatchResultScreen";
 import UpdateScreen from "./Screen/UpdateScreen";
 import NewsLayout from "./NewsLayout";
+import GameLayout from "./GameLayout";
 
 const AppRoutes = () => {
   return (
