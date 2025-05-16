@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
+import GameBg from "../assets/GameBg.png"; // Adjust the path as necessary
 
 const MatchResultScreen = () => {
   const [schedules, setSchedules] = useState([]);
@@ -30,7 +31,15 @@ const MatchResultScreen = () => {
     fetchSchedules();
   }, [currentPage, limit, region]);
   return (
-    <div className="bg-neutral-950 min-h-screen">
+    <div
+      className="min-h-screen pt-28"
+      style={{
+        backgroundImage: `url(${GameBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="flex justify-end gap-3 pt-20 pb-10 pr-30 ">
         <DropdownInputField
           value={region}

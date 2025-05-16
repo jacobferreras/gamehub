@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
+import GameBg from "../assets/GameBg.png"; // Adjust the path as necessary
 
 const MatchesScreen = () => {
   const [schedules, setSchedules] = useState([]);
@@ -33,8 +34,16 @@ const MatchesScreen = () => {
 
   return (
     <>
-      <div className="bg-neutral-950 min-h-screen">
-        <div className="flex justify-center pt-20 pb-10 lg:justify-end lg:right-30 xl:pr-30  ">
+      <div
+        className="min-h-screen pt-28"
+        style={{
+          backgroundImage: `url(${GameBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="flex justify-center  pb-10 lg:justify-end lg:right-30 xl:pr-30  ">
           <DropdownInputField
             value={region}
             onChange={(e) => setRegion(e.target.value)}
