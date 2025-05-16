@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
-import DropdownInputField from "../components/ui/DropdownInputField";
-import NewsBg from "../assets/NewsBg.png";
 
 const NewsScreen = () => {
   const [news, setNews] = useState([]);
