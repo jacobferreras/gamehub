@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
@@ -27,25 +28,9 @@ const NewsScreen = () => {
   }, [currentPage, limit]);
 
   return (
-    <div className="bg-neutral-950 min-h-screen ">
-      <div className="flex justify-start gap-2 pl-10 pt-24">
-        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">
-          Responsive
-        </button>
-        <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">
-          Responsive
-        </button>
-      </div>
-      <div className="border-t border-gray-600 opacity-50"></div>
-      <div
-        style={{
-          backgroundImage: `url(${NewsBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="px-8 pt-4 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
+    <div>
+      <div>
+        <div className="px-8 pt-2 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
           {news.map((article, index) => (
             <div
               key={article.id || index}
