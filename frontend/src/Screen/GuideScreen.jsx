@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AgentFilter from "../components/ui/AgentFilter";
 
 const GuideScreen = () => {
   const [agents, setAgents] = useState([]);
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     const fetchAgents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/agents");
+        const response = await axios.get(
+          `http://localhost:5000/agents?role=${role}`
+        );
         setAgents(Array.isArray(response.data.data) ? response.data.data : []);
       } catch (error) {
         console.error("Error fetching agents:", error);
@@ -16,10 +20,11 @@ const GuideScreen = () => {
     };
 
     fetchAgents();
-  }, []);
+  }, [role]);
 
   return (
     <div className="min-h-screen bg-neutral-950 pt-20">
+      <AgentFilter value={role} onChange={(e) => setRole(e.target.value)} />
       <div className="px-8 pt-2 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {agents.map((agent, index) => (
           <div
@@ -38,7 +43,7 @@ const GuideScreen = () => {
             <div className="absolute bottom-0 w-full z-10 px-2 pointer-events-none">
               <div className="transition-all duration-500 ease-in-out delay-100">
                 <div className="max-h-0  overflow-hidden transition-all duration-500 ease-in-out delay-100 group-hover:max-h-32 group-hover:pb-4 group-hover:opacity-100">
-                  <div className="flex flex-row">
+                  <div className="flex flex-row gap-x-2">
                     <img
                       src={agent.role_image}
                       alt=""
