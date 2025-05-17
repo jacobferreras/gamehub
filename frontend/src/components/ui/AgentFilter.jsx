@@ -6,9 +6,9 @@ import Initiator from "../../assets/initiator.png";
 const AgentFilter = ({ value, onChange }) => {
   return (
     <div>
-      <div className="flex flex-row gap-x-2 justify-end items-end pr-12 pb-4">
+      <div className="flex flex-row gap-x-2 justify-end items-end pr-4 pt-2 pb-4">
         <button
-          className={`h-[30px] w-[30px] rounded-full border-2 border-gray-400 flex items-center justify-center text-xs font-bold cursor-pointer transition-transform duration-200 ease-in-out ${
+          className={`h-[30px] w-[30px] rounded-full border-2 border-gray-200 opacity-80 flex items-center justify-center text-xs font-bold cursor-pointer transition-transform duration-200 ease-in-out ${
             value === "" ? "scale-150" : ""
           }`}
           onClick={() => onChange({ target: { value: "" } })}
