@@ -49,7 +49,7 @@ const NewsScreen = () => {
                     <h2 className="card-title text-xl text-white">
                       {article.title}
                     </h2>
-                    <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out delay-100 group-hover:max-h-32 group-hover:opacity-100">
+                    <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out delay-100 group-hover:max-h-32 group-hover:pb-4 group-hover:opacity-100">
                       <p className="text-sm text-white">by: {article.author}</p>
                       <p className="text-sm text-white">
                         {article.description}
