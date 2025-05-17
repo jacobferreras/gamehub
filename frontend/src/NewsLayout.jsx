@@ -7,7 +7,7 @@ const NewsLayout = () => {
   return (
     <>
       <div
-        className="min-h-screen"
+        className="flex flex-col min-h-screen"
         style={{
           backgroundImage: `url(${NewsBg})`,
           backgroundSize: "cover",
