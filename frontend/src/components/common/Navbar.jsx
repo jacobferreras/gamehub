@@ -42,10 +42,10 @@ const Navbar = () => {
                 <span className="cursor-pointer">MATCHES</span>
                 <ul className="absolute left-0 top-full z-20 hidden min-w-[150px] bg-neutral-950 rounded-md group-hover:block">
                   <li className="hover:text-red-500">
-                    <Link to="/app/matches">Upcoming Matches</Link>
+                    <Link to="/app/matches">Schedule</Link>
                   </li>
                   <li className="hover:text-red-500">
-                    <Link to="/app/matches/result">Match Result</Link>
+                    <Link to="/app/matches/result">Result</Link>
                   </li>
                 </ul>
               </li>
