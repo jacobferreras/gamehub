@@ -1,13 +1,17 @@
 import agentService from "../../services/agentService/agentSerive.js";
 
 const getAllAgents = async (req, res) => {
-  const { page, limit, role } = req.query;
-
   try {
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 10;
+    const role = req.query.role || "";
+    const search = req.query.search || "";
+
     const result = await agentService.getAllAgents({
-      page: Number(page),
-      limit: Number(limit),
-      role,
+      page: page,
+      limit: limit,
+      role: role,
+      search: search,
     });
 
     return res.status(200).json(result);

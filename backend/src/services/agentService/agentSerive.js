@@ -1,28 +1,38 @@
 import { db } from "../../../server.js";
 
-const getAllAgents = async ({ page = 1, limit = 10, role = "" }) => {
+const getAllAgents = async ({
+  page = 1,
+  limit = 10,
+  role = "",
+  search = "",
+}) => {
   const offset = (page - 1) * limit;
 
-  let condition = ``;
+  let condition = "";
   let params = [];
 
   if (role) {
-    condition += ` WHERE role LIKE ?`;
-    params.push(`%${type}%`);
+    condition += (condition ? " AND" : " WHERE") + " role LIKE ?";
+    params.push(`%${role}%`);
   }
 
-  let sql = `SELECT * FROM agent${condition} ORDER BY id DESC`;
+  if (search) {
+    condition += (condition ? " AND" : " WHERE") + " name LIKE ?";
+    params.push(`%${search}%`);
+  }
 
-  sql += ` LIMIT ? OFFSET ?`;
+  let sql = `SELECT * FROM agent${condition} ORDER BY id DESC LIMIT ? OFFSET ?`;
   params.push(Number(limit));
   params.push(Number(offset));
 
   const result = await db.promise().query(sql, params);
 
-  const totalCountQuery = `SELECT COUNT(*) as total FROM agent` + condition;
-  const totalCountResult = await db.promise().query(totalCountQuery, params);
+  const totalCountQuery = `SELECT COUNT(*) as total FROM agent${condition}`;
+  const totalCountResult = await db
+    .promise()
+    .query(totalCountQuery, params.slice(0, params.length - 2));
   const totalCount = totalCountResult[0][0].total;
-  const totalPages = Math.ceil(totalCount / limit);
+  const totalPages = totalCount ? Math.ceil(totalCount / limit) : 1;
 
   return {
     message: "Agent found",
