@@ -13,6 +13,7 @@ import pubgArticleRoutes from "./src/routes/pubgArticleRoutes/pubgArticleRoute.j
 import pubgScheduleRoute from "./src/routes/pubgScheduleRoutes/pubgScheduleRoute.js";
 import matchResultRoute from "./src/routes/matchResultRoutes/matchResultRoute.js";
 import updateRoutes from "./src/routes/updateRoutes/updateRoute.js";
+import agentRoutes from "./src/routes/agentRoutes/agentRoutes.js";
 
 const { json } = pkg;
 
@@ -56,6 +57,7 @@ app.use("/pubgArticles", pubgArticleRoutes);
 app.use("/pubgSchedule", pubgScheduleRoute);
 app.use("/matchResults", matchResultRoute);
 app.use("/updates", updateRoutes);
+app.use("/agents", agentRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
