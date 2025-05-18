@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import { createConnection } from "mysql2";
 import cors from "cors";
 import pkg from "body-parser";
@@ -30,6 +31,8 @@ app.use(
   })
 );
 app.use(json());
+
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 const db = createConnection({
   host: process.env.DB_HOST,
