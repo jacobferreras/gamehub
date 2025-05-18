@@ -44,7 +44,7 @@ const GuideScreen = () => {
           >
             <figure className="relative">
               <img
-                src={agent.small_image}
+                src={`http://localhost:5000/${agent.small_image}`}
                 alt="Shoes"
                 className="w-full h-64 object-cover rounded-md"
               />
