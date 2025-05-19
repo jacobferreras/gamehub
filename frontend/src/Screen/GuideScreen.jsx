@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import AgentFilter from "../components/ui/AgentFilter";
 import CustomInputField from "../components/ui/CustomInputField";
+import { motion } from "framer-motion";
 
 const GuideScreen = () => {
   const [agents, setAgents] = useState([]);
@@ -34,8 +35,19 @@ const GuideScreen = () => {
     fetchAgents();
   }, [role, debouncedSearch]);
 
+  const pageVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 40 },
+  };
+
   return (
-    <div
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className="min-h-screen  pt-20"
       style={{
         backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
@@ -87,7 +99,7 @@ const GuideScreen = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
