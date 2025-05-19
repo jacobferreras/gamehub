@@ -59,7 +59,7 @@ const AgentDetailScreen = () => {
 
   return (
     <div
-      className="min-h-screen pt-18 pb-24"
+      className="min-h-screen pt-18 pb-20"
       style={{
         backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
         backgroundSize: "cover",

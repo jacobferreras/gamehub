@@ -8,12 +8,21 @@ const GuideScreen = () => {
   const [agents, setAgents] = useState([]);
   const [role, setRole] = useState("");
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 400);
+
+    return () => clearTimeout(handler);
+  }, [search]);
 
   useEffect(() => {
     const fetchAgents = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/agents?role=${role}&search=${search}`
+          `http://localhost:5000/agents?role=${role}&search=${debouncedSearch}`
         );
         setAgents(Array.isArray(response.data.data) ? response.data.data : []);
       } catch (error) {
@@ -23,10 +32,18 @@ const GuideScreen = () => {
     };
 
     fetchAgents();
-  }, [role, search]);
+  }, [role, debouncedSearch]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 pt-20">
+    <div
+      className="min-h-screen  pt-20"
+      style={{
+        backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="flex flex-wrap justify-center lg:justify-end lg:flex-row lg:pr-10 ">
         <AgentFilter value={role} onChange={(e) => setRole(e.target.value)} />
         <CustomInputField
@@ -48,7 +65,7 @@ const GuideScreen = () => {
                 alt="Shoes"
                 className="w-full h-64 object-cover rounded-md"
               />
-              <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-70 transition-opacity duration-200 rounded-md"></div>
+              <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-70 transition-opacity duration-200 rounded-md"></div>
             </figure>
 
             <div className="absolute bottom-0 w-full z-10 px-2">
