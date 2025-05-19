@@ -1,4 +1,5 @@
-import { Navigate, Routes, Route } from "react-router-dom";
+import { useLocation, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import MatchesScreen from "./Screen/MatchesScreen";
 import LoginPage from "./Screen/LoginPage";
@@ -15,25 +16,27 @@ import NewsLayout from "./NewsLayout";
 import AgentDetailScreen from "./Screen/AgentDetailScreen";
 
 const AppRoutes = () => {
+  const location = useLocation();
   return (
-    <Routes>
-      {/* <Route path="/app/home" element={<HomePage />} /> */}
-      <Route path="/app" element={<Layout />}>
-        <Route path="home" element={<HomeScreen />} />
-        <Route path="matches" element={<MatchesScreen />} />
-        <Route path="matches/result" element={<MatchResultScreen />} />
-        <Route path="news" element={<NewsLayout />}>
-          <Route path="article" element={<NewsScreen />} />
-          <Route path="update" element={<UpdateScreen />} />
+    <AnimatePresence mode="wait">
+      <Routes>
+        <Route path="/app" element={<Layout />}>
+          <Route path="home" element={<HomeScreen />} />
+          <Route path="matches" element={<MatchesScreen />} />
+          <Route path="matches/result" element={<MatchResultScreen />} />
+          <Route path="news" element={<NewsLayout />}>
+            <Route path="article" element={<NewsScreen />} />
+            <Route path="update" element={<UpdateScreen />} />
+          </Route>
+          <Route path="guide" element={<GuideScreen />} />
+          <Route path="guide/:id" element={<AgentDetailScreen />} />
+          <Route path="ranking" element={<RankingScreen />} />
+          <Route path="highlights" element={<HighlightScreen />} />
+          <Route path="players" element={<PlayerScreen />} />
         </Route>
-        <Route path="guide" element={<GuideScreen />} />
-        <Route path="guide/:id" element={<AgentDetailScreen />} />
-        <Route path="ranking" element={<RankingScreen />} />
-        <Route path="highlights" element={<HighlightScreen />} />
-        <Route path="players" element={<PlayerScreen />} />
-      </Route>
-      <Route path="*" element={<LoginPage />} />
-    </Routes>
+        <Route path="*" element={<LoginPage />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
