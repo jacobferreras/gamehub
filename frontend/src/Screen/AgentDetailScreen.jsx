@@ -175,7 +175,6 @@ const AgentDetailScreen = () => {
                   autoPlay
                   className="rounded-lg w-full h-full object-cover"
                   key={skillData[selectedSkill - 1].video}
-                  controls
                   loop
                 ></video>
               </div>
@@ -218,7 +217,7 @@ const AgentDetailScreen = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             src={`http://localhost:5000/${agent.large_image}`}
             alt=""
-            className="w-[45%]  h-auto rounded-lg shadow-lg self-stretch"
+            className="w-[45%]  h-auto rounded-lg shadow-lg self-stretch animate-pulse size-1"
           />
         </div>
       </div>
