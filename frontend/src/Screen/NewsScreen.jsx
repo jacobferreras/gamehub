@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
+import { motion } from "framer-motion";
 
 const NewsScreen = () => {
   const [news, setNews] = useState([]);
@@ -30,7 +31,14 @@ const NewsScreen = () => {
         <div className="flex-grow">
           <div className="px-8 pt-2 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
             {news.map((article, index) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
                 key={article.id || index}
                 className="card bg-base-100 image-fit w-auto lg:w-full shadow-sm relative group overflow-hidden"
               >
@@ -57,7 +65,7 @@ const NewsScreen = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
