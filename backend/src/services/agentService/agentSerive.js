@@ -2,7 +2,7 @@ import { db } from "../../../server.js";
 
 const getAllAgents = async ({
   page = 1,
-  limit = 10,
+  limit = 100,
   role = "",
   search = "",
 }) => {

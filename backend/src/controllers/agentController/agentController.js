@@ -3,7 +3,7 @@ import agentService from "../../services/agentService/agentSerive.js";
 const getAllAgents = async (req, res) => {
   try {
     const page = req.query.page || 1;
-    const limit = req.query.limit || 10;
+    const limit = req.query.limit || 100;
     const role = req.query.role || "";
     const search = req.query.search || "";
 
