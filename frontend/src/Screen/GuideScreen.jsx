@@ -73,7 +73,7 @@ const GuideScreen = () => {
             transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
           >
             <Link
-              to={`/app/guide/${agent.id}`}
+              to={`/app/agents/${agent.id}`}
               className="card bg-base-100 image-fit w-auto lg:w-full shadow-sm relative group overflow-hidden"
             >
               <figure className="relative">

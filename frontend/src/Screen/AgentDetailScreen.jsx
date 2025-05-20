@@ -81,11 +81,11 @@ const AgentDetailScreen = () => {
         }}
       >
         <div className="flex flex-row justify-start pl-4">
-          <Link to="/app/guide">
+          <Link to="/app/agents">
             <img
               src={BackArrow}
               alt="Back"
-              className="w-8 h-8 cursor-pointer"
+              className="w-12 h-12 cursor-pointer"
             />
           </Link>
         </div>
