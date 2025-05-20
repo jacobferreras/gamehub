@@ -13,7 +13,7 @@ const Carousel = () => {
     const fetchCards = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/proplayers?limit=10&game=valorant&random=true"
+          "http://localhost:5000/proplayers?limit=10&random=true"
         );
         setCards(Array.isArray(response.data.data) ? response.data.data : []);
       } catch (error) {
@@ -82,10 +82,7 @@ const Carousel = () => {
                     />
                   </figure>
                   <div className="card-body h-50 overflow-hidden">
-                    <h2 className="card-title">
-                      {card.ign}
-                      <div className="badge badge-secondary">{card.game}</div>
-                    </h2>
+                    <h2 className="card-title">{card.ign}</h2>
                     <p>{card.about}</p>
                     <div className="card-actions justify-end">
                       <div className="badge badge-outline">{card.team}</div>

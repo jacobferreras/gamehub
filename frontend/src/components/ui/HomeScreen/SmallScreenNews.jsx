@@ -5,8 +5,6 @@ import axios from "axios";
 
 const SmallScreenNews = () => {
   const [articles, setArticles] = useState([]);
-  const [dotaArticles, setDotaArticles] = useState([]);
-  const [pubgArticles, setPubgArticles] = useState([]);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -23,35 +21,7 @@ const SmallScreenNews = () => {
       }
     };
 
-    const fetchDotaArticle = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/dotaArticles?limit=5"
-        );
-        setDotaArticles(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-      } catch (error) {
-        console.error("Error fetching cards:", error);
-        setDotaArticles([]);
-      }
-    };
-
-    const fetchPubgArticle = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/pubgArticles?limit=5"
-        );
-        setPubgArticles(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-      } catch (error) {
-        console.error("Error fetching cards:", error);
-        setPubgArticles([]);
-      }
-    };
-
-    fetchArticle(), fetchDotaArticle(), fetchPubgArticle();
+    fetchArticle();
   }, []);
 
   return (
@@ -86,20 +56,20 @@ const SmallScreenNews = () => {
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title={dotaArticles[1]?.title}
-            Description={dotaArticles[1]?.description}
-            Date={dotaArticles[1]?.date}
-            Author={dotaArticles[1]?.author}
-            ImageUrl={dotaArticles[1]?.image}
+            Title={articles[3]?.title}
+            Description=""
+            Date={articles[3]?.date}
+            Author={articles[3]?.author}
+            ImageUrl={articles[3]?.image}
           />
         </div>
         <div className="pb-2">
           <NewsCardSide
-            Title={pubgArticles[0]?.title}
-            Description={pubgArticles[0]?.description}
-            Date={pubgArticles[0]?.date}
-            Author={pubgArticles[0]?.author}
-            ImageUrl={pubgArticles[0]?.image}
+            Title={articles[4]?.title}
+            Description=""
+            Date={articles[4]?.date}
+            Author={articles[4]?.author}
+            ImageUrl={articles[4]?.image}
           />
         </div>
       </div>
