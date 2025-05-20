@@ -53,11 +53,9 @@ const Navbar = () => {
                 <Link to="/app/news/article">NEWS</Link>
               </li>
               <li>
-                <Link to="/app/guide">GUIDES</Link>
+                <Link to="/app/agents">AGENTS</Link>
               </li>
-              <li>
-                <Link to="/app/ranking">RANKINGS</Link>
-              </li>
+
               <li>
                 <Link to="/app/highlights">HIGHLIGHTS</Link>
               </li>
@@ -86,9 +84,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/app/guide">GUIDES</Link>
-          </li>
-          <li>
-            <Link to="/app/ranking">RANKINGS</Link>
           </li>
           <li>
             <Link to="/app/highlights">HIGHLIGHTS</Link>
