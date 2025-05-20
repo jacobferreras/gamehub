@@ -1,13 +1,10 @@
 import { db } from "../../../server.js";
 
-const getAll = async ({ limit = 10, game = "", random = false }) => {
+const getAll = async ({ limit = 10, random = false }) => {
   let condition = ``;
   let sql = `SELECT * FROM proplayers`;
   let params = [];
-  if (game) {
-    condition = ` WHERE game LIKE ?`;
-    params.push(`%${game}%`);
-  }
+
   if (condition) {
     sql += condition;
   }
