@@ -2,12 +2,14 @@ import gameHighlightsService from "../../services/gameHighlightsService/gameHigh
 
 const getAll = async (req, res, next) => {
   try {
+    const page = req.query.page || 1;
     const limit = req.query.limit || 10;
-    const game = req.query.game || "";
+    const type = req.query.game || "";
 
     const result = await gameHighlightsService.getAll({
+      page: page,
       limit: limit,
-      game: game,
+      type: type,
     });
     res.status(200).json(result);
   } catch (error) {
