@@ -1,8 +1,9 @@
 import { Router } from "express";
-import homeController from "../../controllers/proPlayerController/proPlayerController.js";
+import proplayerController from "../../controllers/proPlayerController/proPlayerController.js";
 
 const router = Router();
 
-router.get("/", homeController.getAll);
+router.get("/", proplayerController.getAll);
+router.get("/:id", proplayerController.getProPlayerById);
 
 export default router;
