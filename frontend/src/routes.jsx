@@ -7,7 +7,6 @@ import NewsScreen from "./Screen/NewsScreen";
 import GuideScreen from "./Screen/GuideScreen";
 import HomeScreen from "./Screen/HomeScreen";
 import Layout from "./layout";
-import RankingScreen from "./Screen/RankingScreen";
 import HighlightScreen from "./Screen/HighlightScreen";
 import PlayerScreen from "./Screen/PlayerScreen";
 import MatchResultScreen from "./Screen/MatchResultScreen";
@@ -28,9 +27,8 @@ const AppRoutes = () => {
             <Route path="article" element={<NewsScreen />} />
             <Route path="update" element={<UpdateScreen />} />
           </Route>
-          <Route path="guide" element={<GuideScreen />} />
-          <Route path="guide/:id" element={<AgentDetailScreen />} />
-          <Route path="ranking" element={<RankingScreen />} />
+          <Route path="agents" element={<GuideScreen />} />
+          <Route path="agents/:id" element={<AgentDetailScreen />} />
           <Route path="highlights" element={<HighlightScreen />} />
           <Route path="players" element={<PlayerScreen />} />
         </Route>
