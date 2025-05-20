@@ -28,7 +28,7 @@ const GuideSection = () => {
       {higlights.map((highlight, index) => (
         <div
           key={highlight.id || index}
-          className="card lg:card-side w-auto lg:w-auto sm:w-90 bg-base-100 shadow-sm mb-0"
+          className="card lg:card-side w-auto lg:w-auto sm:w-90 bg-transparent shadow-sm mb-0"
         >
           <figure className="w-full lg:w-1/2 flex justify-center items-center">
             <iframe
@@ -45,10 +45,14 @@ const GuideSection = () => {
             <div>
               <h2 className="card-title">{highlight.title}</h2>
               <div>
-                <div className="badge badge-outline mr-2">{highlight.game}</div>
                 <div className="badge badge-outline">{highlight.author}</div>
               </div>
-              <p className="lg:text-xs 3xl:text-lg">{highlight.channel}</p>
+              <a
+                href={highlight.channel}
+                className="text-blue-700 lg:text-xs 3xl:text-lg"
+              >
+                {highlight.channel}
+              </a>
             </div>
           </div>
         </div>
