@@ -73,7 +73,7 @@ const Carousel = () => {
           cards.map((card) => (
             <SwiperSlide key={card.id}>
               <div className="pb-10">
-                <div className="card bg-base-100 w-96 shadow-sm">
+                <div className="card bg-neutral-900 w-96 shadow-sm">
                   <figure>
                     <img
                       src={card.image}
