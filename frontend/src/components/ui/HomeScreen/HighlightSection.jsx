@@ -49,6 +49,8 @@ const GuideSection = () => {
               </div>
               <a
                 href={highlight.channel}
+                target="blank"
+                rel="noopener noreferrer"
                 className="text-blue-700 lg:text-xs 3xl:text-lg"
               >
                 {highlight.channel}
