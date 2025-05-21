@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../../assets/home_icon.png";
 
 const Navbar = () => {
+  const [drawerMatchesOpen, setDrawerMatchesOpen] = useState(false);
+
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        {/* Navbar */}
         <div className="navbar bg-transparent backdrop-blur-md fixed top-0 z-10 w-full lg:px-20">
           <div className="flex-none lg:hidden">
             <label
@@ -66,32 +67,126 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-[100] fixed top-0 left-0 w-full h-full">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20">
-          <li>
-            <Link to="/app/home">HOME</Link>
-          </li>
-          <li>
-            <Link to="/app/matches">MATCHES</Link>
-          </li>
-          <li>
-            <Link to="/app/news">NEWS</Link>
-          </li>
-          <li>
-            <Link to="/app/guide">GUIDES</Link>
-          </li>
-          <li>
-            <Link to="/app/highlights">HIGHLIGHTS</Link>
-          </li>
-          <li>
-            <Link to="/app/players">PLAYERS</Link>
-          </li>
-        </ul>
+        <div className="relative w-80 min-h-full h-full">
+          <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20 z-[101] relative shadow-2xl border-l border-neutral-800">
+            <li>
+              <Link
+                to="/app/home"
+                onClick={() => {
+                  document.getElementById("my-drawer-3").checked = false;
+                  setDrawerMatchesOpen(false);
+                }}
+              >
+                HOME
+              </Link>
+            </li>
+            <li className="relative">
+              <button
+                className="flex items-center w-full cursor-pointer focus:outline-none"
+                onClick={() => setDrawerMatchesOpen((open) => !open)}
+                aria-expanded={drawerMatchesOpen}
+                aria-controls="drawer-matches-dropdown"
+              >
+                <span className="flex-1 text-left">MATCHES</span>
+                <svg
+                  className={`ml-2 h-4 w-4 transition-transform ${
+                    drawerMatchesOpen ? "rotate-90" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+              {drawerMatchesOpen && (
+                <ul
+                  id="drawer-matches-dropdown"
+                  className="pl-4 py-1 mt-1 space-y-1 bg-neutral-950 rounded-md border border-neutral-800 shadow-lg"
+                >
+                  <li className="hover:text-red-500">
+                    <Link
+                      to="/app/matches"
+                      onClick={() => {
+                        document.getElementById("my-drawer-3").checked = false;
+                        setDrawerMatchesOpen(false);
+                      }}
+                    >
+                      Schedule
+                    </Link>
+                  </li>
+                  <li className="hover:text-red-500">
+                    <Link
+                      to="/app/matches/result"
+                      onClick={() => {
+                        document.getElementById("my-drawer-3").checked = false;
+                        setDrawerMatchesOpen(false);
+                      }}
+                    >
+                      Result
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li>
+              <Link
+                to="/app/news/article"
+                onClick={() => {
+                  document.getElementById("my-drawer-3").checked = false;
+                  setDrawerMatchesOpen(false);
+                }}
+              >
+                NEWS
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/agents"
+                onClick={() => {
+                  document.getElementById("my-drawer-3").checked = false;
+                  setDrawerMatchesOpen(false);
+                }}
+              >
+                AGENTS
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/highlights"
+                onClick={() => {
+                  document.getElementById("my-drawer-3").checked = false;
+                  setDrawerMatchesOpen(false);
+                }}
+              >
+                HIGHLIGHTS
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/players"
+                onClick={() => {
+                  document.getElementById("my-drawer-3").checked = false;
+                  setDrawerMatchesOpen(false);
+                }}
+              >
+                PLAYERS
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
