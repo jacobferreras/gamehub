@@ -35,7 +35,24 @@ const getProPlayerById = async (req, res, next) => {
   }
 };
 
+const getProPlayerByIGN = async (req, res, next) => {
+  const { ign } = req.params;
+
+  try {
+    const result = await proplayerService.getProPlayerByIGN(ign);
+
+    if (result.data === null) {
+      return res.status(404).json(result);
+    }
+
+    return res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   getAll,
   getProPlayerById,
+  getProPlayerByIGN,
 };

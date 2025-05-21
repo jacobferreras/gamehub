@@ -59,7 +59,28 @@ const getProPlayerById = async (id) => {
     data: result[0][0],
   };
 };
+
+const getProPlayerByIGN = async (ign) => {
+  ign = decodeURIComponent(ign).trim();
+  console.log(ign);
+  const sql = `SELECT * FROM proplayers WHERE LOWER(TRIM(ign)) = LOWER(TRIM(?))`;
+  const result = await db.promise().query(sql, [ign]);
+
+  if (result[0].length === 0) {
+    return {
+      message: "Pro player not found",
+      data: null,
+    };
+  }
+
+  return {
+    message: "Pro player found",
+    data: result[0][0],
+  };
+};
+
 export default {
   getAll,
   getProPlayerById,
+  getProPlayerByIGN,
 };
