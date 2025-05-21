@@ -31,7 +31,7 @@ const PlayerScreen = () => {
       <div className="px-8 pt-32 pb-2 gap-4  md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {players.map((player, index) => (
           <Link
-            to={`/app/players/${player.id}`}
+            to={`/app/players/ign/${encodeURIComponent(player.ign)}`}
             className="card bg-neutral-950 w-[100%] shadow-sm"
             key={player.id || index}
           >
