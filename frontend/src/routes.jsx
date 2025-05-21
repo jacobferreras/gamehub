@@ -32,7 +32,7 @@ const AppRoutes = () => {
           <Route path="agents/:id" element={<AgentDetailScreen />} />
           <Route path="highlights" element={<HighlightScreen />} />
           <Route path="players" element={<PlayerScreen />} />
-          <Route path="players/:id" element={<PlayerDetailScreen />} />
+          <Route path="players/ign/:ign" element={<PlayerDetailScreen />} />
         </Route>
         <Route path="*" element={<LoginPage />} />
       </Routes>
