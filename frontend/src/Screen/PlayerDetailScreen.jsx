@@ -48,7 +48,24 @@ const PlayerDetailScreen = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex flex-col lg:flex-row w-full max-w-7xl pt-10 px-2 sm:px-4 md:px-8 lg:px-10 gap-8 lg:gap-16 mb-8">
+      <div className="w-full max-w-7xl px-2 sm:px-4 md:px-8 lg:px-10 pt-10">
+        <Link to="/app/players">
+          <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4">
+            {" "}
+            <img src={BackArrow} alt="Back" className="h-10 w-10" />
+            <span className="text-base font-medium">Back to Players</span>
+          </button>
+        </Link>
+      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+        className="flex flex-col lg:flex-row w-full max-w-7xl  px-2 sm:px-4 md:px-8 lg:px-10 gap-8 lg:gap-16 mb-8"
+      >
         <div className="flex flex-col items-center bg-neutral-900 rounded-xl shadow-lg p-4 sm:p-6 md:p-8 w-full lg:w-[32%] min-w-[0] max-w-full mb-8 lg:mb-0">
           <img
             src={player.image}
@@ -320,7 +337,7 @@ const PlayerDetailScreen = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
