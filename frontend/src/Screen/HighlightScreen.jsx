@@ -77,7 +77,13 @@ const HighlightScreen = () => {
                   whileTap={{ scale: 0.95 }}
                   className="btn bg-transparent hover:text-blue-600 "
                 >
-                  <a href={highlight.channel}>View Channel</a>
+                  <a
+                    href={highlight.channel}
+                    target="blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Channel
+                  </a>
                 </motion.button>
               </div>
             </div>
