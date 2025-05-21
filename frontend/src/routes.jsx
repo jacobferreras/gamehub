@@ -13,6 +13,7 @@ import MatchResultScreen from "./Screen/MatchResultScreen";
 import UpdateScreen from "./Screen/UpdateScreen";
 import NewsLayout from "./NewsLayout";
 import AgentDetailScreen from "./Screen/AgentDetailScreen";
+import PlayerDetailScreen from "./Screen/PlayerDetailScreen";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const AppRoutes = () => {
           <Route path="agents/:id" element={<AgentDetailScreen />} />
           <Route path="highlights" element={<HighlightScreen />} />
           <Route path="players" element={<PlayerScreen />} />
+          <Route path="players/:id" element={<PlayerDetailScreen />} />
         </Route>
         <Route path="*" element={<LoginPage />} />
       </Routes>
