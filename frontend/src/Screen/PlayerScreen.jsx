@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
+import { Link } from "react-router-dom";
 
 const PlayerScreen = () => {
   const [players, setPlayers] = useState([]);
@@ -29,7 +30,8 @@ const PlayerScreen = () => {
     <div className="min-h-screen bg-neutral-950">
       <div className="px-8 pt-32 pb-2 gap-4  md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {players.map((player, index) => (
-          <div
+          <Link
+            to={`/app/players/${player.id}`}
             className="card bg-neutral-950 w-[100%] shadow-sm"
             key={player.id || index}
           >
@@ -44,7 +46,7 @@ const PlayerScreen = () => {
               <h2 className="card-title">{player.ign}</h2>
               <p>{player.about}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="flex justify-center py-4">
