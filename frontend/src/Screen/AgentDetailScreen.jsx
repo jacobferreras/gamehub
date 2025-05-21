@@ -80,13 +80,13 @@ const AgentDetailScreen = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex flex-row justify-start pl-4">
+        <div className="w-full pl-4">
           <Link to="/app/agents">
-            <img
-              src={BackArrow}
-              alt="Back"
-              className="w-12 h-12 cursor-pointer"
-            />
+            <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4">
+              {" "}
+              <img src={BackArrow} alt="Back" className="h-10 w-10" />
+              <span className="text-base font-medium">Back to Agents</span>
+            </button>
           </Link>
         </div>
 
@@ -251,6 +251,8 @@ const AgentDetailScreen = () => {
             </div>
             <a
               href={agent.fullguide_channel}
+              target="blank"
+              rel="noopener noreferrer"
               className="lg:text-xs 3xl:text-lg text-blue-700"
             >
               {agent.fullguide_channel}
