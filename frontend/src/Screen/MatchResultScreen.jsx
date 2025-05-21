@@ -40,7 +40,7 @@ const MatchResultScreen = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex justify-end gap-3  pb-10 pr-30 ">
+      <div className="flex justify-end gap-3 pb-10 px-12 lg:pr-30 ">
         <DropdownInputField
           value={region}
           onChange={(e) => setRegion(e.target.value)}
