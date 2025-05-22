@@ -4,7 +4,6 @@ import { AnimatePresence } from "framer-motion";
 import MatchesScreen from "./Screen/MatchesScreen";
 import LoginPage from "./Screen/LoginPage";
 import NewsScreen from "./Screen/NewsScreen";
-import GuideScreen from "./Screen/GuideScreen";
 import HomeScreen from "./Screen/HomeScreen";
 import Layout from "./layout";
 import HighlightScreen from "./Screen/HighlightScreen";
@@ -14,6 +13,7 @@ import UpdateScreen from "./Screen/UpdateScreen";
 import NewsLayout from "./NewsLayout";
 import AgentDetailScreen from "./Screen/AgentDetailScreen";
 import PlayerDetailScreen from "./Screen/PlayerDetailScreen";
+import AgentScreen from "./Screen/AgentScreen";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -28,7 +28,7 @@ const AppRoutes = () => {
             <Route path="article" element={<NewsScreen />} />
             <Route path="update" element={<UpdateScreen />} />
           </Route>
-          <Route path="agents" element={<GuideScreen />} />
+          <Route path="agents" element={<AgentScreen />} />
           <Route path="agents/:id" element={<AgentDetailScreen />} />
           <Route path="highlights" element={<HighlightScreen />} />
           <Route path="players" element={<PlayerScreen />} />
