@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from "../../assets/home_icon.png";
 
 const Navbar = () => {
   const [drawerMatchesOpen, setDrawerMatchesOpen] = useState(false);

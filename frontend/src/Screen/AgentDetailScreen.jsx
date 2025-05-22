@@ -127,7 +127,9 @@ const AgentDetailScreen = () => {
                 key={index}
                 src={skill.logo}
                 alt=""
-                className={`h-auto w-[50px] cursor-pointer opacity-40  ${selectedSkill === index + 1 ? "opacity-100" : ""}`}
+                className={`h-auto w-[50px] cursor-pointer opacity-40  ${
+                  selectedSkill === index + 1 ? "opacity-100" : ""
+                }`}
                 onClick={() => setSelectedSkill(index + 1)}
               />
             ))}
@@ -207,7 +209,9 @@ const AgentDetailScreen = () => {
                       <img
                         src={skill.logo}
                         alt=""
-                        className={`h-auto w-[50px] cursor-pointer opacity-40  ${selectedSkill === index + 1 ? "opacity-100" : ""}`}
+                        className={`h-auto w-[50px] cursor-pointer opacity-40  ${
+                          selectedSkill === index + 1 ? "opacity-100" : ""
+                        }`}
                         onClick={() => setSelectedSkill(index + 1)}
                       />
                     </div>
