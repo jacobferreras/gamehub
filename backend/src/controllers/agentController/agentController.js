@@ -1,6 +1,6 @@
 import agentService from "../../services/agentService/agentSerive.js";
 
-const getAllAgents = async (req, res) => {
+const getAllAgents = async (req, res, next) => {
   try {
     const page = req.query.page || 1;
     const limit = req.query.limit || 100;
