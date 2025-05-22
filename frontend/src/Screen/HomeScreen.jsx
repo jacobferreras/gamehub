@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import BackgroundNews from "../assets/Home/bg.png";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import TrophyIcon from "../assets/trophy_icon.png";
 import NewsIcon from "../assets/news_icon.png";
 import GuidesIcon from "../assets/guide_icon.png";
@@ -9,10 +8,27 @@ import LargeScreenNews from "../components/ui/HomeScreen/LargeScreenNews";
 import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
-import DotaGamesSchedule from "../components/ui/HomeScreen/DotaGameSchedule";
-import PubgGameSchedule from "../components/ui/HomeScreen/PubgGameSchedule";
 
 const HomePage = () => {
+  const newsRef = useRef(null);
+  const scheduleRef = useRef(null);
+  const carouselRef = useRef(null);
+  const highlightsRef = useRef(null);
+
+  const newsInView = useInView(newsRef, { once: true, margin: "-100px" });
+  const scheduleInView = useInView(scheduleRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const carouselInView = useInView(carouselRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const highlightsInView = useInView(highlightsRef, {
+    once: true,
+    margin: "-100px",
+  });
+
   return (
     <>
       <div className="bg-cover bg-no-repeat bg-center min-h-screen bg-[url('/assets/Bg.png')] ">
@@ -103,23 +119,66 @@ const HomePage = () => {
       </div>
 
       <div className="pt-8 bg-neutral-950">
-        <h1 className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl">
+        <motion.h1
+          ref={newsRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={newsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl"
+        >
           Latest News
-        </h1>
-        <SmallScreenNews />
-        <LargeScreenNews />
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={newsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        >
+          <SmallScreenNews />
+          <LargeScreenNews />
+        </motion.div>
         <div className="my-4 border-t border-gray-600 opacity-50"></div>
-        <h1 className="flex justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl ">
+        <motion.h1
+          ref={scheduleRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={scheduleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl "
+        >
           Game Schedule
-        </h1>
-        <ValorantGameSchedule />
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={scheduleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        >
+          <ValorantGameSchedule />
+        </motion.div>
         <div className="my-4 border-t border-gray-600 opacity-50"></div>
-        <Carousel />
+        <motion.div
+          ref={carouselRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={carouselInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <Carousel />
+        </motion.div>
         <div className="my-4 border-t border-gray-600 opacity-50"></div>
-        <h1 className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl">
+        <motion.h1
+          ref={highlightsRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={highlightsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl"
+        >
           Game Highlights
-        </h1>
-        <HighlightSection />
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={highlightsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        >
+          <HighlightSection />
+        </motion.div>
       </div>
     </>
   );
