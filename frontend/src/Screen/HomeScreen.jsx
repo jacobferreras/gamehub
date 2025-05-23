@@ -185,6 +185,11 @@ const HomePage = () => {
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
           <HighlightSection />
+          <Link to="/app/highlights" className="flex justify-center pb-4">
+            <button className="btn btn-outline hover:text-red-500">
+              View More
+            </button>
+          </Link>
         </motion.div>
       </div>
     </>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 import "swiper/css/pagination";
 
@@ -93,6 +94,11 @@ const Carousel = () => {
           <p>No cards available</p>
         )}
       </Swiper>
+      <Link to="/app/players" className="flex justify-center">
+        <button className="btn btn-outline hover:text-red-500">
+          View More
+        </button>
+      </Link>
     </div>
   );
 };
