@@ -8,6 +8,7 @@ import LargeScreenNews from "../components/ui/HomeScreen/LargeScreenNews";
 import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const newsRef = useRef(null);
@@ -136,6 +137,12 @@ const HomePage = () => {
           <SmallScreenNews />
           <LargeScreenNews />
         </motion.div>
+        <Link to="/app/news/article" className="flex justify-center">
+          <button className="btn btn-outline hover:text-red-500">
+            View More
+          </button>
+        </Link>
+
         <div className="my-4 border-t border-gray-600 opacity-50"></div>
         <motion.h1
           ref={scheduleRef}
