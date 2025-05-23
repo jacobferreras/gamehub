@@ -78,16 +78,12 @@ const Carousel = () => {
                     <img
                       src={card.image}
                       alt={card.ign}
-                      className="h-60 w-full"
+                      className="h-70 w-full"
                     />
                   </figure>
                   <div className="card-body h-50 overflow-hidden">
                     <h2 className="card-title">{card.ign}</h2>
                     <p>{card.about}</p>
-                    <div className="card-actions justify-end">
-                      <div className="badge badge-outline">{card.team}</div>
-                      <div className="badge badge-outline">{card.role}</div>
-                    </div>
                   </div>
                 </div>
               </div>
