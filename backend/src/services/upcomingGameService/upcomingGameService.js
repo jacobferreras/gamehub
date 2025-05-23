@@ -48,7 +48,7 @@ const getAll = async ({
 
 const moveToGameResults = async () => {
   await db.promise().query(
-    `INSERT INTO game_results(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
+    `INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
        SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < NOW()`
   );
 
