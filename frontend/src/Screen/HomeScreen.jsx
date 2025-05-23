@@ -125,7 +125,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={newsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl"
+          className="flex justify-start pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl"
         >
           Latest News
         </motion.h1>
