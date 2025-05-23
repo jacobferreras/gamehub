@@ -97,34 +97,66 @@ const PlayerDetailScreen = () => {
             </div>
           </div>
           <div className="flex flex-row justify-center gap-4 sm:gap-6 mt-2 sm:mt-4">
-            <motion.img
-              src={TwitchIcon}
-              alt="Twitch"
-              className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-            />
-            <motion.img
-              src={XIcon}
-              alt="X"
-              className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-            />
-            <motion.img
-              src={YoutubeIcon}
-              alt="YouTube"
-              className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-            />
-            <motion.img
-              src={InstagramIcon}
-              alt="Instagram"
-              className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-            />
+            {player.twitch && (
+              <motion.a
+                href={player.twitch}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src={TwitchIcon}
+                  alt="Twitch"
+                  className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
+                />
+              </motion.a>
+            )}
+            {player.x && (
+              <motion.a
+                href={player.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src={XIcon}
+                  alt="X"
+                  className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
+                />
+              </motion.a>
+            )}
+            {player.youtube && (
+              <motion.a
+                href={player.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src={YoutubeIcon}
+                  alt="YouTube"
+                  className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
+                />
+              </motion.a>
+            )}
+            {player.instagram && (
+              <motion.a
+                href={player.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src={InstagramIcon}
+                  alt="Instagram"
+                  className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer hover:drop-shadow-lg"
+                />
+              </motion.a>
+            )}
           </div>
         </div>
 
