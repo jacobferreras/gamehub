@@ -47,7 +47,7 @@ const MatchResultScreen = () => {
         />
       </div>
       <div className="flex-grow">
-        <div className="px-8 pb-2 gap-4 md:px-4 md:gap-y-0 lg:gap-x-2 lg:gap-y-0 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">
+        <div className="px-4 pb-2 gap-4 md:px-4 md:gap-y-0 lg:gap-x-2 lg:gap-y-0 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">
           {schedules.map((schedule, index) => (
             <div
               key={schedule.id || index}
