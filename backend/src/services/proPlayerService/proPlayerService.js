@@ -87,60 +87,27 @@ const getAll = async ({
 };
 
 const getProPlayerById = async (id) => {
-  const sql = `
-    SELECT 
-      proplayers.*, 
+  const [[player]] = await db
+    .promise()
+    .query(`SELECT * FROM proplayers WHERE id = ?`, [id]);
+  const [[settings]] = await db
+    .promise()
+    .query(`SELECT * FROM player_settings WHERE proplayer_id = ?`, [id]);
+  const [[socials]] = await db
+    .promise()
+    .query(`SELECT * FROM player_socials WHERE proplayer_id = ?`, [id]);
 
-      -- Settings
-      player_settings.mouse_sensitivity,
-      player_settings.dpi,
-      player_settings.Hz,
-      player_settings.scoped_sensitivity,
-      player_settings.windows_sensitivity,
-      player_settings.input_buffer,
-      player_settings.display_mode,
-      player_settings.resolution,
-      player_settings.aspect_ratio,
-      player_settings.nvidia_reflex,
-      player_settings.rendering,
-      player_settings.material_quality,
-      player_settings.texture_quality,
-      player_settings.detail_quality,
-      player_settings.ui_quality,
-      player_settings.vignette,
-      player_settings.vsync,
-      player_settings.anti_aliasing,
-      player_settings.anisotropic_filtering,
-      player_settings.improve_clarity,
-      player_settings.experimental_harpening,
-      player_settings.bloom,
-      player_settings.distortion,
-      player_settings.cast_shadows,
-
-      -- Socials
-      player_socials.twitch,
-      player_socials.youtube,
-      player_socials.instagram,
-      player_socials.x
-
-    FROM proplayers
-    LEFT JOIN player_settings ON proplayers.id = player_settings.proplayer_id
-    LEFT JOIN player_socials ON proplayers.id = player_socials.proplayer_id
-    WHERE proplayers.id = ?
-  `;
-
-  const [rows] = await db.promise().query(sql, [id]);
-
-  if (rows.length === 0) {
-    return {
-      message: "Pro player not found",
-      data: null,
-    };
+  if (!player) {
+    return { message: "Pro player not found", data: null };
   }
 
   return {
     message: "Pro player found",
-    data: rows[0],
+    data: {
+      ...player,
+      ...settings,
+      ...socials,
+    },
   };
 };
 
