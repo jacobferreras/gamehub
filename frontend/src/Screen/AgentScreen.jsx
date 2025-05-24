@@ -58,10 +58,12 @@ const AgentScreen = () => {
     >
       <div className="flex flex-wrap justify-center lg:justify-end lg:flex-row lg:pr-10 ">
         <AgentFilter value={role} onChange={(e) => setRole(e.target.value)} />
-        <CustomInputField
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="w-64 lg:w-auto">
+          <CustomInputField
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="px-8 pt-2 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
