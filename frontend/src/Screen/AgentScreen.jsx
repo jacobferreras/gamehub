@@ -5,6 +5,7 @@ import AgentFilter from "../components/ui/AgentFilter";
 import CustomInputField from "../components/ui/CustomInputField";
 import { motion } from "framer-motion";
 import Pagination from "../components/common/Pagination";
+import { fetchAgent } from "../services/fetchAgent";
 
 const AgentScreen = () => {
   const [agents, setAgents] = useState([]);
@@ -13,7 +14,6 @@ const AgentScreen = () => {
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 12;
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -24,27 +24,24 @@ const AgentScreen = () => {
   }, [search]);
 
   useEffect(() => {
-    const fetchAgents = async () => {
+    const getAgents = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/agents?role=${role}&search=${debouncedSearch}&page=${currentPage}&limit=${limit}`
+        const response = await fetchAgent(
+          12,
+          currentPage,
+          role,
+          debouncedSearch
         );
-        setAgents(Array.isArray(response.data.data) ? response.data.data : []);
-        setTotalPages(response.data.totalPages || 1);
+        setAgents(response.data);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error("Error fetching agents:", error);
         setAgents([]);
       }
     };
 
-    fetchAgents();
-  }, [role, debouncedSearch, currentPage, limit]);
-
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 40 },
-  };
+    getAgents();
+  }, [role, debouncedSearch, currentPage]);
 
   return (
     <motion.div
