@@ -9,12 +9,14 @@ import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HomePage = () => {
   const newsRef = useRef(null);
   const scheduleRef = useRef(null);
   const carouselRef = useRef(null);
   const highlightsRef = useRef(null);
+  const [count, setCount] = useState(0);
 
   const newsInView = useInView(newsRef, { once: true, margin: "-100px" });
   const scheduleInView = useInView(scheduleRef, {
@@ -29,6 +31,10 @@ const HomePage = () => {
     once: true,
     margin: "-100px",
   });
+
+  const handleCount = () => {
+    setCount(count + 1);
+  };
 
   return (
     <>
@@ -116,6 +122,9 @@ const HomePage = () => {
               </div>
             </div>
           </motion.div>
+          <button className="btn" onClick={handleCount}>
+            {count}
+          </button>
         </div>
       </div>
 

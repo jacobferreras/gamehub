@@ -1,7 +1,7 @@
 import React from "react";
-import NewsNavigation from "./components/common/NewsNavigation";
+import NewsNavigation from "../components/common/NewsNavigation";
 import { Outlet } from "react-router-dom";
-import NewsBg from "./assets/NewsBg.png";
+import NewsBg from "../assets/NewsBg.png";
 import { motion } from "framer-motion";
 
 const NewsLayout = () => {
