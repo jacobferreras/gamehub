@@ -67,8 +67,6 @@ const Carousel = () => {
             spaceBetween: 10,
           },
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
       >
         {Array.isArray(cards) && cards.length > 0 ? (
           cards.map((card) => (
