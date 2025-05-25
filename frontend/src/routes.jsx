@@ -1,13 +1,13 @@
 import { useLocation, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Suspense, lazy } from "react";
-import Loader from "./components/Loader";
+import Loader from "./components/common/Loader";
 
 const MatchesScreen = lazy(() => import("./Screen/MatchesScreen"));
 const LoginPage = lazy(() => import("./Screen/LoginPage"));
 const NewsScreen = lazy(() => import("./Screen/NewsScreen"));
 const HomeScreen = lazy(() => import("./Screen/HomeScreen"));
-const Layout = lazy(() => import("./Layout"));
+const Layout = lazy(() => import("./layouts/Layout"));
 const HighlightScreen = lazy(() => import("./Screen/HighlightScreen"));
 const PlayerScreen = lazy(() => import("./Screen/PlayerScreen"));
 const MatchResultScreen = lazy(() => import("./Screen/MatchResultScreen"));
