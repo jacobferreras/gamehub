@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Link } from "react-router-dom";
+import fetchPlayer from "../../../services/playerCarousel";
 
 import "swiper/css/pagination";
 
@@ -13,10 +13,8 @@ const Carousel = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/proplayers?limit=10&random=true"
-        );
-        setCards(Array.isArray(response.data.data) ? response.data.data : []);
+        const response = await fetchPlayer();
+        setCards(response);
       } catch (error) {
         console.error("Error fetching cards:", error);
         setCards([]);
