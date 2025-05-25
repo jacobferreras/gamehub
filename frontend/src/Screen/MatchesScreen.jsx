@@ -2,35 +2,29 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
-import GameBg from "../assets/GameBg.png"; // Adjust the path as necessary
+import GameBg from "../assets/GameBg.png";
+import { fetchMatchScreenSchedule } from "../services/gameSchedule";
 
 const MatchesScreen = () => {
   const [schedules, setSchedules] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [region, setRegion] = useState("");
-  const limit = 8;
-  const game = "valorant";
 
   useEffect(() => {
-    const fetchSchedules = async () => {
+    const getSchedules = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/upcomingGames?page=${currentPage}&limit=${limit}&game=${game}&region=${region}`
-        );
-        console.log("API Response:", response.data);
-        setSchedules(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-        setTotalPages(response.data.totalPages || 1);
+        const response = await fetchMatchScreenSchedule(currentPage, region);
+        setSchedules(response.data);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error("Error fetching schedules:", error);
         setSchedules([]);
       }
     };
 
-    fetchSchedules();
-  }, [currentPage, limit, game, region]);
+    getSchedules();
+  }, [currentPage, region]);
 
   return (
     <>
@@ -61,7 +55,6 @@ const MatchesScreen = () => {
                 </h2>
                 <div className="card-body items-center text-center min-h-64 flex flex-col justify-center">
                   <div className="flex items-center justify-between w-full">
-                    {/* Team 1 */}
                     <div className="flex flex-col items-center w-1/3">
                       <img
                         src={schedule.logo1}
@@ -96,7 +89,6 @@ const MatchesScreen = () => {
                         PHT
                       </p>
                     </div>
-                    {/* Team 2 */}
                     <div className="flex flex-col items-center w-1/3">
                       <img
                         src={schedule.logo2}
