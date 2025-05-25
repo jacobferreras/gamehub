@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const NewsCard = ({ Title, Description, Date, Author, ImageUrl }) => {
   return (
     <div className="card bg-neutral-900  w-auto h-full shadow-sm relative">
