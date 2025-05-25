@@ -12,7 +12,7 @@ const HighlightScreen = lazy(() => import("./Screen/HighlightScreen"));
 const PlayerScreen = lazy(() => import("./Screen/PlayerScreen"));
 const MatchResultScreen = lazy(() => import("./Screen/MatchResultScreen"));
 const UpdateScreen = lazy(() => import("./Screen/UpdateScreen"));
-const NewsLayout = lazy(() => import("./NewsLayout"));
+const NewsLayout = lazy(() => import("./layouts/NewsLayout"));
 const AgentDetailScreen = lazy(() => import("./Screen/AgentDetailScreen"));
 const PlayerDetailScreen = lazy(() => import("./Screen/PlayerDetailScreen"));
 const AgentScreen = lazy(() => import("./Screen/AgentScreen"));
