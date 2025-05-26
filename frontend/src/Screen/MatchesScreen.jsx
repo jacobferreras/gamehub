@@ -3,7 +3,7 @@ import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
 import GameBg from "../assets/GameBg.png";
-import { fetchMatchScreenSchedule } from "../services/gameSchedule";
+import { fetchSchedule } from "../services/fetchSchedule";
 
 const MatchesScreen = () => {
   const [schedules, setSchedules] = useState([]);
@@ -14,7 +14,7 @@ const MatchesScreen = () => {
   useEffect(() => {
     const getSchedules = async () => {
       try {
-        const response = await fetchMatchScreenSchedule(currentPage, region);
+        const response = await fetchSchedule(currentPage, region);
         setSchedules(response.data);
         setTotalPages(response.totalPages);
       } catch (error) {

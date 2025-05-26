@@ -5,6 +5,7 @@ import Pagination from "../components/common/Pagination";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import NewsBg from "../assets/NewsBg.png";
+import { fetchPlayer } from "../services/fetchPlayer";
 
 const PlayerScreen = () => {
   const [players, setPlayers] = useState([]);
@@ -13,20 +14,18 @@ const PlayerScreen = () => {
   const limit = 12;
 
   useEffect(() => {
-    const fetchPlayers = async () => {
+    const getPlayers = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/proplayers?page=${currentPage}&limit=${limit}&random`
-        );
-        setPlayers(Array.isArray(response.data.data) ? response.data.data : []);
-        setTotalPages(response.data.totalPages || 1);
+        const response = await fetchPlayer(currentPage, limit, "");
+        setPlayers(response.data);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error("Error fetching players:", error);
         setPlayers([]);
       }
     };
 
-    fetchPlayers();
+    getPlayers();
   }, [currentPage, limit]);
   return (
     <div

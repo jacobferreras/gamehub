@@ -122,9 +122,6 @@ const HomePage = () => {
               </div>
             </div>
           </motion.div>
-          <button className="btn" onClick={handleCount}>
-            {count}
-          </button>
         </div>
       </div>
 

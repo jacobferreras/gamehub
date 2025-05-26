@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Link } from "react-router-dom";
-import fetchPlayer from "../../../services/playerCarousel";
+import { fetchPlayer } from "../../../services/fetchPlayer";
 
 import "swiper/css/pagination";
 
@@ -13,8 +13,8 @@ const Carousel = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetchPlayer();
-        setCards(response);
+        const response = await fetchPlayer(1, 10, "true");
+        setCards(response.data);
       } catch (error) {
         console.error("Error fetching cards:", error);
         setCards([]);
