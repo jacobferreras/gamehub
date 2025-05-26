@@ -6,7 +6,7 @@ export const fetchSchedule = async (
   limit = "",
   game = "valorant"
 ) => {
-  const params = { page, limit, game };
+  const params = { page, game };
   if (region) params.region = region;
   if (limit) params.limit = limit;
 
