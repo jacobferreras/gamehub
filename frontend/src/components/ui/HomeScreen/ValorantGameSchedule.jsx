@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchHomeGameSchedule } from "../../../services/gameSchedule";
+// import { fetchHomeGameSchedule } from "../../../services/gameSchedule";
+import { fetchSchedule } from "../../../services/fetchSchedule";
 
 const ValorantGameSchedule = () => {
   const [schedules, setSchedules] = useState([]);
@@ -7,8 +8,8 @@ const ValorantGameSchedule = () => {
   useEffect(() => {
     const getSchedules = async () => {
       try {
-        const data = await fetchHomeGameSchedule();
-        setSchedules(data);
+        const data = await fetchSchedule(1, "", 4, "valorant");
+        setSchedules(data.data);
       } catch (error) {
         console.error("Error fetching schedules:", error);
         setSchedules([]);
