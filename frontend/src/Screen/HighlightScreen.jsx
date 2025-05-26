@@ -3,6 +3,7 @@ import axios from "axios";
 import NewsBg from "../assets/NewsBg.png";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
+import { fetchHighlights } from "../services/fetchHighlights";
 
 const HighlightScreen = () => {
   const [highlights, setHighlights] = useState([]);
@@ -11,22 +12,18 @@ const HighlightScreen = () => {
   const limit = 8;
 
   useEffect(() => {
-    const fetchHighlights = async () => {
+    const getHighlights = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/gameHighlights?page=${currentPage}&limit=${limit}`
-        );
-        setHighlights(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-        setTotalPages(response.data.totalPages || 1);
+        const response = await fetchHighlights(currentPage, limit, "");
+        setHighlights(response.data);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error("Error fetching highlights:", error);
         setHighlights([]);
       }
     };
 
-    fetchHighlights();
+    getHighlights();
   }, [currentPage, limit]);
 
   const pageVariants = {

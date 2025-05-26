@@ -1,26 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { fetchHighlights } from "../../../services/fetchHighlights";
 import axios from "axios";
 
 const GuideSection = () => {
   const [higlights, setHighlights] = useState([]);
 
   useEffect(() => {
-    const fetchHighlights = async () => {
+    const getHighlights = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/gameHighlights?limit=4&random=true"
-        );
-        setHighlights(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
+        const response = await fetchHighlights(1, 4, "true");
+        setHighlights(response.data);
       } catch (error) {
         console.error("Error fetching highlights:", error);
         setHighlights([]);
       }
     };
 
-    fetchHighlights();
+    getHighlights();
   }, []);
 
   return (
