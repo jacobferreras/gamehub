@@ -4,6 +4,7 @@ import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
 import GameBg from "../assets/GameBg.png";
 import { fetchSchedule } from "../services/fetchSchedule";
+import { motion } from "framer-motion";
 
 const MatchesScreen = () => {
   const [schedules, setSchedules] = useState([]);
@@ -46,7 +47,14 @@ const MatchesScreen = () => {
         <div className="flex-grow">
           <div className="px-4 pb-2  gap-4 md:px-4 md:gap-y-0 lg:gap-x-2 lg:gap-y-0 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">
             {schedules.map((schedule, index) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
                 key={schedule.id || index}
                 className="card bg-zinc-800 w-auto lg:w-auto 3xl:w-auto shadow-xl text-center text-white items-center mb-5"
               >
@@ -99,7 +107,7 @@ const MatchesScreen = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

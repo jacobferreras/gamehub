@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { fetchMatchResults } from "../services/fetchMatchResults"; // Adjust the import path as necessary
 import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
@@ -12,23 +14,18 @@ const MatchResultScreen = () => {
   const limit = 8;
 
   useEffect(() => {
-    const fetchSchedules = async () => {
+    const getSchedules = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/matchResults?page=${currentPage}&limit=${limit}&region=${region}`
-        );
-        console.log("API Response:", response.data);
-        setSchedules(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-        setTotalPages(response.data.totalPages || 1);
+        const response = await fetchMatchResults(currentPage, region, limit);
+        setSchedules(response.data);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error("Error fetching schedules:", error);
         setSchedules([]);
       }
     };
 
-    fetchSchedules();
+    getSchedules();
   }, [currentPage, limit, region]);
   return (
     <div
@@ -49,7 +46,14 @@ const MatchResultScreen = () => {
       <div className="flex-grow">
         <div className="px-4                 pb-2 gap-4 md:px-4 md:gap-y-0 lg:gap-x-2 lg:gap-y-0 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">
           {schedules.map((schedule, index) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.08,
+              }}
               key={schedule.id || index}
               className="card bg-zinc-800 w-auto lg:w-auto 3xl:w-auto shadow-xl text-center text-white items-center mb-5"
             >
@@ -106,7 +110,7 @@ const MatchResultScreen = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
