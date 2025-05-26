@@ -2,27 +2,24 @@ import HeadNewsCard from "./HeadNewsCard";
 import NewsCard from "./NewsCard";
 import NewsCardSide from "./NewsCardSide";
 import { useState, useEffect } from "react";
+import { fetchNews } from "../../../services/fetchNews";
 import axios from "axios";
 
 const LargeScreenNews = () => {
   const [valorantArticles, setValorantArticles] = useState([]);
 
   useEffect(() => {
-    const fetchArticle = async () => {
+    const getArticle = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/articles?limit=5"
-        );
-        setValorantArticles(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
+        const response = await fetchNews(1, 5);
+        setValorantArticles(response.data);
       } catch (error) {
         console.error("Error fetching cards:", error);
         setValorantArticles([]);
       }
     };
 
-    fetchArticle();
+    getArticle();
   }, []);
   return (
     <div className="hidden sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
