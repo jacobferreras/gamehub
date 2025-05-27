@@ -1,29 +1,12 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
-import { fetchNews } from "../services/fetchNews";
+import useNews from "../hooks/useNews";
 
 const NewsScreen = () => {
-  const [news, setNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const limit = 12;
-
-  useEffect(() => {
-    const getNews = async () => {
-      try {
-        const response = await fetchNews(currentPage, limit);
-        setNews(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching news:", error);
-        setNews([]);
-      }
-    };
-
-    getNews();
-  }, [currentPage, limit]);
+  const { news, totalPages } = useNews(currentPage, limit);
 
   return (
     <div>
