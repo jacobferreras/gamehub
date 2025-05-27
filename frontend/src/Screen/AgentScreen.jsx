@@ -5,43 +5,21 @@ import AgentFilter from "../components/ui/AgentFilter";
 import CustomInputField from "../components/ui/CustomInputField";
 import { motion } from "framer-motion";
 import Pagination from "../components/common/Pagination";
-import { fetchAgent } from "../services/fetchAgent";
+import useDebounce from "../hooks/useDebounde";
+import useAgent from "../hooks/useAgent";
 
 const AgentScreen = () => {
-  const [agents, setAgents] = useState([]);
   const [role, setRole] = useState("");
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearch(search);
-    }, 400);
-
-    return () => clearTimeout(handler);
-  }, [search]);
-
-  useEffect(() => {
-    const getAgents = async () => {
-      try {
-        const response = await fetchAgent(
-          12,
-          currentPage,
-          role,
-          debouncedSearch
-        );
-        setAgents(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching agents:", error);
-        setAgents([]);
-      }
-    };
-
-    getAgents();
-  }, [role, debouncedSearch, currentPage]);
+  const debouncedSearch = useDebounce(search, 400);
+  const { agents, totalPages } = useAgent(
+    12,
+    currentPage,
+    role,
+    debouncedSearch
+  );
 
   return (
     <motion.div
