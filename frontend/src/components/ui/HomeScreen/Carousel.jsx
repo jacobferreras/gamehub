@@ -1,28 +1,14 @@
-import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Link } from "react-router-dom";
-import { fetchPlayer } from "../../../services/fetchPlayer";
-
 import "swiper/css/pagination";
+import usePlayer from "../../../hooks/usePlayer";
 
 const Carousel = () => {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await fetchPlayer(1, 10, "true");
-        setCards(response.data);
-      } catch (error) {
-        console.error("Error fetching cards:", error);
-        setCards([]);
-      }
-    };
-
-    fetchCards();
-  }, []);
+  const limit = 10;
+  const random = "true";
+  const { players: cards } = usePlayer(1, limit, random);
 
   return (
     <div className="container mx-auto px-4 py-6 sm:px-32 md:px-2 lg:px-22 xl:px-38 3xl:px-34">
