@@ -17,8 +17,11 @@ const getMatchResults = async ({ page = 1, limit = 8, region = "" }) => {
 
   const result = await db.promise().query(sql, params);
 
+  const countParams = params.slice(0, region ? 1 : 0);
   const totalCountQuery = `SELECT COUNT(*) as total FROM game_result${condition}`;
-  const totalCountResult = await db.promise().query(totalCountQuery);
+  const totalCountResult = await db
+    .promise()
+    .query(totalCountQuery, countParams);
   const totalCount = totalCountResult[0][0].total;
   const totalPages = Math.ceil(totalCount / limit);
 
