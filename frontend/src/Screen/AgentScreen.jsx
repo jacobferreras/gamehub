@@ -5,14 +5,13 @@ import AgentFilter from "../components/ui/AgentFilter";
 import CustomInputField from "../components/ui/CustomInputField";
 import { motion } from "framer-motion";
 import Pagination from "../components/common/Pagination";
-import useDebounce from "../hooks/useDebounde";
+import useDebounce from "../hooks/useDebounce";
 import useAgent from "../hooks/useAgent";
 
 const AgentScreen = () => {
   const [role, setRole] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
   const debouncedSearch = useDebounce(search, 400);
   const { agents, totalPages } = useAgent(
     12,
