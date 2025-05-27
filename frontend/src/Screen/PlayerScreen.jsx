@@ -1,32 +1,15 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Pagination from "../components/common/Pagination";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import NewsBg from "../assets/NewsBg.png";
-import { fetchPlayer } from "../services/fetchPlayer";
+import usePlayer from "../hooks/usePlayer";
 
 const PlayerScreen = () => {
-  const [players, setPlayers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const limit = 12;
+  const { players, totalPages } = usePlayer(currentPage, limit, false);
 
-  useEffect(() => {
-    const getPlayers = async () => {
-      try {
-        const response = await fetchPlayer(currentPage, limit, "");
-        setPlayers(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching players:", error);
-        setPlayers([]);
-      }
-    };
-
-    getPlayers();
-  }, [currentPage, limit]);
   return (
     <div
       className="min-h-screen"
