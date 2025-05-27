@@ -1,28 +1,9 @@
 import HeadNewsCard from "./HeadNewsCard";
 import NewsCardSide from "./NewsCardSide";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import useNews from "../../../hooks/useNews";
 
 const SmallScreenNews = () => {
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/articles?limit=5"
-        );
-        setArticles(
-          Array.isArray(response.data.data) ? response.data.data : []
-        );
-      } catch (error) {
-        console.error("Error fetching cards:", error);
-        setArticles([]);
-      }
-    };
-
-    fetchArticle();
-  }, []);
+  const { news: articles } = useNews(null, null);
 
   return (
     <div className="block sm:hidden">

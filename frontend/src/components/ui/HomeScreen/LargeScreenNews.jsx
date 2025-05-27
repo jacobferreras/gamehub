@@ -1,26 +1,11 @@
 import HeadNewsCard from "./HeadNewsCard";
 import NewsCard from "./NewsCard";
 import NewsCardSide from "./NewsCardSide";
-import { useState, useEffect } from "react";
-import { fetchNews } from "../../../services/fetchNews";
-import axios from "axios";
+import useNews from "../../../hooks/useNews";
 
 const LargeScreenNews = () => {
-  const [valorantArticles, setValorantArticles] = useState([]);
+  const { news: valorantArticles } = useNews(null, null);
 
-  useEffect(() => {
-    const getArticle = async () => {
-      try {
-        const response = await fetchNews(1, 5);
-        setValorantArticles(response.data);
-      } catch (error) {
-        console.error("Error fetching cards:", error);
-        setValorantArticles([]);
-      }
-    };
-
-    getArticle();
-  }, []);
   return (
     <div className="hidden sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
       <div className="row-span-2 col-span-2">
