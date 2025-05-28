@@ -1,30 +1,13 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
+import useUpdate from "../hooks/useUpdate";
 
 const UpdateScreen = () => {
-  const [updates, setUpdates] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const limit = 12;
 
-  useEffect(() => {
-    const fetchUpdate = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/updates?page=${currentPage}&limit=${limit}`
-        );
-        setUpdates(Array.isArray(response.data.data) ? response.data.data : []);
-        setTotalPages(response.data.totalPages || 1);
-      } catch (error) {
-        console.error("Error fetching updates:", error);
-        setUpdates([]);
-      }
-    };
-
-    fetchUpdate();
-  }, [currentPage, limit]);
+  const { updates, totalPages } = useUpdate(currentPage, limit);
 
   return (
     <div>
