@@ -1,32 +1,16 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { fetchMatchResults } from "../services/fetchMatchResults"; // Adjust the import path as necessary
-import axios from "axios";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
-import GameBg from "../assets/GameBg.png"; // Adjust the path as necessary
+import GameBg from "../assets/GameBg.png";
+import useSchedule from "../hooks/useSchedule"; // Adjust the path as necessary
 
 const MatchResultScreen = () => {
-  const [schedules, setSchedules] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [region, setRegion] = useState("");
   const limit = 8;
+  const { schedules, totalPages } = useSchedule(currentPage, region, limit);
 
-  useEffect(() => {
-    const getSchedules = async () => {
-      try {
-        const response = await fetchMatchResults(currentPage, region, limit);
-        setSchedules(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching schedules:", error);
-        setSchedules([]);
-      }
-    };
-
-    getSchedules();
-  }, [currentPage, limit, region]);
   return (
     <div
       className=" flex flex-col min-h-screen pt-28"
