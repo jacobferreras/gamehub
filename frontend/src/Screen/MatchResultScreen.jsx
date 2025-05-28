@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
 import GameBg from "../assets/GameBg.png";
-import useSchedule from "../hooks/useSchedule"; // Adjust the path as necessary
+import useMatchResult from "../hooks/useMatchResult"; // Adjust the import path as necessary
 
 const MatchResultScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [region, setRegion] = useState("");
   const limit = 8;
-  const { schedules, totalPages } = useSchedule(currentPage, region, limit);
+  const { schedules, totalPages } = useMatchResult(currentPage, region, limit);
 
   return (
     <div
