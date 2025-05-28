@@ -1,30 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import NewsBg from "../assets/NewsBg.png";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
-import { fetchHighlights } from "../services/fetchHighlights";
+import useHighlights from "../hooks/useHighlights"; // Adjust the import path as necessary
 
 const HighlightScreen = () => {
-  const [highlights, setHighlights] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const limit = 8;
-
-  useEffect(() => {
-    const getHighlights = async () => {
-      try {
-        const response = await fetchHighlights(currentPage, limit, "");
-        setHighlights(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching highlights:", error);
-        setHighlights([]);
-      }
-    };
-
-    getHighlights();
-  }, [currentPage, limit]);
+  const { highlights, totalPages } = useHighlights(currentPage, limit);
 
   const pageVariants = {
     initial: { opacity: 0, y: 40 },
