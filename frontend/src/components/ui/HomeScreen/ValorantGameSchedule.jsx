@@ -1,23 +1,8 @@
-import { useState, useEffect } from "react";
-// import { fetchHomeGameSchedule } from "../../../services/gameSchedule";
-import { fetchSchedule } from "../../../services/fetchSchedule";
+import useSchedule from "../../../hooks/useSchedule";
 
 const ValorantGameSchedule = () => {
-  const [schedules, setSchedules] = useState([]);
-
-  useEffect(() => {
-    const getSchedules = async () => {
-      try {
-        const data = await fetchSchedule(1, "", 4, "valorant");
-        setSchedules(data.data);
-      } catch (error) {
-        console.error("Error fetching schedules:", error);
-        setSchedules([]);
-      }
-    };
-
-    getSchedules();
-  }, []);
+  const limit = 4;
+  const { schedules } = useSchedule(1, "", limit);
 
   return (
     <div className="px-8 pb-10 gap-4 md:px-4 md:gap-y-0 lg:gap-x-2 lg:gap-y-0 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-34">

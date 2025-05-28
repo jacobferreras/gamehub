@@ -18,7 +18,7 @@ const useSchedule = (page, region, limit) => {
     };
 
     getSchedules();
-  }, []);
+  }, [page, region, limit]);
 
   return {
     schedules,
