@@ -6,7 +6,6 @@ import useUpdate from "../hooks/useUpdate";
 const UpdateScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
-
   const { updates, totalPages } = useUpdate(currentPage, limit);
 
   return (
