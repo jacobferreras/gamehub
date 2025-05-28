@@ -1,27 +1,12 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import BackArrow from "../assets/back_arrow.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import useAgentDetails from "../hooks/useAgentDetails";
 
 const AgentDetailScreen = () => {
-  const { id } = useParams();
-  const [agent, setAgent] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(1);
-
-  useEffect(() => {
-    const fetchAgentDetails = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/agents/${id}`);
-        setAgent(response.data.data);
-      } catch (error) {
-        console.error("Error fetching agent details:", error);
-      }
-    };
-
-    fetchAgentDetails();
-  }, [id]);
+  const { agent, skillData, pageVariants } = useAgentDetails();
 
   if (!agent) {
     return (
@@ -30,39 +15,6 @@ const AgentDetailScreen = () => {
       </div>
     );
   }
-
-  const skillData = [
-    {
-      logo: agent.skill1_logo,
-      name: agent.skill1,
-      description: agent.skill1_description,
-      video: agent.skill1_video,
-    },
-    {
-      logo: agent.skill2_logo,
-      name: agent.skill2,
-      description: agent.skill2_description,
-      video: agent.skill2_video,
-    },
-    {
-      logo: agent.skill3_logo,
-      name: agent.skill3,
-      description: agent.skill3_description,
-      video: agent.skill3_video,
-    },
-    {
-      logo: agent.skill4_logo,
-      name: agent.skill4,
-      description: agent.skill4_description,
-      video: agent.skill4_video,
-    },
-  ];
-
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 40 },
-  };
 
   return (
     <>
