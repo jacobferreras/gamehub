@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { fetchMatchResults } from "../services/fetchMatchResults";
+import { fetchSchedule } from "../services/fetchSchedule";
 
 const useSchedule = (page, region, limit) => {
   const [schedules, setSchedules] = useState([]);
@@ -9,7 +8,7 @@ const useSchedule = (page, region, limit) => {
   useEffect(() => {
     const getSchedules = async () => {
       try {
-        const response = await fetchMatchResults(page, region, limit);
+        const response = await fetchSchedule(page, region, limit);
         setSchedules(response.data);
         setTotalPages(response.totalPages);
       } catch (error) {

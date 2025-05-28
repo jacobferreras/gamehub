@@ -1,31 +1,15 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
 import GameBg from "../assets/GameBg.png";
-import { fetchSchedule } from "../services/fetchSchedule";
 import { motion } from "framer-motion";
+import useSchedule from "../hooks/useSchedule"; // Adjust the import path as necessary
 
 const MatchesScreen = () => {
-  const [schedules, setSchedules] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [region, setRegion] = useState("");
-
-  useEffect(() => {
-    const getSchedules = async () => {
-      try {
-        const response = await fetchSchedule(currentPage, region);
-        setSchedules(response.data);
-        setTotalPages(response.totalPages);
-      } catch (error) {
-        console.error("Error fetching schedules:", error);
-        setSchedules([]);
-      }
-    };
-
-    getSchedules();
-  }, [currentPage, region]);
+  const limit = 8;
+  const { schedules, totalPages } = useSchedule(currentPage, region, limit);
 
   return (
     <>
