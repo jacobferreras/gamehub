@@ -1,28 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { fetchHighlights } from "../../../services/fetchHighlights";
-import axios from "axios";
+import useHighlights from "../../../hooks/useHighlights";
 
 const GuideSection = () => {
-  const [higlights, setHighlights] = useState([]);
-
-  useEffect(() => {
-    const getHighlights = async () => {
-      try {
-        const response = await fetchHighlights(1, 4, "true");
-        setHighlights(response.data);
-      } catch (error) {
-        console.error("Error fetching highlights:", error);
-        setHighlights([]);
-      }
-    };
-
-    getHighlights();
-  }, []);
+  const { highlights } = useHighlights(1, 6);
 
   return (
     <div className="px-4 pb-12 gap-4 grid grid-cols-1 sm:grid-cols-2">
-      {higlights.map((highlight, index) => (
+      {highlights.map((highlight, index) => (
         <div
           key={highlight.id || index}
           className="card lg:card-side w-auto lg:w-auto sm:w-90 bg-transparent shadow-sm mb-0"
