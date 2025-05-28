@@ -1,6 +1,3 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import BackArrow from "../assets/back_arrow.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,25 +6,10 @@ import XIcon from "../assets/x_icon.png";
 import YoutubeIcon from "../assets/youtube_icon.png";
 import InstagramIcon from "../assets/instagram_icon.png";
 import NewsBg from "../assets/NewsBg.png";
+import usePlayerDetails from "../hooks/usePlayerDetails";
 
 const PlayerDetailScreen = () => {
-  const { ign } = useParams();
-  const [player, setPlayer] = useState(null);
-
-  useEffect(() => {
-    const fetchPlayerDetails = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/proplayers/ign/${ign}`
-        );
-        setPlayer(response.data.data);
-      } catch (error) {
-        console.error("Error fetching player details:", error);
-      }
-    };
-
-    fetchPlayerDetails();
-  }, [ign]);
+  const { player } = usePlayerDetails();
 
   if (!player) {
     return (
