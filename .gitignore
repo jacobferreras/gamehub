@@ -153,3 +153,4 @@ Thumbs.db
 # Database and Docker
 /mysql-init/
 /docker-compose.override.yml
+mysql-init/game_hub.sql
