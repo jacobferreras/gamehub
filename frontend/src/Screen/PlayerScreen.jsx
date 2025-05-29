@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import NewsBg from "../assets/NewsBg.png";
 import usePlayer from "../hooks/usePlayer";
+import Loader from "../components/common/Loader";
 
 const PlayerScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
   const { players, totalPages } = usePlayer(currentPage, limit, false);
+
+  if (!players || players.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div

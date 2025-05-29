@@ -7,16 +7,13 @@ import YoutubeIcon from "../assets/youtube_icon.png";
 import InstagramIcon from "../assets/instagram_icon.png";
 import NewsBg from "../assets/NewsBg.png";
 import usePlayerDetails from "../hooks/usePlayerDetails";
+import Loader from "../components/common/Loader";
 
 const PlayerDetailScreen = () => {
   const { player } = usePlayerDetails();
 
   if (!player) {
-    return (
-      <div className="min-h-screen bg-neutral-950 pt-20">
-        <div>Loading...</div>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
