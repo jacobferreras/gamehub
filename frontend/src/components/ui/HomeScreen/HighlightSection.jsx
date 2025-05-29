@@ -1,7 +1,7 @@
 import useHighlights from "../../../hooks/useHighlights";
 
 const GuideSection = () => {
-  const { highlights } = useHighlights(1, 6);
+  const { highlights } = useHighlights(1, 4);
 
   return (
     <div className="px-4 pb-12 gap-4 grid grid-cols-1 sm:grid-cols-2">
