@@ -1,8 +1,7 @@
-import React from "react";
-import NewsNavigation from "../components/common/NewsNavigation";
 import { Outlet } from "react-router-dom";
 import NewsBg from "../assets/NewsBg.png";
 import { motion } from "framer-motion";
+import NewsNavigation from "../components/common/NewsNavigation";
 
 const NewsLayout = () => {
   const pageVariants = {
