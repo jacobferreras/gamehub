@@ -2,9 +2,14 @@ import HeadNewsCard from "./HeadNewsCard";
 import NewsCard from "./NewsCard";
 import NewsCardSide from "./NewsCardSide";
 import useNews from "../../../hooks/useNews";
+import Loader from "../../common/Loader";
 
 const LargeScreenNews = () => {
   const { news: valorantArticles } = useNews(null, null);
+
+  if (!valorantArticles || valorantArticles.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className="hidden sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
