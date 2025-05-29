@@ -41,14 +41,6 @@ const db = createConnection({
   database: process.env.DB_NAME,
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error("Database connection failed:", err);
-    return;
-  }
-  console.log("Connected to the database.");
-});
-
 //routes
 app.use("/valorantAccount", valorantAccountRoute);
 app.use("/proplayers", proPlayerRoute);
