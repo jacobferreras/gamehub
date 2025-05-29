@@ -1,4 +1,4 @@
-GET http://localhost:5000/proplayers/1
+GET https://gamehub-4mrg.onrender.com/proplayers
 Content-Type: application/json
 
     
