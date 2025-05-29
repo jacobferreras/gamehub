@@ -16,8 +16,6 @@ const HomePage = () => {
   const scheduleRef = useRef(null);
   const carouselRef = useRef(null);
   const highlightsRef = useRef(null);
-  const [count, setCount] = useState(0);
-
   const newsInView = useInView(newsRef, { once: true, margin: "-100px" });
   const scheduleInView = useInView(scheduleRef, {
     once: true,
@@ -31,10 +29,6 @@ const HomePage = () => {
     once: true,
     margin: "-100px",
   });
-
-  const handleCount = () => {
-    setCount(count + 1);
-  };
 
   return (
     <>
