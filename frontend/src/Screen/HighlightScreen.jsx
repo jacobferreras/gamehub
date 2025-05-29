@@ -2,7 +2,8 @@ import { useState } from "react";
 import NewsBg from "../assets/NewsBg.png";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
-import useHighlights from "../hooks/useHighlights"; // Adjust the import path as necessary
+import useHighlights from "../hooks/useHighlights";
+import Loader from "../components/common/Loader";
 
 const HighlightScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +15,10 @@ const HighlightScreen = () => {
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 40 },
   };
+
+  if (!highlights || highlights.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div
