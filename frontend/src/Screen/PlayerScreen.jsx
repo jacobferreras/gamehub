@@ -46,7 +46,7 @@ const PlayerScreen = () => {
               />
             </figure>
             <div className="card-body flex-1 flex flex-col justify-start items-start p-4">
-              <h2 className="card-title text-lg font-semibold mb-1 truncate w-full">
+              <h2 className="card-title font-heading text-lg font-semibold mb-1 truncate w-full">
                 {player.ign}
               </h2>
               <p className="text-sm text-neutral-300 line-clamp-3">

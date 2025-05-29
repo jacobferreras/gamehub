@@ -72,7 +72,9 @@ const HomePage = () => {
                 <img src={TrophyIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">Tournament</h1>
+                <h1 className="card-title font-heading text-sm font-bold">
+                  Tournament
+                </h1>
                 <p>Challengers to Champions, match schedules, and results</p>
               </div>
             </div>
@@ -88,7 +90,9 @@ const HomePage = () => {
                 <img src={NewsIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">News</h1>
+                <h1 className="card-title font-heading text-sm font-bold">
+                  News
+                </h1>
                 <p>
                   {" "}
                   Catch the latest Valorant news, roster changes, and patch
@@ -108,7 +112,9 @@ const HomePage = () => {
                 <img src={GuidesIcon} alt="" className="rounded-xl" />
               </figure>
               <div className="flex flex-col">
-                <h1 className="card-title text-sm font-bold">Guides</h1>
+                <h1 className="card-title font-heading text-sm font-bold">
+                  Guides
+                </h1>
                 <p>
                   Valorant guides — perfect for beginners, master every agent,
                   and mechanics

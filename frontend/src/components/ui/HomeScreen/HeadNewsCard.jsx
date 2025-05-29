@@ -2,7 +2,7 @@ const HeadNewsCard = ({ Title, Description, Date, Author, ImageUrl }) => {
   return (
     <div className="shadow-sm w-full relative group">
       <div className="absolute z-10 flex flex-col justify-center items-start p-4 text-white bottom-2 left-0 3xl:bottom-0 gap-0">
-        <h2 className="font-bold text-lg">{Title}</h2>
+        <h2 className="font-bold font-heading text-lg">{Title}</h2>
         <p className="text-sm font-semibold">{Description}</p>
         <p className="text-sm font-semibold">{Date}</p>
         <p className="text-sm font-semibold">by: {Author}</p>

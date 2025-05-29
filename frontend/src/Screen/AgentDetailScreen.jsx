@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import useAgentDetails from "../hooks/useAgentDetails";
 import Loader from "../components/common/Loader";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AgentDetailScreen = () => {
   const [selectedSkill, setSelectedSkill] = useState(1);
   const { agent, skillData, pageVariants } = useAgentDetails();
@@ -23,17 +25,16 @@ const AgentDetailScreen = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="min-h-screen pt-18 pb-20"
         style={{
-          backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
+          backgroundImage: `url("${API_URL}/uploads/bg.png")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full pl-4">
+        <div className="w-full pl-4 pt-12">
           <Link to="/app/agents">
             <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4">
-              {" "}
-              <img src={BackArrow} alt="Back" className="h-10 w-10" />
+              <img src={BackArrow} alt="Back arrow" className="h-10 w-10" />
               <span className="text-base font-medium">Back to Agents</span>
             </button>
           </Link>
@@ -42,13 +43,17 @@ const AgentDetailScreen = () => {
         {/* small screen */}
         <div className="block lg:hidden">
           <img
-            src={`http://localhost:5000/${agent.large_image}`}
-            alt=""
+            src={`${API_URL}/${agent.large_image}`}
+            alt={`${agent.name} large`}
             className="h-auto"
           />
           <h1 className="text-4xl text-center">{agent.name}</h1>
           <div className="flex flex-row gap-x-2 justify-center mt-2">
-            <img src={agent.role_image} alt="" className="h-[20px] w-[20px]" />
+            <img
+              src={agent.role_image}
+              alt={`${agent.role} icon`}
+              className="h-[20px] w-[20px]"
+            />
             <h2>{agent.role}</h2>
           </div>
           <p className="flex justify-center text-center">{agent.description}</p>
@@ -58,6 +63,7 @@ const AgentDetailScreen = () => {
                 src={skillData[selectedSkill - 1].video}
                 autoPlay
                 controls
+                loop
                 className="rounded-lg"
                 key={skillData[selectedSkill - 1].video}
               ></video>
@@ -75,7 +81,7 @@ const AgentDetailScreen = () => {
               <img
                 key={index}
                 src={skill.logo}
-                alt=""
+                alt={`${skill.name} logo`}
                 className={`h-auto w-[50px] cursor-pointer opacity-40  ${
                   selectedSkill === index + 1 ? "opacity-100" : ""
                 }`}
@@ -96,7 +102,7 @@ const AgentDetailScreen = () => {
                   exit={{ opacity: 0, y: 40 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   src={agent.role_image}
-                  alt=""
+                  alt={`${agent.role} icon`}
                   className="h-[25px] w-[25px] mt-2"
                 />
                 <motion.h2
@@ -129,9 +135,10 @@ const AgentDetailScreen = () => {
                   <video
                     src={skillData[selectedSkill - 1].video}
                     autoPlay
+                    controls
+                    loop
                     className="rounded-lg w-full h-full object-cover"
                     key={skillData[selectedSkill - 1].video}
-                    loop
                   ></video>
                 </div>
                 <div className="text-center w-full">
@@ -157,7 +164,7 @@ const AgentDetailScreen = () => {
                     <div key={index} className="flex flex-col">
                       <img
                         src={skill.logo}
-                        alt=""
+                        alt={`${skill.name} logo`}
                         className={`h-auto w-[50px] cursor-pointer opacity-40  ${
                           selectedSkill === index + 1 ? "opacity-100" : ""
                         }`}
@@ -173,8 +180,8 @@ const AgentDetailScreen = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              src={`http://localhost:5000/${agent.large_image}`}
-              alt=""
+              src={`${API_URL}/${agent.large_image}`}
+              alt={`${agent.name} large`}
               className="w-[45%]  h-auto rounded-lg shadow-lg self-stretch animate-pulse size-1"
             />
           </div>
@@ -194,7 +201,7 @@ const AgentDetailScreen = () => {
             ></iframe>
           </figure>
           <div className="mt-12">
-            <h2 className="card-title text-4xl text-white">
+            <h2 className="card-title font-heading text-4xl text-white">
               {agent.fullguide_title}
             </h2>
             <div>
@@ -204,7 +211,7 @@ const AgentDetailScreen = () => {
             </div>
             <a
               href={agent.fullguide_channel}
-              target="blank"
+              target="_blank"
               rel="noopener noreferrer"
               className="lg:text-xs 3xl:text-lg text-blue-700"
             >

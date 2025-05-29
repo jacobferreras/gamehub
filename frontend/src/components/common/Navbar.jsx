@@ -5,10 +5,10 @@ const Navbar = () => {
   const [drawerMatchesOpen, setDrawerMatchesOpen] = useState(false);
 
   return (
-    <div className="drawer font-sans">
+    <div className="drawer font-body">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        <div className="navbar bg-transparent backdrop-blur-md fixed top-0 z-10 w-full lg:px-10 font-sans">
+        <div className="navbar bg-transparent backdrop-blur-md fixed top-0 z-10 w-full lg:px-10 font-body">
           <div className="flex-none lg:hidden">
             <label
               htmlFor="my-drawer-3"
@@ -30,13 +30,13 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 text-3xl font-semibold text-center hidden lg:block lg:text-start font-sans">
+          <div className="mx-2 flex-1 px-2 pb-2 text-3xl font-semibold text-center hidden lg:block lg:text-start font-body">
             <Link to="/app/home">
               <img src={Logo} alt="" className="h-[74px] w-[112px]" />
             </Link>
           </div>
           <div className="hidden flex-none lg:block">
-            <ul className="menu menu-horizontal font-semibold px-1 font-sans">
+            <ul className="menu menu-horizontal font-semibold px-1 font-body">
               <li>
                 <Link to="/app/home">HOME</Link>
               </li>
@@ -68,14 +68,14 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="drawer-side z-[100] fixed top-0 left-0 w-full h-full font-sans">
+      <div className="drawer-side z-[100] fixed top-0 left-0 w-full h-full font-body">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
         <div className="relative w-80 min-h-full h-full">
-          <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20 z-[101] relative shadow-2xl border-l border-neutral-800 font-sans">
+          <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20 z-[101] relative shadow-2xl border-l border-neutral-800 font-body">
             <li>
               <Link
                 to="/app/home"

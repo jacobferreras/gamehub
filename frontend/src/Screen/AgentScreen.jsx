@@ -75,7 +75,7 @@ const AgentScreen = () => {
                         alt=""
                         className="h-[50px] w-[50px]"
                       />
-                      <h2 className="card-title text-5xl text-white">
+                      <h2 className="card-title font-heading text-5xl text-white">
                         {agent.name}
                       </h2>
                     </div>

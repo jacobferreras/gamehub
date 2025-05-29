@@ -11,7 +11,7 @@ const ValorantGameSchedule = () => {
           key={schedule.id || index}
           className="card bg-zinc-800 w-auto lg:w-auto 3xl:w-auto shadow-xl text-center text-white items-center mb-5 pt-8"
         >
-          <h2 className="card-title mt-2 text-lg px-2">
+          <h2 className="card-title font-heading mt-2 text-lg px-2">
             {schedule.match_event}
           </h2>
           <div className="card-body items-center text-center min-h-64 flex flex-col justify-center">
@@ -26,7 +26,7 @@ const ValorantGameSchedule = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center w-1/3">
-                <h2 className="game-date card-title text-sm font-thin">
+                <h2 className="game-date card-title font-heading text-sm font-thin">
                   {new Date(schedule.unix_timestamp).toLocaleDateString(
                     "en-PH",
                     {

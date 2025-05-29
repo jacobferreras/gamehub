@@ -7,7 +7,7 @@ const NewsCard = ({ Title, Description, Date, Author, ImageUrl }) => {
       </figure>
 
       <div className="card-body gap-0">
-        <h2 className="card-title">{Title}</h2>
+        <h2 className="card-title font-heading">{Title}</h2>
         <p>{Description}</p>
         <p>{Date}</p>
         <p>by: {Author}</p>

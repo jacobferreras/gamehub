@@ -23,7 +23,7 @@ const GuideSection = () => {
           </figure>
           <div className="card-body lg:w-64">
             <div>
-              <h2 className="card-title">{highlight.title}</h2>
+              <h2 className="card-title font-heading">{highlight.title}</h2>
               <div>
                 <div className="badge badge-outline">{highlight.author}</div>
               </div>

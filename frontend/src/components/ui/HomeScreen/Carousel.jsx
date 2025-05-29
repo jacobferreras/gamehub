@@ -65,7 +65,7 @@ const Carousel = () => {
                     />
                   </figure>
                   <div className="card-body h-50 overflow-hidden">
-                    <h2 className="card-title">{card.ign}</h2>
+                    <h2 className="card-title font-heading">{card.ign}</h2>
                     <p>{card.about}</p>
                   </div>
                 </div>
