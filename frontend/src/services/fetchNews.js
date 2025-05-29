@@ -4,7 +4,7 @@ export const fetchNews = async (page = 1, limit = "") => {
   const params = { page };
   if (limit) params.limit = limit;
 
-  const response = await axios.get("http://localhost:5000/articles", {
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/articles`, {
     params,
   });
 

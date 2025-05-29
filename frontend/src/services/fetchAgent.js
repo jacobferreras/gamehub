@@ -10,7 +10,9 @@ export const fetchAgent = async (
   if (role) params.role = role;
   if (search) params.search = search;
 
-  const response = await axios.get("http://localhost:5000/agents", { params });
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/agents`, {
+    params,
+  });
 
   return {
     data: Array.isArray(response.data.data) ? response.data.data : [],

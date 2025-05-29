@@ -10,9 +10,12 @@ export const fetchSchedule = async (
   if (region) params.region = region;
   if (limit) params.limit = limit;
 
-  const response = await axios.get("http://localhost:5000/upcomingGames", {
-    params,
-  });
+  const response = await axios.get(
+    `${import.meta.env.VITE_API_URL}/upcomingGames`,
+    {
+      params,
+    }
+  );
   return {
     data: Array.isArray(response.data.data) ? response.data.data : [],
     totalPages: response.data.totalPages || 1,

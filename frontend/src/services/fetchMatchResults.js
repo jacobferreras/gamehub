@@ -5,9 +5,12 @@ export const fetchMatchResults = async (page = 1, region = "", limit = "") => {
   if (region) params.region = region;
   if (limit) params.limit = limit;
 
-  const response = await axios.get("http://localhost:5000/matchResults", {
-    params,
-  });
+  const response = await axios.get(
+    `${import.meta.env.VITE_API_URL}/matchResults`,
+    {
+      params,
+    }
+  );
 
   return {
     data: Array.isArray(response.data.data) ? response.data.data : [],

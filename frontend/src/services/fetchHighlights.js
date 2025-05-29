@@ -5,9 +5,12 @@ export const fetchHighlights = async (page = 1, limit = "", random = "") => {
   if (limit) params.limit = limit;
   if (random) params.random = random;
 
-  const response = await axios.get("http://localhost:5000/gameHighlights", {
-    params,
-  });
+  const response = await axios.get(
+    `${import.meta.env.VITE_API_URL}/gameHighlights`,
+    {
+      params,
+    }
+  );
 
   return {
     data: Array.isArray(response.data.data) ? response.data.data : [],

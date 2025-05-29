@@ -4,7 +4,7 @@ export const fetchUpdate = async (page = 1, limit = "") => {
   const params = { page };
   if (limit) params.limit = limit;
 
-  const response = await axios.get("http://localhost:5000/updates", {
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/updates`, {
     params,
   });
 
