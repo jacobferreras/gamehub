@@ -159,6 +159,11 @@ const HomePage = () => {
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
           <ValorantGameSchedule />
+          <Link to="/app/matches" className="flex justify-center">
+            <button className="btn btn-outline hover:text-red-500">
+              View More
+            </button>
+          </Link>
         </motion.div>
         <div className="my-4 border-t border-gray-600 opacity-50"></div>
         <motion.div
