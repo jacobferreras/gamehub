@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
 import useUpdate from "../hooks/useUpdate";
+import NewsLoader from "../components/common/NewsLoader";
 
 const UpdateScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
   const { updates, totalPages } = useUpdate(currentPage, limit);
+
+  if (!updates || updates.length === 0) {
+    return <NewsLoader />;
+  }
 
   return (
     <div>
