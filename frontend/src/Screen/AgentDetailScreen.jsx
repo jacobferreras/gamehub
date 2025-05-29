@@ -3,17 +3,14 @@ import BackArrow from "../assets/back_arrow.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import useAgentDetails from "../hooks/useAgentDetails";
+import Loader from "../components/common/Loader";
 
 const AgentDetailScreen = () => {
   const [selectedSkill, setSelectedSkill] = useState(1);
   const { agent, skillData, pageVariants } = useAgentDetails();
 
-  if (!agent) {
-    return (
-      <div className="min-h-screen bg-neutral-950 pt-20">
-        <div>Loading...</div>
-      </div>
-    );
+  if (!agent || !skillData || skillData.length === 0) {
+    return <Loader />;
   }
 
   return (

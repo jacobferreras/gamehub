@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Pagination from "../components/common/Pagination";
 import useDebounce from "../hooks/useDebounce";
 import useAgent from "../hooks/useAgent";
+import Loader from "../components/common/Loader";
 
 const AgentScreen = () => {
   const [role, setRole] = useState("");
@@ -19,6 +20,10 @@ const AgentScreen = () => {
     role,
     debouncedSearch
   );
+
+  if (!agents || agents.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <motion.div
