@@ -3,13 +3,18 @@ import Pagination from "../components/common/Pagination";
 import DropdownInputField from "../components/ui/DropdownInputField";
 import GameBg from "../assets/GameBg.png";
 import { motion } from "framer-motion";
-import useSchedule from "../hooks/useSchedule"; // Adjust the import path as necessary
+import useSchedule from "../hooks/useSchedule";
+import Loader from "../components/common/Loader";
 
 const MatchesScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [region, setRegion] = useState("");
   const limit = 8;
   const { schedules, totalPages } = useSchedule(currentPage, region, limit);
+
+  if (!schedules || schedules.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <>
