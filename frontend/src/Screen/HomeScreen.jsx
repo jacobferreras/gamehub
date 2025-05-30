@@ -40,7 +40,7 @@ const HomePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            Welcome to GameHub
+            Welcome to RadiantHub
           </motion.h1>
 
           <motion.h2

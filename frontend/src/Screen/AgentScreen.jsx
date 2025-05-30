@@ -27,7 +27,7 @@ const AgentScreen = () => {
 
   return (
     <motion.div
-      className="min-h-screen  pt-20"
+      className="min-h-screen pt-28"
       style={{
         backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
         backgroundSize: "cover",
@@ -75,7 +75,7 @@ const AgentScreen = () => {
                         alt=""
                         className="h-[50px] w-[50px]"
                       />
-                      <h2 className="card-title font-heading text-5xl text-white">
+                      <h2 className="card-title  text-5xl text-white">
                         {agent.name}
                       </h2>
                     </div>

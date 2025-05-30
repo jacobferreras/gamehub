@@ -201,7 +201,7 @@ const AgentDetailScreen = () => {
             ></iframe>
           </figure>
           <div className="mt-12">
-            <h2 className="card-title font-heading text-4xl text-white">
+            <h2 className="card-title  text-4xl text-white">
               {agent.fullguide_title}
             </h2>
             <div>

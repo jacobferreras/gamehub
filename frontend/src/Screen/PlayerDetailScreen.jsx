@@ -28,7 +28,7 @@ const PlayerDetailScreen = () => {
     >
       <div className="w-full max-w-7xl px-2 sm:px-4 md:px-8 lg:px-10 pt-10">
         <Link to="/app/players">
-          <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4">
+          <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4 pt-4">
             {" "}
             <img src={BackArrow} alt="Back" className="h-10 w-10" />
             <span className="text-base font-medium">Back to Players</span>

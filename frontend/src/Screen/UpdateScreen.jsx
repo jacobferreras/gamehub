@@ -42,7 +42,7 @@ const UpdateScreen = () => {
                 <div className="absolute bottom-0 w-full z-10 px-2 pointer-events-none">
                   <div className="transition-all duration-500 ease-in-out delay-100">
                     <h1 className="text-xs text-white">{update.date}</h1>
-                    <h2 className="card-title font-heading text-xl text-white">
+                    <h2 className="card-title  text-xl text-white">
                       {update.title}
                     </h2>
                     <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out delay-100 group-hover:max-h-32 group-hover:pb-4 group-hover:opacity-100">
