@@ -4,6 +4,7 @@ import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
 import useHighlights from "../hooks/useHighlights";
 import Loader from "../components/common/Loader";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const HighlightScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,13 +17,15 @@ const HighlightScreen = () => {
     exit: { opacity: 0, y: 40 },
   };
 
+  const allLoaded = useImagesLoaded([NewsBg]);
+
   if (!highlights || highlights.length === 0) {
     return <Loader />;
   }
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen w-fit"
       style={{
         backgroundImage: `url(${NewsBg})`,
         backgroundSize: "cover",
