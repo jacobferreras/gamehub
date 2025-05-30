@@ -61,7 +61,7 @@ const AgentScreen = () => {
             >
               <figure className="relative">
                 <img
-                  src={`http://localhost:5000/${agent.small_image}`}
+                  src={`${import.meta.env.VITE_API_URL}/${agent.small_image}`}
                   alt="Shoes"
                   className="w-full h-64 object-cover rounded-md"
                 />
