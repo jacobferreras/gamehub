@@ -2,6 +2,7 @@ import { useLocation, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Suspense, lazy } from "react";
 import Loader from "./components/common/Loader";
+import { Navigate } from "react-router-dom";
 
 const MatchesScreen = lazy(() => import("./Screen/MatchesScreen"));
 const LoginPage = lazy(() => import("./Screen/LoginPage"));
@@ -16,6 +17,7 @@ const NewsLayout = lazy(() => import("./layouts/NewsLayout"));
 const AgentDetailScreen = lazy(() => import("./Screen/AgentDetailScreen"));
 const PlayerDetailScreen = lazy(() => import("./Screen/PlayerDetailScreen"));
 const AgentScreen = lazy(() => import("./Screen/AgentScreen"));
+const NotFound = lazy(() => import("./components/common/NotFound"));
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -23,7 +25,10 @@ const AppRoutes = () => {
     <AnimatePresence mode="wait">
       <Suspense fallback={<Loader />}>
         <Routes>
+          {/* Redirect root to /app */}
+          <Route path="/" element={<Navigate to="/app" replace />} />
           <Route path="/app" element={<Layout />}>
+            <Route index element={<HomeScreen />} />
             <Route path="home" element={<HomeScreen />} />
             <Route path="matches" element={<MatchesScreen />} />
             <Route path="matches/result" element={<MatchResultScreen />} />
@@ -36,8 +41,9 @@ const AppRoutes = () => {
             <Route path="highlights" element={<HighlightScreen />} />
             <Route path="players" element={<PlayerScreen />} />
             <Route path="players/ign/:ign" element={<PlayerDetailScreen />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<LoginPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </AnimatePresence>
