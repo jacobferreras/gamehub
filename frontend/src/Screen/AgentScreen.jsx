@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import NewsBg from "../assets/NewsBg.png";
 import AgentFilter from "../components/ui/AgentFilter";
@@ -8,6 +8,7 @@ import Pagination from "../components/common/Pagination";
 import useDebounce from "../hooks/useDebounce";
 import useAgent from "../hooks/useAgent";
 import Loader from "../components/common/Loader";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const AgentScreen = () => {
   const [role, setRole] = useState("");
@@ -21,7 +22,19 @@ const AgentScreen = () => {
     debouncedSearch
   );
 
-  if (!agents || agents.length === 0) {
+  const imageUrls = [
+    NewsBg,
+    ...(agents
+      ? agents.map(
+          (agent) => `${import.meta.env.VITE_API_URL}/${agent.small_image}`
+        )
+      : []),
+    ...(agents ? agents.map((agent) => agent.role_image) : []),
+  ];
+
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!agents || agents.length === 0 || !allLoaded) {
     return <Loader />;
   }
 

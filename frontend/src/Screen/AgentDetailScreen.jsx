@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import useAgentDetails from "../hooks/useAgentDetails";
 import Loader from "../components/common/Loader";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -11,7 +12,16 @@ const AgentDetailScreen = () => {
   const [selectedSkill, setSelectedSkill] = useState(1);
   const { agent, skillData, pageVariants } = useAgentDetails();
 
-  if (!agent || !skillData || skillData.length === 0) {
+  const imageUrls = [
+    `${API_URL}/uploads/bg.png`,
+    agent ? `${API_URL}/${agent.large_image}` : "",
+    agent ? agent.role_image : "",
+    ...(skillData ? skillData.map((skill) => skill.logo) : []),
+  ].filter(Boolean);
+
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!agent || !skillData || skillData.length === 0 || !allLoaded) {
     return <Loader />;
   }
 
