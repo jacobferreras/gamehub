@@ -12,7 +12,7 @@ const getAll = async ({
   let params = [];
 
   if (search) {
-    condition += (condition ? " AND" : " WHERE") + " proplayers.name LIKE ?";
+    condition += (condition ? " AND" : " WHERE") + " proplayers.ign LIKE ?";
     params.push(`%${search}%`);
   }
 
