@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { fetchPlayer } from "../services/fetchPlayer";
 
-const usePlayer = (page, limit, random) => {
+const usePlayer = (page, limit, random, search) => {
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const getPlayers = async () => {
       try {
-        const response = await fetchPlayer(page, limit, random);
+        const response = await fetchPlayer(page, limit, random, search);
         setPlayers(response.data);
         setTotalPages(response.totalPages);
       } catch (error) {
@@ -18,7 +18,7 @@ const usePlayer = (page, limit, random) => {
     };
 
     getPlayers();
-  }, [page, limit]);
+  }, [page, limit, search]);
 
   return { players, totalPages };
 };

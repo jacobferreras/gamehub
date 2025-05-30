@@ -5,7 +5,6 @@ import Loader from "./components/common/Loader";
 import { Navigate } from "react-router-dom";
 
 const MatchesScreen = lazy(() => import("./Screen/MatchesScreen"));
-const LoginPage = lazy(() => import("./Screen/LoginPage"));
 const NewsScreen = lazy(() => import("./Screen/NewsScreen"));
 const HomeScreen = lazy(() => import("./Screen/HomeScreen"));
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -25,7 +24,6 @@ const AppRoutes = () => {
     <AnimatePresence mode="wait">
       <Suspense fallback={<Loader />}>
         <Routes>
-          {/* Redirect root to /app */}
           <Route path="/" element={<Navigate to="/app" replace />} />
           <Route path="/app" element={<Layout />}>
             <Route index element={<HomeScreen />} />

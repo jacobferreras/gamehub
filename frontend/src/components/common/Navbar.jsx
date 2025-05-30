@@ -30,7 +30,7 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 pb-2 text-3xl font-semibold text-center hidden lg:block lg:text-start font-body">
+          <div className="mx-2 flex-1 px-2 pb-2 justify-center lg:text-start font-body">
             <Link to="/app/home">
               <img src={Logo} alt="" className="h-[74px] w-[124px]" />
             </Link>

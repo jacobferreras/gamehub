@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import NewsBg from "../assets/NewsBg.png";
 import AgentFilter from "../components/ui/AgentFilter";
 import CustomInputField from "../components/ui/CustomInputField";
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ const AgentScreen = () => {
     <motion.div
       className="min-h-screen pt-28"
       style={{
-        backgroundImage: `url("http://localhost:5000/uploads/bg.png")`,
+        backgroundImage: `url(${NewsBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

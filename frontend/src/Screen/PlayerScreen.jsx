@@ -5,11 +5,20 @@ import { motion } from "framer-motion";
 import NewsBg from "../assets/NewsBg.png";
 import usePlayer from "../hooks/usePlayer";
 import Loader from "../components/common/Loader";
+import CustomInputField from "../components/ui/CustomInputField";
+import useDebounce from "../hooks/useDebounce";
 
 const PlayerScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 400);
   const limit = 12;
-  const { players, totalPages } = usePlayer(currentPage, limit, false);
+  const { players, totalPages } = usePlayer(
+    currentPage,
+    limit,
+    false,
+    debouncedSearch
+  );
 
   if (!players || players.length === 0) {
     return <Loader />;
@@ -25,7 +34,16 @@ const PlayerScreen = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="px-2 sm:px-4 md:px-8 3xl:px-10 pt-32 pb-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-4 lg:gap-6">
+      <div className="flex flex-wrap justify-center lg:justify-end lg:flex-row lg:pr-10 pt-32 pb-4">
+        <div className="w-64 lg:w-auto">
+          <CustomInputField
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="px-2 sm:px-4 md:px-8 3xl:px-10  pb-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-4 lg:gap-6">
         {players.map((player, index) => (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
