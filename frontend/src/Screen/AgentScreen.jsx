@@ -41,6 +41,8 @@ const AgentScreen = () => {
           <CustomInputField
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Agent"
+            showIcon={true}
           />
         </div>
       </div>

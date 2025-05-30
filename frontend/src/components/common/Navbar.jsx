@@ -9,7 +9,7 @@ const Navbar = () => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         <div className="navbar bg-transparent backdrop-blur-md fixed top-0 z-10 w-full lg:px-10 font-body">
-          <div className="flex-none lg:hidden">
+          <div className="flex-none lg:hidden ">
             <label
               htmlFor="my-drawer-3"
               aria-label="open sidebar"
@@ -30,11 +30,14 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 pb-2 justify-center lg:text-start font-body">
-            <Link to="/app/home">
-              <img src={Logo} alt="" className="h-[74px] w-[124px]" />
-            </Link>
-          </div>
+
+          <Link
+            to="/app/home"
+            className="flex-1 flex justify-center md:justify-end lg:justify-start px-2 pb-2 font-body"
+          >
+            <img src={Logo} alt="" className="h-auto w-auto" />
+          </Link>
+
           <div className="hidden flex-none lg:block">
             <ul className="menu menu-horizontal font-semibold px-1 font-body">
               <li>

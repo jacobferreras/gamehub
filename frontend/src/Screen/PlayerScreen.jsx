@@ -39,6 +39,8 @@ const PlayerScreen = () => {
           <CustomInputField
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search Player"
+            showIcon={true}
           />
         </div>
       </div>

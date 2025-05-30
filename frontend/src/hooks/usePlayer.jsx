@@ -18,7 +18,7 @@ const usePlayer = (page, limit, random, search) => {
     };
 
     getPlayers();
-  }, [page, limit, search]);
+  }, [page, limit, random, search]);
 
   return { players, totalPages };
 };
