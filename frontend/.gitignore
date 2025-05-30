@@ -44,3 +44,5 @@ docker-compose.override.yml
 
 # === Database Init (if contains secrets) ===
 mysql-init/
+
+.firebase/
