@@ -34,7 +34,7 @@ const HomePage = () => {
       <div className="bg-cover bg-no-repeat bg-center min-h-screen bg-[url('/assets/Bg.png')] ">
         <div className="absolute inset-0 items-center justify-center text-center pt-55 md:pt-54 lg:text-start lg:justify-center lg:items-center lg:px-4 lg:pt-54 xl:pt-62 3xl:pt-62">
           <motion.h1
-            className="font-bold text-center text-6xl text-zinc-100 font-[Bebas Neue] pb-2 sm:pt-30 sm:text-6xl md:text-6xl md:pb-2 lg:text-7xl  lg:pb-2  xl:text-8xl  3xl:text-9xl "
+            className="font-bold text-center  text-5xl text-zinc-100 font-[Bebas Neue] pb-2 sm:pt-30 sm:text-6xl md:text-6xl md:pb-2 lg:text-7xl  lg:pb-2  xl:text-8xl  3xl:text-9xl "
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -43,7 +43,7 @@ const HomePage = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-lg text-center text-zinc-100 font-semibold pb-5 px-4 sm:text-sm md:xl lg:text-xl  xl:text-2xl  3xl:text-3xl"
+            className="text-md text-center text-zinc-100 font-semibold pb-5 px-4 sm:text-sm md:xl lg:text-xl  xl:text-2xl  3xl:text-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
