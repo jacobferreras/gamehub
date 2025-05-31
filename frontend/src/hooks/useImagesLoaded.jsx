@@ -1,28 +1,44 @@
 import { useState, useEffect } from "react";
 
 const useImagesLoaded = (imageUrls = []) => {
-  const [loadedCount, setLoadedCount] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoadedCount(0);
-    if (imageUrls.length === 0) return;
+    if (!imageUrls || imageUrls.length === 0) {
+      setLoaded(true);
+      return;
+    }
 
     let isCancelled = false;
+    let loadedCount = 0;
 
-    imageUrls.forEach((url) => {
+    const onLoad = () => {
+      loadedCount += 1;
+      if (!isCancelled && loadedCount === imageUrls.length) {
+        setLoaded(true);
+      }
+    };
+
+    setLoaded(false);
+
+    const images = imageUrls.map((url) => {
       const img = new window.Image();
-      img.onload = img.onerror = () => {
-        if (!isCancelled) setLoadedCount((c) => c + 1);
-      };
+      img.onload = onLoad;
+      img.onerror = onLoad;
       img.src = url;
+      return img;
     });
 
     return () => {
       isCancelled = true;
+      images.forEach((img) => {
+        img.onload = null;
+        img.onerror = null;
+      });
     };
-  }, [imageUrls]);
+  }, [imageUrls.join(",")]);
 
-  return loadedCount === imageUrls.length && imageUrls.length > 0;
+  return loaded;
 };
 
 export default useImagesLoaded;

@@ -5,8 +5,10 @@ import { fetchNews } from "../services/fetchNews"; // Assuming you have a servic
 const useNews = (page, limit) => {
   const [news, setNews] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const getNews = async () => {
       try {
         const response = await fetchNews(page, limit);
@@ -15,6 +17,8 @@ const useNews = (page, limit) => {
       } catch (error) {
         console.error("Error fetching news:", error);
         setNews([]);
+      } finally {
+        setLoading(false);
       }
     };
     getNews();
@@ -23,6 +27,7 @@ const useNews = (page, limit) => {
   return {
     news,
     totalPages,
+    loading,
   };
 };
 

@@ -5,8 +5,10 @@ import { fetchUpdate } from "../services/fetchUpdate";
 const useUpdate = (page, limit) => {
   const [updates, setUpdates] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const getUpdate = async () => {
       try {
         const response = await fetchUpdate(page, limit);
@@ -15,6 +17,8 @@ const useUpdate = (page, limit) => {
       } catch (error) {
         console.error("Error fetching updates:", error);
         setUpdates([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -24,6 +28,7 @@ const useUpdate = (page, limit) => {
   return {
     updates,
     totalPages,
+    loading,
   };
 };
 

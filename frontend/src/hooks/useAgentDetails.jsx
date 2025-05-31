@@ -5,8 +5,10 @@ import { fetchAgentDetails } from "../services/fetchAgentDetails";
 const useAgentDetails = () => {
   const { id } = useParams();
   const [agent, setAgent] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const getAgentDetails = async () => {
       try {
         const response = await fetchAgentDetails(id);
@@ -14,6 +16,8 @@ const useAgentDetails = () => {
       } catch (error) {
         console.error("Error fetching agent details:", error);
         setAgent(null);
+      } finally {
+        setLoading(false);
       }
     };
     getAgentDetails();
@@ -60,7 +64,7 @@ const useAgentDetails = () => {
     exit: { opacity: 0, y: 40 },
   };
 
-  return { agent, skillData, pageVariants };
+  return { agent, skillData, pageVariants, loading };
 };
 
 export default useAgentDetails;
