@@ -8,6 +8,8 @@ const getAll = async ({
   random = false,
   region = "",
 }) => {
+  console.log("REGION PARAM:", region);
+  console.log("SQL QUERY:", sql, params);
   const offset = (page - 1) * limit;
 
   let condition = ` WHERE unix_timestamp > NOW()`;
@@ -37,6 +39,17 @@ const getAll = async ({
   const totalCountResult = await db.promise().query(totalCountQuery, params);
   const totalCount = totalCountResult[0][0].total;
   const totalPages = Math.ceil(totalCount / limit);
+
+  if (!result[0] || result[0].length === 0) {
+    return {
+      message: region
+        ? "No matches found for the selected region."
+        : "No upcoming games found.",
+      data: [],
+      totalPages: 0,
+      currentPage: page,
+    };
+  }
 
   return {
     message: "Upcoming games found",
