@@ -1,4 +1,4 @@
-GET https://gamehub-4mrg.onrender.com/proplayers
+GET https://gamehub-4mrg.onrender.com/upcomingGames?region=global
 Content-Type: application/json
 
     
