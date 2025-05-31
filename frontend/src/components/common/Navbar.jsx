@@ -19,7 +19,7 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block h-6 w-6 stroke-current"
+                className="inline-block h-6 w-6 stroke-current text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -78,7 +78,7 @@ const Navbar = () => {
           className="drawer-overlay"
         ></label>
         <div className="relative w-80 min-h-full h-full">
-          <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20 z-[101] relative shadow-2xl border-l border-neutral-800 font-body">
+          <ul className="menu bg-neutral-950 min-h-full w-80 p-4 pt-20 z-[101] relative shadow-2xl border-l border-neutral-800 font-body text-white">
             <li>
               <Link
                 to="/app/home"
