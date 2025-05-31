@@ -7,6 +7,7 @@ import usePlayer from "../hooks/usePlayer";
 import Loader from "../components/common/Loader";
 import CustomInputField from "../components/ui/CustomInputField";
 import useDebounce from "../hooks/useDebounce";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const PlayerScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +21,13 @@ const PlayerScreen = () => {
     debouncedSearch
   );
 
-  if (!players || players.length === 0) {
+  const imageUrls = [
+    NewsBg,
+    ...(players ? players.map((player) => player.image) : []),
+  ];
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!players || players.length === 0 || !allLoaded) {
     return <Loader />;
   }
 

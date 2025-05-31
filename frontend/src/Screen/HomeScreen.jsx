@@ -9,7 +9,6 @@ import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const HomePage = () => {
   const newsRef = useRef(null);

@@ -20,7 +20,7 @@ const useImagesLoaded = (imageUrls = []) => {
     return () => {
       isCancelled = true;
     };
-  }, [imageUrls.join(",")]);
+  }, [imageUrls]);
 
   return loadedCount === imageUrls.length && imageUrls.length > 0;
 };

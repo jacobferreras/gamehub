@@ -1,9 +1,21 @@
 import HeadNewsCard from "./HeadNewsCard";
 import NewsCardSide from "./NewsCardSide";
 import useNews from "../../../hooks/useNews";
+import useImagesLoaded from "../../../hooks/useImagesLoaded";
+import Loader from "../../common/Loader";
 
 const SmallScreenNews = () => {
   const { news: articles } = useNews(null, null);
+
+  const imageUrls = [
+    ...(articles ? articles.map((article) => article.image) : []),
+  ];
+
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!allLoaded) {
+    return <Loader />;
+  }
 
   return (
     <div className="block sm:hidden">

@@ -3,11 +3,20 @@ import NewsCard from "./NewsCard";
 import NewsCardSide from "./NewsCardSide";
 import useNews from "../../../hooks/useNews";
 import Loader from "../../common/Loader";
+import useImagesLoaded from "../../../hooks/useImagesLoaded";
 
 const LargeScreenNews = () => {
   const { news: valorantArticles } = useNews(null, null);
 
-  if (!valorantArticles || valorantArticles.length === 0) {
+  const imageUrls = [
+    ...(valorantArticles
+      ? valorantArticles.map((article) => article.image)
+      : []),
+  ];
+
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!allLoaded) {
     return <Loader />;
   }
 

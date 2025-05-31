@@ -3,13 +3,17 @@ import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
 import useNews from "../hooks/useNews";
 import NewsLoader from "../components/common/NewsLoader";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const NewsScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
   const { news, totalPages } = useNews(currentPage, limit);
 
-  if (!news || news.length === 0) {
+  const imageUrls = news ? news.map((article) => article.image) : [];
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!news || news.length === 0 || !allLoaded) {
     return <NewsLoader />;
   }
 

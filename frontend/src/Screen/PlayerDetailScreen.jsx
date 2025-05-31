@@ -8,11 +8,24 @@ import InstagramIcon from "../assets/instagram_icon.png";
 import NewsBg from "../assets/NewsBg.png";
 import usePlayerDetails from "../hooks/usePlayerDetails";
 import Loader from "../components/common/Loader";
+import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const PlayerDetailScreen = () => {
   const { player } = usePlayerDetails();
 
-  if (!player) {
+  const imageUrls = [
+    NewsBg,
+    player?.image,
+    BackArrow,
+    TwitchIcon,
+    XIcon,
+    YoutubeIcon,
+    InstagramIcon,
+  ].filter(Boolean);
+
+  const allLoaded = useImagesLoaded(imageUrls);
+
+  if (!player || !allLoaded) {
     return <Loader />;
   }
 
