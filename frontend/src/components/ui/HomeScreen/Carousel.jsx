@@ -13,7 +13,7 @@ const Carousel = () => {
   return (
     <div className="container mx-auto px-4 py-6 sm:px-32 md:px-2 lg:px-22 xl:px-38 3xl:px-34">
       <div className="text-center mb-4">
-        <h1 className="font-bold text-4xl">Top Player</h1>
+        <h1 className="font-bold text-4xl text-white">Top Player</h1>
       </div>
 
       <Swiper
@@ -55,7 +55,7 @@ const Carousel = () => {
         {Array.isArray(cards) && cards.length > 0 ? (
           cards.map((card) => (
             <SwiperSlide key={card.id}>
-              <div className="pb-10">
+              <div className="pb-10 text-white">
                 <div className="card bg-neutral-900 w-auto shadow-sm">
                   <figure>
                     <img
@@ -77,7 +77,7 @@ const Carousel = () => {
         )}
       </Swiper>
       <Link to="/app/players" className="flex justify-center">
-        <button className="btn btn-outline hover:text-red-500">
+        <button className="btn btn-outline hover:text-red-500 text-white">
           View More
         </button>
       </Link>

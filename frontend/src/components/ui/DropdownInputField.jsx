@@ -5,9 +5,9 @@ export const DropdownInputField = ({ value, onChange }) => {
     <select
       value={value}
       onChange={onChange}
-      className="select rounded-xl font-normal mr-5 w-50"
+      className="select rounded-xl font-normal mr-5 w-50 bg-neutral-700 text-white"
     >
-      <option value="" className="text-pcg-outline">
+      <option value="" className="text-white">
         All Regions
       </option>
       <option value="EMEA">EMEA</option>

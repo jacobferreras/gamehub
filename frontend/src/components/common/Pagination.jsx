@@ -16,9 +16,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="join">
+    <div className="join bg-neutral-700 ">
       <button
-        className="join-item btn btn-sm"
+        className="join-item btn btn-sm bg-neutral-700 text-white"
         onClick={handlePrevious}
         disabled={currentPage === 1}
       >
@@ -28,8 +28,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pageNumbers.map((page) => (
         <button
           key={page}
-          className={`join-item btn btn-sm ${
-            currentPage === page ? "btn-active text-red-500" : ""
+          className={`join-item btn btn-sm bg-neutral-700 ${
+            currentPage === page ? "btn-active text-red-500" : "text-white"
           }`}
           onClick={() => onPageChange(page)}
         >
@@ -38,7 +38,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       ))}
 
       <button
-        className="join-item btn btn-sm"
+        className="join-item btn btn-sm bg-neutral-700 text-white"
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >

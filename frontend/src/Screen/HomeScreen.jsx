@@ -62,7 +62,7 @@ const HomePage = () => {
 
         <div className="pt-110 flex flex-col px-4 gap-2 xs:items-center sm:flex-row sm:pt-112  xs:px-4  md:pt-110 md:gap-2  lg:pt-120 lg:px-20 lg:gap-4 xl:pt-140 xl:px-24 3xl:pt-140 3xl:px-108">
           <motion.div
-            className="card w-auto bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
+            className="card w-auto bg-neutral-700 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -70,7 +70,7 @@ const HomePage = () => {
               <figure>
                 <img src={TrophyIcon} alt="" className="rounded-xl" />
               </figure>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">
                   Tournament
                 </h1>
@@ -80,7 +80,7 @@ const HomePage = () => {
           </motion.div>
 
           <motion.div
-            className="card w-auto bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
+            className="card w-auto bg-neutral-700 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -88,7 +88,7 @@ const HomePage = () => {
               <figure>
                 <img src={NewsIcon} alt="" className="rounded-xl" />
               </figure>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">
                   News
                 </h1>
@@ -102,7 +102,7 @@ const HomePage = () => {
           </motion.div>
 
           <motion.div
-            className="card w-auto md:w-120 bg-base-100 card-xs shadow-sm sm:w-106 3xl:w-110"
+            className="card w-auto md:w-120 bg-neutral-700 card-xs shadow-sm sm:w-106 3xl:w-110"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 1.05 }}
           >
@@ -110,7 +110,7 @@ const HomePage = () => {
               <figure>
                 <img src={GuidesIcon} alt="" className="rounded-xl" />
               </figure>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">
                   Guides
                 </h1>
@@ -130,7 +130,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={newsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex justify-start pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl"
+          className="flex justify-start pl-2 pb-4 text-2xl font-semibold md:pl-8 3xl:text-4xl text-white"
         >
           Latest News
         </motion.h1>
@@ -143,7 +143,7 @@ const HomePage = () => {
           <LargeScreenNews />
         </motion.div>
         <Link to="/app/news/article" className="flex justify-center">
-          <button className="btn btn-outline hover:text-red-500">
+          <button className="btn btn-outline text-white hover:text-red-500">
             View More
           </button>
         </Link>
@@ -154,7 +154,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={scheduleInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl "
+          className="flex text-white justify-center pl-2 pb-4  text-2xl font-semibold md:pl-8 3xl:text-4xl "
         >
           Game Schedule
         </motion.h1>
@@ -165,7 +165,7 @@ const HomePage = () => {
         >
           <ValorantGameSchedule />
           <Link to="/app/matches" className="flex justify-center">
-            <button className="btn btn-outline hover:text-red-500">
+            <button className="btn btn-outline hover:text-red-500 text-white">
               View More
             </button>
           </Link>
@@ -185,7 +185,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={highlightsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl"
+          className="flex text-white justify-start pl-2 pb-2 text-2xl font-semibold md:pl-8 3xl:text-4xl"
         >
           Game Highlights
         </motion.h1>
@@ -196,7 +196,7 @@ const HomePage = () => {
         >
           <HighlightSection />
           <Link to="/app/highlights" className="flex justify-center pb-4">
-            <button className="btn btn-outline hover:text-red-500">
+            <button className="btn btn-outline hover:text-red-500 text-white">
               View More
             </button>
           </Link>

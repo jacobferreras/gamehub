@@ -12,9 +12,10 @@ const TodoListInputfield = ({
     <label className="input">
       {showIcon && (
         <svg
-          className="h-[1rem] w-auto opacity-10"
+          className="h-[1rem] w-auto opacity-10 text-black"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
+          style={{ color: "#ff0000" }}
         >
           <g
             strokeLinejoin="round"

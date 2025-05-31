@@ -39,7 +39,7 @@ const Navbar = () => {
           </Link>
 
           <div className="hidden flex-none lg:block">
-            <ul className="menu menu-horizontal font-semibold px-1 font-body">
+            <ul className="menu menu-horizontal font-semibold px-1 font-body text-white">
               <li>
                 <Link to="/app/home">HOME</Link>
               </li>

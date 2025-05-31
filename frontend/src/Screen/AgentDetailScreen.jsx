@@ -51,20 +51,20 @@ const AgentDetailScreen = () => {
         </div>
 
         {/* small screen */}
-        <div className="block lg:hidden">
+        <div className="block lg:hidden text-white">
           <img
             src={`${API_URL}/${agent.large_image}`}
             alt={`${agent.name} large`}
             className="h-auto"
           />
-          <h1 className="text-4xl text-center">{agent.name}</h1>
-          <div className="flex flex-row gap-x-2 justify-center mt-2">
+          <h1 className="text-4xl text-center text-white">{agent.name}</h1>
+          <div className="flex flex-row gap-x-2 justify-center mt-2 text-white">
             <img
               src={agent.role_image}
               alt={`${agent.role} icon`}
               className="h-[20px] w-[20px]"
             />
-            <h2>{agent.role}</h2>
+            <h2 className="text-white">{agent.role}</h2>
           </div>
           <p className="flex justify-center text-center">{agent.description}</p>
           <div className="px-2 mt-4">
@@ -102,7 +102,7 @@ const AgentDetailScreen = () => {
         </div>
 
         {/* larger screen */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block text-white">
           <div className="flex flex-row items-stretch justify-center w-full gap-x-0">
             <div className="flex flex-col w-[55%] 3xl:w-[65%]">
               <div className="flex flex-row gap-x-2 justify-start pl-6">
@@ -215,7 +215,7 @@ const AgentDetailScreen = () => {
               {agent.fullguide_title}
             </h2>
             <div>
-              <div className="badge badge-outline">
+              <div className="badge badge-outline text-white ">
                 {agent.fullguide_author}
               </div>
             </div>

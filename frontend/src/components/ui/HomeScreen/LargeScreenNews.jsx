@@ -21,8 +21,8 @@ const LargeScreenNews = () => {
   }
 
   return (
-    <div className="hidden sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
-      <div className="row-span-2 col-span-2">
+    <div className="hidden text-white sm:grid sm:grid-cols-1 sm:gap-2 px-6 lg:grid-cols-3">
+      <div className="row-span-2 col-span-2 text-white">
         <a
           href={valorantArticles[0]?.article_url}
           target="_blank"
@@ -38,7 +38,7 @@ const LargeScreenNews = () => {
         </a>
       </div>
 
-      <div className="sm:hidden lg:block lg:col-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-1">
+      <div className="text-white sm:hidden lg:block lg:col-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-1">
         <a
           href={valorantArticles[1]?.article_url}
           target="_blank"
@@ -54,7 +54,7 @@ const LargeScreenNews = () => {
         </a>
       </div>
 
-      <div className="col-span-2 grid grid-cols-2 lg:col-span-3 lg:grid-cols-3 gap-2">
+      <div className=" text-white col-span-2 grid grid-cols-2 lg:col-span-3 lg:grid-cols-3 gap-2">
         <div className="pb-2">
           <a
             href={valorantArticles[2]?.article_url}
@@ -70,7 +70,7 @@ const LargeScreenNews = () => {
             />
           </a>
         </div>
-        <div className="pb-2">
+        <div className="pb-2 text-white">
           <a
             href={valorantArticles[3]?.article_url}
             target="_blank"
@@ -85,7 +85,7 @@ const LargeScreenNews = () => {
             />
           </a>
         </div>
-        <div className="pb-2">
+        <div className="pb-2 text-white">
           <a
             href={valorantArticles[4]?.article_url}
             target="_blank"
@@ -100,7 +100,7 @@ const LargeScreenNews = () => {
             />
           </a>
         </div>
-        <div className="pb-2 lg:hidden">
+        <div className="pb-2 lg:hidden text-white">
           <a
             href={valorantArticles[1]?.article_url}
             target="_blank"

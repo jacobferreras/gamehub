@@ -73,7 +73,7 @@ const PlayerScreen = () => {
               />
             </figure>
             <div className="card-body flex-1 flex flex-col justify-start items-start p-4">
-              <h2 className="card-title text-lg font-semibold mb-1 truncate w-full">
+              <h2 className="card-title text-lg font-semibold mb-1 truncate w-full text-white">
                 {player.ign}
               </h2>
               <p className="text-sm text-neutral-300 line-clamp-3">
@@ -85,7 +85,7 @@ const PlayerScreen = () => {
                 <motion.button
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn bg-transparent hover:text-blue-600 px-2 py-1 border rounded transition-colors"
+                  className="btn bg-transparent text-white hover:text-blue-600 px-2 py-1 border rounded transition-colors"
                 >
                   View Profile
                 </motion.button>

@@ -34,7 +34,7 @@ const HighlightScreen = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="px-2 pt-32 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
+      <div className="px-2 text-white pt-32 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {highlights.map((highlight, index) => (
           <motion.div
             variants={pageVariants}
@@ -64,7 +64,7 @@ const HighlightScreen = () => {
                 <motion.button
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn bg-transparent hover:text-blue-600 "
+                  className="btn bg-transparent hover:text-blue-600 text-white "
                 >
                   <a
                     href={highlight.channel}
