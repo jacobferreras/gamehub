@@ -17,7 +17,7 @@ const AgentScreen = () => {
   const [roleTouched, setRoleTouched] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const debouncedSearch = useDebounce(search, 400);
-  const { agents, totalPages } = useAgent(
+  const { agents, totalPages, loading } = useAgent(
     12,
     currentPage,
     role,
@@ -30,9 +30,9 @@ const AgentScreen = () => {
     ...(agents ? agents.map((agent) => agent.role_image) : []),
   ];
 
-  const allLoaded = useImagesLoaded([imageUrls]);
+  const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!allLoaded || agents.length === 0) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 
@@ -99,7 +99,6 @@ const AgentScreen = () => {
                     src={`${import.meta.env.VITE_API_URL}/${agent.small_image}`}
                     alt="Shoes"
                     className="w-full h-64 object-cover rounded-md"
-                    loading="lazy" // <-- Add lazy loading
                   />
                   <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-70 transition-opacity duration-200 rounded-md"></div>
                 </figure>
@@ -112,7 +111,6 @@ const AgentScreen = () => {
                           src={agent.role_image}
                           alt=""
                           className="h-[50px] w-[50px]"
-                          loading="lazy" // <-- Add lazy loading
                         />
                         <h2 className="card-title  text-5xl text-white">
                           {agent.name}

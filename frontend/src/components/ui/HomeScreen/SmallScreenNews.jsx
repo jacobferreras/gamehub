@@ -5,7 +5,7 @@ import useImagesLoaded from "../../../hooks/useImagesLoaded";
 import Loader from "../../common/Loader";
 
 const SmallScreenNews = () => {
-  const { news: articles } = useNews(null, null);
+  const { news: articles, loading } = useNews(null, null);
 
   const imageUrls = [
     ...(articles ? articles.map((article) => article.image) : []),
@@ -13,7 +13,7 @@ const SmallScreenNews = () => {
 
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!allLoaded) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 

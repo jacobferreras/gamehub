@@ -12,20 +12,20 @@ const MatchResultScreen = () => {
   const [region, setRegion] = useState("");
   const [regionTouched, setRegionTouched] = useState(false);
   const limit = 8;
-  const { schedules, totalPages } = useMatchResult(currentPage, region, limit);
+  const { schedules, totalPages, message, loading } = useMatchResult(
+    currentPage,
+    region,
+    limit
+  );
 
-  // const imageUrls = [
-  //   GameBg,
-  //   ...(schedules ? schedules.flatMap((s) => [s.logo1, s.logo2]) : []),
-  // ];
+  const imageUrls = [
+    GameBg,
+    ...(schedules ? schedules.flatMap((s) => [s.logo1, s.logo2]) : []),
+  ];
 
-  // const allLoaded = useImagesLoaded(imageUrls);
+  const allLoaded = useImagesLoaded(imageUrls);
 
-  // if (!allLoaded) {
-  //   return <Loader />;
-  // }
-
-  if (schedules === undefined) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 
@@ -53,7 +53,7 @@ const MatchResultScreen = () => {
         {regionTouched && schedules && schedules.length === 0 ? (
           <div className="flex  items-center justify-center min-h-[400px] text-white">
             <p className="text-xl mb-4 font-bold">
-              No matches found for the selected region.
+              {message || "No match results found for the selected region."}
             </p>
           </div>
         ) : (

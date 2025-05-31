@@ -10,7 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const AgentDetailScreen = () => {
   const [selectedSkill, setSelectedSkill] = useState(1);
-  const { agent, skillData, pageVariants } = useAgentDetails();
+  const { agent, skillData, pageVariants, loading } = useAgentDetails();
 
   const imageUrls = [
     `${API_URL}/uploads/bg.png`,
@@ -21,7 +21,7 @@ const AgentDetailScreen = () => {
 
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!agent || !skillData || skillData.length === 0 || !allLoaded) {
+  if (loading || !skillData || skillData.length === 0 || !allLoaded) {
     return <Loader />;
   }
 

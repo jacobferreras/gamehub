@@ -6,7 +6,7 @@ import Loader from "../../common/Loader";
 import useImagesLoaded from "../../../hooks/useImagesLoaded";
 
 const LargeScreenNews = () => {
-  const { news: valorantArticles } = useNews(null, null);
+  const { news: valorantArticles, loading } = useNews(null, null);
 
   const imageUrls = [
     ...(valorantArticles
@@ -16,7 +16,7 @@ const LargeScreenNews = () => {
 
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!allLoaded) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 

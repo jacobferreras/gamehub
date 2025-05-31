@@ -10,18 +10,22 @@ import useImagesLoaded from "../hooks/useImagesLoaded";
 const MatchesScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [region, setRegion] = useState("");
-  const [regionTouched, setRegionTouched] = useState(false); // Track dropdown interaction
+  const [regionTouched, setRegionTouched] = useState(false);
   const limit = 8;
-  const { schedules, totalPages } = useSchedule(currentPage, region, limit);
+  const { schedules, totalPages, message, loading } = useSchedule(
+    currentPage,
+    region,
+    limit
+  );
 
   const imageUrls = [
     GameBg,
     ...(schedules ? schedules.flatMap((s) => [s.logo1, s.logo2]) : []),
-  ]; // Filter out any undefined URLs
+  ];
 
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (schedules.length === 0) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 
@@ -41,16 +45,16 @@ const MatchesScreen = () => {
             value={region}
             onChange={(e) => {
               setRegion(e.target.value);
-              setRegionTouched(true); // Mark as interacted
-              setCurrentPage(1); // Optionally reset to first page
+              setRegionTouched(true);
+              setCurrentPage(1);
             }}
           />
         </div>
         <div className="flex-grow">
           {regionTouched && schedules.length === 0 ? (
             <div className="flex flex-col items-center justify-center min-h-[300px] text-white">
-              <p className="text-xl mb-4">
-                No matches found for the selected region.
+              <p className="text-xl font-bold mb-4">
+                {message || "No matches found for the selected region."}
               </p>
             </div>
           ) : (

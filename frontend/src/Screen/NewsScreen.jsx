@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
 import useNews from "../hooks/useNews";
-import NewsLoader from "../components/common/NewsLoader";
+import Loader from "../components/common/Loader";
 import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const NewsScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
-  const { news, totalPages } = useNews(currentPage, limit);
+  const { news, totalPages, loading } = useNews(currentPage, limit);
 
   const imageUrls = news ? news.map((article) => article.image) : [];
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!news || news.length === 0 || !allLoaded) {
-    return <NewsLoader />;
+  if (loading || !allLoaded) {
+    return <Loader />;
   }
 
   return (

@@ -9,17 +9,18 @@ import useImagesLoaded from "../hooks/useImagesLoaded";
 const HighlightScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 8;
-  const { highlights, totalPages } = useHighlights(currentPage, limit);
+  const { highlights, totalPages, loading, pageVariants } = useHighlights(
+    currentPage,
+    limit
+  );
 
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 40 },
-  };
+  const imageUrls = highlights
+    ? highlights.map((highlight) => highlight.video_url)
+    : [];
 
-  const allLoaded = useImagesLoaded([NewsBg]);
+  const allLoaded = useImagesLoaded(imageUrls);
 
-  if (!highlights || highlights.length === 0) {
+  if (loading || !allLoaded) {
     return <Loader />;
   }
 
