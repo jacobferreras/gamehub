@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import TrophyIcon from "../assets/trophy_icon.png";
 import NewsIcon from "../assets/news_icon.png";
@@ -9,6 +9,7 @@ import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
 import { Link } from "react-router-dom";
+import Loader from "../components/common/Loader";
 
 const HomePage = () => {
   const newsRef = useRef(null);
@@ -16,6 +17,7 @@ const HomePage = () => {
   const carouselRef = useRef(null);
   const highlightsRef = useRef(null);
   const newsInView = useInView(newsRef, { once: true, margin: "-100px" });
+  const [bgLoaded, setBgLoaded] = useState(false);
   const scheduleInView = useInView(scheduleRef, {
     once: true,
     margin: "-100px",
@@ -28,6 +30,16 @@ const HomePage = () => {
     once: true,
     margin: "-100px",
   });
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/assets/Bg.png";
+    img.onload = () => setBgLoaded(true);
+  }, []);
+
+  if (!bgLoaded) {
+    return <Loader />;
+  }
 
   return (
     <>

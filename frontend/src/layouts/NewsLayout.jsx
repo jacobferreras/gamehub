@@ -6,12 +6,6 @@ import useImagesLoaded from "../hooks/useImagesLoaded";
 import Loader from "../components/common/Loader";
 
 const NewsLayout = () => {
-  const pageVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 40 },
-  };
-
   const allLoaded = useImagesLoaded([NewsBg]);
 
   if (!allLoaded) {
@@ -21,11 +15,6 @@ const NewsLayout = () => {
   return (
     <>
       <motion.div
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex flex-col min-h-screen"
         style={{
           backgroundImage: `url(${NewsBg})`,
