@@ -9,7 +9,7 @@ const getAll = async ({
   region = "",
 }) => {
   console.log("REGION PARAM:", region);
-  console.log("SQL QUERY:", sql, params);
+
   const offset = (page - 1) * limit;
 
   let condition = ` WHERE unix_timestamp > NOW()`;
@@ -31,6 +31,8 @@ const getAll = async ({
   sql += ` LIMIT ? OFFSET ?`;
   params.push(Number(limit));
   params.push(Number(offset));
+
+  console.log("SQL QUERY:", sql, params);
 
   const result = await db.promise().query(sql, params);
 

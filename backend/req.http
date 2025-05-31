@@ -1,4 +1,4 @@
-GET https://gamehub-4mrg.onrender.com/upcomingGames?region=global
+GET http://localhost:5000/upcomingGames?region=global
 Content-Type: application/json
 
     
