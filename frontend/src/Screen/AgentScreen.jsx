@@ -16,6 +16,7 @@ const AgentScreen = () => {
   const [searchTouched, setSearchTouched] = useState(false);
   const [roleTouched, setRoleTouched] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const apiUrl = import.meta.env.VITE_API_URL;
   const debouncedSearch = useDebounce(search, 400);
   const { agents, totalPages, loading } = useAgent(
     12,
@@ -26,7 +27,7 @@ const AgentScreen = () => {
 
   const imageUrls = [
     NewsBg,
-    ...(agents ? agents.map((agent) => agent.small_image) : []),
+    ...(agents ? agents.map((agent) => `${apiUrl}/${agent.small_image}`) : []),
     ...(agents ? agents.map((agent) => agent.role_image) : []),
   ];
 
