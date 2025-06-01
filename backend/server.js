@@ -20,7 +20,7 @@ const { json } = pkg;
 
 config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
@@ -54,8 +54,8 @@ app.use("/matchResults", matchResultRoute);
 app.use("/updates", updateRoutes);
 app.use("/agents", agentRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(5000, "0.0.0.0", () => {
+  console.log(`Server is running on port 5000`);
 });
 
 export { db };
