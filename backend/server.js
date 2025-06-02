@@ -20,7 +20,7 @@ const { json } = pkg;
 
 config();
 const app = express();
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
@@ -41,6 +41,25 @@ const db = createConnection({
   database: process.env.DB_NAME,
 });
 
+db.on("error", function (err) {
+  console.log("Database error:", err);
+  if (err.code === "PROTOCOL_CONNECTION_LOST") {
+    console.log("Database connection lost. Reconnecting...");
+    db = createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
+  } else {
+    throw err;
+  }
+});
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the GameHub API!");
+});
+
 //routes
 app.use("/valorantAccount", valorantAccountRoute);
 app.use("/proplayers", proPlayerRoute);
@@ -54,8 +73,8 @@ app.use("/matchResults", matchResultRoute);
 app.use("/updates", updateRoutes);
 app.use("/agents", agentRoutes);
 
-app.listen(5000, "0.0.0.0", () => {
-  console.log(`Server is running on port 5000`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 export { db };
