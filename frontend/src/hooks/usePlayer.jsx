@@ -4,8 +4,10 @@ import { fetchPlayer } from "../services/fetchPlayer";
 const usePlayer = (page, limit, random, search) => {
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const getPlayers = async () => {
       try {
         const response = await fetchPlayer(page, limit, random, search);
@@ -14,13 +16,15 @@ const usePlayer = (page, limit, random, search) => {
       } catch (error) {
         console.error("Error fetching players:", error);
         setPlayers([]);
+      } finally {
+        setLoading(false);
       }
     };
 
     getPlayers();
   }, [page, limit, random, search]);
 
-  return { players, totalPages };
+  return { players, totalPages, loading };
 };
 
 export default usePlayer;
