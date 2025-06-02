@@ -20,7 +20,7 @@ const HighlightScreen = () => {
 
   const allLoaded = useImagesLoaded(imageUrls);
 
-  if (loading || !allLoaded) {
+  if (loading) {
     return <Loader />;
   }
 

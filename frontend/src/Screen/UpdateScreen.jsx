@@ -9,7 +9,6 @@ const UpdateScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 12;
   const { updates, totalPages, loading } = useUpdate(currentPage, limit);
-
   const imageUrls = updates ? updates.map((update) => update.image) : [];
   const allLoaded = useImagesLoaded(imageUrls);
 
@@ -23,7 +22,10 @@ const UpdateScreen = () => {
         <div className="flex-grow">
           <div className="px-8 pt-2 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
             {updates.map((update, index) => (
-              <motion.div
+              <motion.a
+                href={update.article_url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -55,7 +57,7 @@ const UpdateScreen = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
