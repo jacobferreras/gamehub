@@ -1,4 +1,4 @@
-import { useLocation, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Suspense, lazy } from "react";
 import Loader from "./components/common/Loader";
@@ -18,8 +18,8 @@ const PlayerDetailScreen = lazy(() => import("./Screen/PlayerDetailScreen"));
 const AgentScreen = lazy(() => import("./Screen/AgentScreen"));
 const NotFound = lazy(() => import("./components/common/NotFound"));
 
+
 const AppRoutes = () => {
-  const location = useLocation();
   return (
     <AnimatePresence mode="wait">
       <Suspense fallback={<Loader />}>
