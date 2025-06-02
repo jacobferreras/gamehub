@@ -58,7 +58,6 @@ const getAll = async ({
 };
 
 const moveToGameResults = async () => {
-  console.log("Cron job running: moving expired games...");
   await db.promise().query(
     `INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
        SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < DATE_ADD(NOW(), INTERVAL 8 HOUR)`
@@ -66,7 +65,6 @@ const moveToGameResults = async () => {
   await db.promise().query(`
     DELETE FROM upcoming_games WHERE unix_timestamp < DATE_ADD(NOW(), INTERVAL 8 HOUR)
   `);
-  console.log("Cron job finished.");
 };
 cron.schedule("* * * * *", moveToGameResults);
 
