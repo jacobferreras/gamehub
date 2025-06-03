@@ -8,7 +8,6 @@ import Pagination from "../components/common/Pagination";
 import useDebounce from "../hooks/useDebounce";
 import useAgent from "../hooks/useAgent";
 import Loader from "../components/common/Loader";
-import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const AgentScreen = () => {
   const [role, setRole] = useState("");
@@ -16,7 +15,6 @@ const AgentScreen = () => {
   const [searchTouched, setSearchTouched] = useState(false);
   const [roleTouched, setRoleTouched] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const apiUrl = import.meta.env.VITE_API_URL;
   const debouncedSearch = useDebounce(search, 400);
   const { agents, totalPages, loading } = useAgent(
     12,
@@ -25,19 +23,9 @@ const AgentScreen = () => {
     debouncedSearch
   );
 
-  const imageUrls = [
-    NewsBg,
-    ...(agents ? agents.map((agent) => `${apiUrl}/${agent.small_image}`) : []),
-    ...(agents ? agents.map((agent) => agent.role_image) : []),
-  ];
-
-  const allLoaded = useImagesLoaded(imageUrls);
-
-  if (loading) {
-    return <Loader />;
-  }
-
   const showNoAgents = (roleTouched || searchTouched) && agents.length === 0;
+
+  if (loading) return <Loader />;
 
   return (
     <motion.div

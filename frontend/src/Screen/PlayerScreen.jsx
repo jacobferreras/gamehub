@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import NewsBg from "../assets/NewsBg.png";
 import usePlayer from "../hooks/usePlayer";
-// import Loader from "../components/common/Loader";
+import Loader from "../components/common/Loader";
 import CustomInputField from "../components/ui/CustomInputField";
 import useDebounce from "../hooks/useDebounce";
 // import useImagesLoaded from "../hooks/useImagesLoaded";
@@ -22,17 +22,9 @@ const PlayerScreen = () => {
     debouncedSearch
   );
 
-  // const imageUrls = [
-  //   NewsBg,
-  //   ...(players ? players.map((player) => player.image) : []),
-  // ];
-  // const allLoaded = useImagesLoaded(imageUrls);
-
-  // if (loading || !allLoaded) {
-  //   return <Loader />;
-  // }
-
   const noPlayersData = searchTouched && players.length === 0;
+
+  if (loading) return <Loader />;
 
   return (
     <div
