@@ -1,14 +1,7 @@
 import axios from "axios";
 
-export const fetchAgent = async (
-  limit = 12,
-  page = 1,
-  role = "",
-  search = ""
-) => {
+export const fetchAgent = async (limit = 12, page = 1) => {
   const params = { limit, page };
-  if (role) params.role = role;
-  if (search) params.search = search;
 
   const response = await axios.get(`${import.meta.env.VITE_API_URL}/agents`, {
     params,
