@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import NewsBg from "../assets/NewsBg.png";
 import AgentFilter from "../components/ui/AgentFilter";
@@ -84,7 +85,9 @@ const AgentScreen = () => {
                 className="card bg-base-100 image-fit w-auto lg:w-full shadow-sm relative group overflow-hidden"
               >
                 <figure className="relative">
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
+                    loading="lazy"
                     src={`${import.meta.env.VITE_API_URL}/${agent.small_image}`}
                     alt="Shoes"
                     className="w-full h-64 object-cover rounded-md"
