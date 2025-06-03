@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { createConnection } from "mysql2";
+import { createPool } from "mysql2";
 import cors from "cors";
 import pkg from "body-parser";
 import { config } from "dotenv";
@@ -34,11 +34,14 @@ app.use(json());
 
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-const db = createConnection({
+const db = createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 db.on("error", function (err) {
