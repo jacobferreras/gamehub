@@ -21,6 +21,7 @@ const ValorantGameSchedule = () => {
                   src={schedule.logo1}
                   alt={schedule.team1}
                   className="team-logo w-20 h-20 object-contain"
+                  loading="lazy"
                 />
                 <p className="team-name text-sm mt-2">{schedule.team1}</p>
               </div>
@@ -57,6 +58,7 @@ const ValorantGameSchedule = () => {
                   src={schedule.logo2}
                   alt={schedule.team2}
                   className="team-logo w-20 h-20 object-contain"
+                  loading="lazy"
                 />
                 <p className="team-name text-sm mt-2">{schedule.team2}</p>
               </div>

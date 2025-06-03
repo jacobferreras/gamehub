@@ -74,6 +74,7 @@ const PlayerScreen = () => {
             >
               <figure>
                 <img
+                  loading="lazy"
                   src={player.image}
                   alt={player.name}
                   className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-t-lg"

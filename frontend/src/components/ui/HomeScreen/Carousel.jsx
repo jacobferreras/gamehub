@@ -59,6 +59,7 @@ const Carousel = () => {
                 <div className="card bg-neutral-900 w-auto shadow-sm">
                   <figure>
                     <img
+                      loading="lazy"
                       src={card.image}
                       alt={card.ign}
                       className="h-70 w-full"

@@ -35,7 +35,7 @@ const Navbar = () => {
             to="/app/home"
             className="flex-1 flex justify-center md:justify-end lg:justify-start px-2 pb-2 font-body"
           >
-            <img src={Logo} alt="" className="h-[54px] w-auto" />
+            <img src={Logo} alt="" className="h-[54px] w-auto" loading="lazy" />
           </Link>
 
           <div className="hidden flex-none lg:block">

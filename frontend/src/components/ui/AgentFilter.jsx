@@ -20,24 +20,28 @@ const AgentFilter = ({ value, onChange }) => {
           alt="Duelist"
           className={`h-[30px] w-[30px] cursor-pointer transition-transform duration-200 ease-in-out  ${value === "Duelist" ? "scale-140" : ""}`}
           onClick={() => onChange({ target: { value: "Duelist" } })}
+          loading="lazy"
         />
         <img
           src={Sentinel}
           alt="Sentinel"
           className={`h-[30px] w-[30px] cursor-pointer transition-transform duration-200 ease-in-out ${value === "Sentinel" ? "scale-140" : ""}`}
           onClick={() => onChange({ target: { value: "Sentinel" } })}
+          loading="lazy"
         />
         <img
           src={Controller}
           alt="Controller"
           className={`h-[30px] w-[30px] cursor-pointer transition-transform duration-200 ease-in-out ${value === "Controller" ? "scale-140 " : ""}`}
           onClick={() => onChange({ target: { value: "Controller" } })}
+          loading="lazy"
         />
         <img
           src={Initiator}
           alt="Initiator"
           className={`h-[30px] w-[30px] cursor-pointer transition-transform duration-200 ease-in-out ${value === "Initiator" ? "scale-140" : ""}`}
           onClick={() => onChange({ target: { value: "Initiator" } })}
+          loading="lazy"
         />
       </div>
     </div>

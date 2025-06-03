@@ -38,6 +38,7 @@ const UpdateScreen = () => {
               >
                 <figure className="relative">
                   <img
+                    loading="lazy"
                     src={update.image}
                     alt="Shoes"
                     className="w-full h-64 object-cover rounded-md"

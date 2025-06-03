@@ -39,6 +39,7 @@ const NewsScreen = () => {
               >
                 <figure className="relative">
                   <img
+                    loading="lazy"
                     src={article.image}
                     alt="Shoes"
                     className="w-full h-64 object-cover rounded-md"

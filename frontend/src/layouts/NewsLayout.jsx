@@ -22,6 +22,7 @@ const NewsLayout = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
+        loading="lazy"
       >
         <NewsNavigation />
         <Outlet />

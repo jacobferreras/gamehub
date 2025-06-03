@@ -69,7 +69,12 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row">
               <figure>
-                <img src={TrophyIcon} alt="" className="rounded-xl" />
+                <img
+                  src={TrophyIcon}
+                  alt=""
+                  className="rounded-xl"
+                  loading="lazy"
+                />
               </figure>
               <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">
@@ -87,7 +92,12 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row items-center justify-start">
               <figure>
-                <img src={NewsIcon} alt="" className="rounded-xl" />
+                <img
+                  src={NewsIcon}
+                  alt=""
+                  className="rounded-xl"
+                  loading="lazy"
+                />
               </figure>
               <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">
@@ -109,7 +119,12 @@ const HomePage = () => {
           >
             <div className="card-body flex flex-row">
               <figure>
-                <img src={GuidesIcon} alt="" className="rounded-xl" />
+                <img
+                  src={GuidesIcon}
+                  alt=""
+                  className="rounded-xl"
+                  loading="lazy"
+                />
               </figure>
               <div className="flex flex-col text-white">
                 <h1 className="card-title font-heading text-sm font-bold">

@@ -78,6 +78,7 @@ const MatchesScreen = () => {
                     <div className="flex items-center justify-between w-full">
                       <div className="flex flex-col items-center w-1/3">
                         <img
+                          loading="lazy"
                           src={schedule.logo1}
                           alt={schedule.team1}
                           className="team-logo w-20 h-20 object-contain"
@@ -114,6 +115,7 @@ const MatchesScreen = () => {
                       </div>
                       <div className="flex flex-col items-center w-1/3">
                         <img
+                          loading="lazy"
                           src={schedule.logo2}
                           alt={schedule.team2}
                           className="team-logo w-20 h-20 object-contain"
