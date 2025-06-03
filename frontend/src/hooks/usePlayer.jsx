@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchPlayer } from "../services/fetchPlayer";
 
 const usePlayer = (page, limit, random, search) => {
-  const [players, setPlayers] = useState([]);
+  const [allPlayers, setAllPlayers] = useState([]);
+  const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -10,21 +11,45 @@ const usePlayer = (page, limit, random, search) => {
     setLoading(true);
     const getPlayers = async () => {
       try {
-        const response = await fetchPlayer(page, limit, random, search);
-        setPlayers(response.data);
-        setTotalPages(response.totalPages);
+        const response = await fetchPlayer(1, 1000, random);
+        setAllPlayers(response.data);
       } catch (error) {
         console.error("Error fetching players:", error);
-        setPlayers([]);
+        setAllPlayers([]);
       } finally {
         setLoading(false);
       }
     };
 
     getPlayers();
-  }, [page, limit, random, search]);
+  }, [random]);
 
-  return { players, totalPages, loading };
+  useEffect(() => {
+    const filterPlayers = () => {
+      let filtered = allPlayers;
+
+      if (search) {
+        const searchLower = search.toLowerCase();
+        filtered = allPlayers.filter(
+          (player) =>
+            (player.name && player.name.toLowerCase().includes(searchLower)) ||
+            (player.ign && player.ign.toLowerCase().includes(searchLower)) ||
+            (player.team && player.team.toLowerCase().includes(searchLower))
+        );
+      }
+
+      setTotalPages(Math.ceil(filtered.length / limit) || 1);
+
+      const startIndex = (page - 1) * limit;
+      const paginatedResults = filtered.slice(startIndex, startIndex + limit);
+
+      setFilteredPlayers(paginatedResults);
+    };
+
+    filterPlayers();
+  }, [allPlayers, search, page, limit]);
+
+  return { players: filteredPlayers, totalPages, loading };
 };
 
 export default usePlayer;
