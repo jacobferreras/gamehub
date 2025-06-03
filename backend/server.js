@@ -70,8 +70,6 @@ app.use("/articles", articleRoute);
 app.use("/gameHighlights", gameHighlightsRoutes);
 app.use("/upcomingGames", upcomingGameRoute);
 app.use("/dotaArticles", dotaArticleRoutes);
-app.use("/pubgArticles", pubgArticleRoutes);
-app.use("/pubgSchedule", pubgScheduleRoute);
 app.use("/matchResults", matchResultRoute);
 app.use("/updates", updateRoutes);
 app.use("/agents", agentRoutes);
