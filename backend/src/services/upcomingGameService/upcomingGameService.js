@@ -66,7 +66,7 @@ const moveToGameResults = async () => {
     DELETE FROM upcoming_games WHERE unix_timestamp < DATE_ADD(NOW(), INTERVAL 8 HOUR)
   `);
 };
-cron.schedule("* * * * *", moveToGameResults);
+cron.schedule("*/10 * * * *", moveToGameResults);
 
 export default {
   getAll,
