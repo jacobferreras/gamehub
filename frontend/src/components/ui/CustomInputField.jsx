@@ -9,13 +9,13 @@ const TodoListInputfield = ({
   showIcon = false,
 }) => {
   return (
-    <label className="input">
+    <label className="input bg-transparent">
       {showIcon && (
         <svg
-          className="h-[1rem] w-auto opacity-10 text-black"
+          className="h-[1rem] w-auto opacity-10 text-white"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          style={{ color: "#ff0000" }}
+          style={{ color: "#FFFFFF" }}
         >
           <g
             strokeLinejoin="round"
