@@ -10,8 +10,6 @@ import articleRoute from "./src/routes/articleRoutes/articleRoute.js";
 import gameHighlightsRoutes from "./src/routes/gameHighlightsRoutes/gameHighlightsRoute.js";
 import upcomingGameRoute from "./src/routes/upcomingGameRoutes/upcomingGameRoute.js";
 import dotaArticleRoutes from "./src/routes/dotaArticleRoutes/dotaArticleRoute.js";
-import pubgArticleRoutes from "./src/routes/pubgArticleRoutes/pubgArticleRoute.js";
-import pubgScheduleRoute from "./src/routes/pubgScheduleRoutes/pubgScheduleRoute.js";
 import matchResultRoute from "./src/routes/matchResultRoutes/matchResultRoute.js";
 import updateRoutes from "./src/routes/updateRoutes/updateRoute.js";
 import agentRoutes from "./src/routes/agentRoutes/agentRoutes.js";
@@ -48,11 +46,14 @@ db.on("error", function (err) {
   console.log("Database error:", err);
   if (err.code === "PROTOCOL_CONNECTION_LOST") {
     console.log("Database connection lost. Reconnecting...");
-    db = createConnection({
+    db = createPool({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
     });
   } else {
     throw err;
