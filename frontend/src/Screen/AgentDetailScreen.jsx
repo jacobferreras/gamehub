@@ -40,11 +40,17 @@ const AgentDetailScreen = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
+        loading="lazy"
       >
         <div className="w-full pl-4 pt-12">
           <Link to="/app/agents">
             <button className="flex items-center gap-2 text-white hover:text-blue-400 transition mb-4">
-              <img src={BackArrow} alt="Back arrow" className="h-10 w-10" />
+              <img
+                src={BackArrow}
+                alt="Back arrow"
+                className="h-10 w-10"
+                loading="lazy"
+              />
               <span className="text-base font-medium">Back to Agents</span>
             </button>
           </Link>
@@ -56,6 +62,7 @@ const AgentDetailScreen = () => {
             src={`${API_URL}/${agent.large_image}`}
             alt={`${agent.name} large`}
             className="h-auto"
+            loading="lazy"
           />
           <h1 className="text-4xl text-center text-white">{agent.name}</h1>
           <div className="flex flex-row gap-x-2 justify-center mt-2 text-white">
@@ -63,10 +70,13 @@ const AgentDetailScreen = () => {
               src={agent.role_image}
               alt={`${agent.role} icon`}
               className="h-[20px] w-[20px]"
+              loading="lazy"
             />
             <h2 className="text-white">{agent.role}</h2>
           </div>
-          <p className="flex justify-center text-center">{agent.description}</p>
+          <p className="flex justify-center text-center px-4">
+            {agent.description}
+          </p>
           <div className="px-2 mt-4">
             <div className="card bg-base-100 video-fit w-auto shadow-sm">
               <video
@@ -76,13 +86,14 @@ const AgentDetailScreen = () => {
                 loop
                 className="rounded-lg"
                 key={skillData[selectedSkill - 1].video}
+                loading="lazy"
               ></video>
             </div>
           </div>
           <h1 className="text-center text-lg mt-4">
             {skillData[selectedSkill - 1].name}
           </h1>
-          <p className="flex justify-center text-center mt-2">
+          <p className="flex justify-center text-center mt-2 px-4">
             {skillData[selectedSkill - 1].description}
           </p>
 
@@ -96,6 +107,7 @@ const AgentDetailScreen = () => {
                   selectedSkill === index + 1 ? "opacity-100" : ""
                 }`}
                 onClick={() => setSelectedSkill(index + 1)}
+                loading="lazy"
               />
             ))}
           </div>
@@ -114,6 +126,7 @@ const AgentDetailScreen = () => {
                   src={agent.role_image}
                   alt={`${agent.role} icon`}
                   className="h-[25px] w-[25px] mt-2"
+                  loading="lazy"
                 />
                 <motion.h2
                   className="text-xl mt-2"
@@ -149,11 +162,12 @@ const AgentDetailScreen = () => {
                     loop
                     className="rounded-lg w-full h-full object-cover"
                     key={skillData[selectedSkill - 1].video}
+                    loading="lazy"
                   ></video>
                 </div>
                 <div className="text-center w-full">
                   <motion.h1
-                    className="text-lg mt-4 "
+                    className="text-lg mt-4"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -179,6 +193,7 @@ const AgentDetailScreen = () => {
                           selectedSkill === index + 1 ? "opacity-100" : ""
                         }`}
                         onClick={() => setSelectedSkill(index + 1)}
+                        loading="lazy"
                       />
                     </div>
                   ))}
@@ -193,13 +208,16 @@ const AgentDetailScreen = () => {
               src={`${API_URL}/${agent.large_image}`}
               alt={`${agent.name} large`}
               className="w-[45%]  h-auto rounded-lg shadow-lg self-stretch animate-pulse size-1"
+              loading="lazy"
             />
           </div>
         </div>
       </motion.div>
+
+      {/* Video and Url */}
       <div className="bg-neutral-950">
-        <div className="flex flex-row justify-center  gap-x-8 px-20">
-          <figure className="w-full lg:w-180 flex justify-center items-center mt-12 mb-12">
+        <div className="flex flex-col px-4 justify-center  lg:flex-row lg:gap-x-8 lg:px-20">
+          <figure className="w-auto lg:w-180 flex justify-center items-center mt-12 lg:mb-12">
             <iframe
               width="100%"
               height="350"
@@ -208,14 +226,15 @@ const AgentDetailScreen = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="rounded-lg min-h-[200px] lg:min-h-[250px] 3xl:min-h-[350px] "
+              loading="lazy"
             ></iframe>
           </figure>
-          <div className="mt-12">
-            <h2 className="card-title  text-4xl text-white">
+          <div className="mt-4 px-4 lg:mt-12">
+            <h2 className="card-title text-4xl text-white">
               {agent.fullguide_title}
             </h2>
             <div>
-              <div className="badge badge-outline text-white ">
+              <div className="badge badge-outline text-white text-xs mt-4 lg:text-lg">
                 {agent.fullguide_author}
               </div>
             </div>
@@ -223,7 +242,7 @@ const AgentDetailScreen = () => {
               href={agent.fullguide_channel}
               target="_blank"
               rel="noopener noreferrer"
-              className="lg:text-xs 3xl:text-lg text-blue-700"
+              className="text-xs lg:text-xs 3xl:text-lg text-blue-700 mt-4"
             >
               {agent.fullguide_channel}
             </a>
