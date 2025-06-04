@@ -32,33 +32,54 @@ app.use(json());
 
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-const db = createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+let db;
 
-db.on("error", function (err) {
-  console.log("Database error:", err);
-  if (err.code === "PROTOCOL_CONNECTION_LOST") {
-    console.log("Database connection lost. Reconnecting...");
-    db = createPool({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
-    });
-  } else {
-    throw err;
+function createDatabasePool() {
+  db = createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+  });
+
+  db.on("error", function (err) {
+    console.error("Database error:", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      console.log("Database connection lost. Reconnecting...");
+      reconnectDatabase();
+    } else {
+      throw err;
+    }
+  });
+}
+
+function reconnectDatabase(retries = 5, delay = 2000) {
+  if (retries === 0) {
+    console.error(
+      "Failed to reconnect to the database after multiple attempts."
+    );
+    process.exit(1);
   }
-});
+
+  setTimeout(() => {
+    console.log(
+      `Attempting to reconnect to the database. Retries left: ${retries}`
+    );
+    try {
+      createDatabasePool();
+      console.log("Database reconnected successfully.");
+    } catch (error) {
+      console.error("Reconnection attempt failed:", error);
+      reconnectDatabase(retries - 1, delay);
+    }
+  }, delay);
+}
+
+// Initialize the database pool
+createDatabasePool();
 
 app.get("/", (req, res) => {
   res.send("Welcome to the GameHub API!");
