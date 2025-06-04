@@ -40,7 +40,7 @@ const MatchResultScreen = () => {
       }}
       loading="lazy"
     >
-      <div className="flex justify-end gap-3 pb-10 px-12 lg:pr-30 ">
+      <div className="flex justify-center items-center gap-3 pb-10 lg:pr-30 lg:justify-end">
         <DropdownInputField
           value={region}
           onChange={(e) => {
