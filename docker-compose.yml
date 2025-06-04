@@ -15,40 +15,23 @@ services:
       context: ./backend
     ports:
       - "5000:5000"
-    # network_mode: host
     volumes:
       - ./backend:/app
-      # - /app/node_modules
     environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=root
-      - DB_NAME=game_hub
+      - DB_HOST=buvusa8uwaesabrtf7rk-mysql.services.clever-cloud.com
+      - DB_USER=urskaywotu6hvoyd
+      - DB_PASSWORD=xCfTX9UvLjRDnUdKZTiS
+      - DB_NAME=buvusa8uwaesabrtf7rk
     depends_on:
-      - db
-
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      TZ: Asia/Manila
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: game_hub
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./mysql-init:/docker-entrypoint-initdb.d
+      - frontend
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
       - "80:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+    environment: PMA_HOST=buvusa8uwaesabrtf7rk-mysql.services.clever-cloud.com
+      MYSQL_ROOT_PASSWORD=xCfTX9UvLjRDnUdKZTiS
 
 volumes:
-  db_data:
   frontend_node_modules:
