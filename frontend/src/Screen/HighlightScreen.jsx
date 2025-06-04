@@ -4,7 +4,6 @@ import Pagination from "../components/common/Pagination";
 import { motion } from "framer-motion";
 import useHighlights from "../hooks/useHighlights";
 import Loader from "../components/common/Loader";
-import useImagesLoaded from "../hooks/useImagesLoaded";
 
 const HighlightScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,12 +12,6 @@ const HighlightScreen = () => {
     currentPage,
     limit
   );
-
-  const imageUrls = highlights
-    ? highlights.map((highlight) => highlight.video_url)
-    : [];
-
-  const allLoaded = useImagesLoaded(imageUrls);
 
   if (loading) {
     return <Loader />;
@@ -33,6 +26,7 @@ const HighlightScreen = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
+      loading="lazy"
     >
       <div className="px-2 text-white pt-32 pb-2 gap-4 md:px-4 md:gap-y-4 lg:gap-x-4 lg:gap-y-4 lg:px-2 grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-4 3xl:px-10">
         {highlights.map((highlight, index) => (

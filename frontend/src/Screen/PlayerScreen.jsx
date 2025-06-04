@@ -35,6 +35,7 @@ const PlayerScreen = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
+      loading="lazy"
     >
       <div className="flex flex-wrap justify-center lg:justify-end lg:flex-row lg:pr-10 pt-32 pb-4">
         <div className="w-64 lg:w-auto">

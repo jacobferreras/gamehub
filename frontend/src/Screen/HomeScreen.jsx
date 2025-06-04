@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 import TrophyIcon from "../assets/trophy_icon.png";
 import NewsIcon from "../assets/news_icon.png";
 import GuidesIcon from "../assets/guide_icon.png";
@@ -8,7 +9,6 @@ import LargeScreenNews from "../components/ui/HomeScreen/LargeScreenNews";
 import SmallScreenNews from "../components/ui/HomeScreen/SmallScreenNews";
 import HighlightSection from "../components/ui/HomeScreen/HighlightSection";
 import ValorantGameSchedule from "../components/ui/HomeScreen/ValorantGameSchedule";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const newsRef = useRef(null);

@@ -39,6 +39,7 @@ const MatchesScreen = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
+        loading="lazy"
       >
         <div className="flex justify-center  pb-10 lg:justify-end lg:right-30 xl:pr-30  ">
           <DropdownInputField
