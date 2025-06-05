@@ -1,5 +1,31 @@
 import { db } from "../../../server.js";
 
+const executeQuery = async (sql, params = [], retries = 1) => {
+  try {
+    return await db.promise().query(sql, params);
+  } catch (error) {
+    console.error(
+      `Database query error: ${error.message} for query: ${sql.substring(
+        0,
+        100
+      )}...`
+    );
+
+    if (
+      error.message.includes("connection is in closed state") &&
+      retries > 0
+    ) {
+      console.log(
+        "Connection closed, waiting for reconnection and retrying..."
+      );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return executeQuery(sql, params, retries - 1);
+    }
+
+    throw error;
+  }
+};
+
 const getAll = async ({
   limit = 10,
   random = false,
@@ -68,82 +94,99 @@ const getAll = async ({
   params.push(Number(limit));
   params.push(Number(offset));
 
-  const [rows] = await db.promise().query(sql, params);
+  try {
+    const [rows] = await executeQuery(sql, params);
 
-  const totalCountQuery = `SELECT COUNT(*) as total FROM proplayers${condition}`;
-  const [countRows] = await db
-    .promise()
-    .query(totalCountQuery, params.slice(0, params.length - 2));
+    const totalCountQuery = `SELECT COUNT(*) as total FROM proplayers${condition}`;
+    const [countRows] = await executeQuery(
+      totalCountQuery,
+      params.slice(0, params.length - 2)
+    );
 
-  const totalCount = countRows[0].total;
-  const totalPages = totalCount ? Math.ceil(totalCount / limit) : 1;
+    const totalCount = countRows[0].total;
+    const totalPages = totalCount ? Math.ceil(totalCount / limit) : 1;
 
-  return {
-    message: "Pro players found",
-    data: rows,
-    totalPages,
-    currentPage: page,
-  };
+    return {
+      message: "Pro players found",
+      data: rows,
+      totalPages,
+      currentPage: page,
+    };
+  } catch (error) {
+    console.error("Error in getAll pro players:", error);
+    throw error;
+  }
 };
 
 const getProPlayerById = async (id) => {
-  const [[player]] = await db
-    .promise()
-    .query(`SELECT * FROM proplayers WHERE id = ?`, [id]);
-  const [[settings]] = await db
-    .promise()
-    .query(`SELECT * FROM player_settings WHERE proplayer_id = ?`, [id]);
-  const [[socials]] = await db
-    .promise()
-    .query(`SELECT * FROM player_socials WHERE proplayer_id = ?`, [id]);
+  try {
+    const [[player]] = await executeQuery(
+      `SELECT * FROM proplayers WHERE id = ?`,
+      [id]
+    );
 
-  if (!player) {
-    return { message: "Pro player not found", data: null };
+    if (!player) {
+      return { message: "Pro player not found", data: null };
+    }
+
+    const [[settings]] = await executeQuery(
+      `SELECT * FROM player_settings WHERE proplayer_id = ?`,
+      [id]
+    );
+    const [[socials]] = await executeQuery(
+      `SELECT * FROM player_socials WHERE proplayer_id = ?`,
+      [id]
+    );
+
+    return {
+      message: "Pro player found",
+      data: {
+        ...player,
+        ...settings,
+        ...socials,
+      },
+    };
+  } catch (error) {
+    console.error(`Error fetching pro player with ID ${id}:`, error);
+    throw error;
   }
-
-  return {
-    message: "Pro player found",
-    data: {
-      ...player,
-      ...settings,
-      ...socials,
-    },
-  };
 };
 
 const getProPlayerByIGN = async (ign) => {
-  ign = decodeURIComponent(ign).trim();
+  try {
+    ign = decodeURIComponent(ign).trim();
 
-  const [[player]] = await db
-    .promise()
-    .query(`SELECT * FROM proplayers WHERE LOWER(TRIM(ign)) = LOWER(TRIM(?))`, [
-      ign,
-    ]);
+    const [[player]] = await executeQuery(
+      `SELECT * FROM proplayers WHERE LOWER(TRIM(ign)) = LOWER(TRIM(?))`,
+      [ign]
+    );
 
-  const [[settings]] = await db
-    .promise()
-    .query(`SELECT * FROM player_settings WHERE proplayer_id = ?`, [
-      player ? player.id : null,
-    ]);
+    if (!player) {
+      return { message: "Pro player not found", data: null };
+    }
 
-  const [[socials]] = await db
-    .promise()
-    .query(`SELECT * FROM player_socials WHERE proplayer_id = ?`, [
-      player ? player.id : null,
-    ]);
+    const [[settings]] = await executeQuery(
+      `SELECT * FROM player_settings WHERE proplayer_id = ?`,
+      [player.id]
+    );
 
-  if (!player) {
-    return { message: "Pro player not found", data: null };
+    const [[socials]] = await executeQuery(
+      `SELECT * FROM player_socials WHERE proplayer_id = ?`,
+      [player.id]
+    );
+
+    return {
+      message: "Pro player found",
+      data: {
+        ...player,
+        ...settings,
+        ...socials,
+      },
+    };
+  } catch (error) {
+    console.error(`Error fetching pro player with IGN ${ign}:`, error);
+    throw error;
   }
-
-  return {
-    message: "Pro player found",
-    data: {
-      ...player,
-      ...settings,
-      ...socials,
-    },
-  };
 };
 
 export default {
