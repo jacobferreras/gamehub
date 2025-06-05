@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { createPool } from "mysql2";
+import mysql from "mysql2";
 import cors from "cors";
 import pkg from "body-parser";
 import { config } from "dotenv";
@@ -34,8 +34,8 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 let db;
 
-function createDatabasePool() {
-  db = createPool({
+const createDatabasePool = () => {
+  db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -43,25 +43,58 @@ function createDatabasePool() {
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 10000,
+  });
+
+  db.on("connection", (connection) => {
+    console.log("New database connection established");
+
+    connection.query("SET SESSION wait_timeout=28800");
+  });
+
+  db.on("enqueue", () => {
+    console.log("Waiting for available connection slot");
   });
 
   db.on("error", function (err) {
     console.error("Database error:", err);
-    if (err.code === "PROTOCOL_CONNECTION_LOST") {
-      console.log("Database connection lost. Reconnecting...");
+    if (
+      err.code === "PROTOCOL_CONNECTION_LOST" ||
+      err.code === "ECONNRESET" ||
+      err.code === "PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR"
+    ) {
+      console.log("Database connection lost. Attempting to reconnect...");
       reconnectDatabase();
     } else {
-      throw err;
+      console.error("Unhandled database error:", err);
     }
   });
-}
+
+  db.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error connecting to database:", err);
+      return;
+    }
+    console.log("Database connected successfully");
+    connection.release();
+  });
+
+  setInterval(() => {
+    db.query("SELECT 1")
+      .then(() => console.log("Keepalive query successful"))
+      .catch((err) => console.error("Keepalive query failed:", err));
+  }, 60000);
+  return db;
+};
 
 function reconnectDatabase(retries = 5, delay = 2000) {
   if (retries === 0) {
     console.error(
       "Failed to reconnect to the database after multiple attempts."
     );
-    process.exit(1);
+    console.error("Applications will retry on next request");
+    return;
   }
 
   setTimeout(() => {
@@ -69,8 +102,20 @@ function reconnectDatabase(retries = 5, delay = 2000) {
       `Attempting to reconnect to the database. Retries left: ${retries}`
     );
     try {
-      createDatabasePool();
-      console.log("Database reconnected successfully.");
+      if (db) {
+        try {
+          db.end(() => {
+            console.log("Old database connections closed");
+            db = createDatabasePool();
+          });
+        } catch (endError) {
+          console.error("Error ending database pool:", endError);
+          db = createDatabasePool();
+        }
+      } else {
+        db = createDatabasePool();
+      }
+      console.log("Database reconnection initiated");
     } catch (error) {
       console.error("Reconnection attempt failed:", error);
       reconnectDatabase(retries - 1, delay);
@@ -78,8 +123,7 @@ function reconnectDatabase(retries = 5, delay = 2000) {
   }, delay);
 }
 
-// Initialize the database pool
-createDatabasePool();
+db = createDatabasePool();
 
 app.get("/", (req, res) => {
   res.send("Welcome to the GameHub API!");
@@ -100,4 +144,4 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-export { db };
+export { db, reconnectDatabase };
