@@ -58,15 +58,37 @@ const getAll = async ({
 };
 
 const moveToGameResults = async () => {
-  await db.promise().query(
-    `INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
-       SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < DATE_ADD(NOW(), INTERVAL 8 HOUR)`
-  );
-  await db.promise().query(`
-    DELETE FROM upcoming_games WHERE unix_timestamp < DATE_ADD(NOW(), INTERVAL 8 HOUR)
-  `);
+  try {
+    const [rows] = await db.promise().query(`
+      SELECT id, unix_timestamp 
+      FROM upcoming_games 
+      WHERE unix_timestamp IS NOT NULL AND unix_timestamp < NOW()
+    `);
+
+    console.log("Records to process:", rows);
+
+    await db.promise().query(`
+      INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
+      SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region 
+      FROM upcoming_games 
+      WHERE unix_timestamp IS NOT NULL AND unix_timestamp < NOW()
+    `);
+
+    await db.promise().query(`
+      DELETE FROM upcoming_games 
+      WHERE unix_timestamp IS NOT NULL AND unix_timestamp < NOW()
+    `);
+  } catch (error) {
+    console.error("Error in moveToGameResults:", error);
+  }
 };
-cron.schedule("*/10 * * * *", moveToGameResults);
+cron.schedule("*/10 * * * *", () => {
+  console.log(
+    "Cron job executed at:",
+    new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" })
+  );
+  moveToGameResults();
+});
 
 export default {
   getAll,
