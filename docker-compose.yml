@@ -22,16 +22,15 @@ services:
       - DB_USER=urskaywotu6hvoyd
       - DB_PASSWORD=xCfTX9UvLjRDnUdKZTiS
       - DB_NAME=buvusa8uwaesabrtf7rk
-    depends_on:
-      - frontend
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
       - "80:80"
-    environment: PMA_HOST=buvusa8uwaesabrtf7rk-mysql.services.clever-cloud.com
-      MYSQL_ROOT_PASSWORD=xCfTX9UvLjRDnUdKZTiS
+    environment:
+      PMA_HOST: buvusa8uwaesabrtf7rk-mysql.services.clever-cloud.com
+      MYSQL_ROOT_PASSWORD: xCfTX9UvLjRDnUdKZTiS
 
 volumes:
   frontend_node_modules:
