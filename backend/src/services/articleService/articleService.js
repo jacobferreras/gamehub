@@ -1,32 +1,5 @@
 import { db } from "../../../server.js";
 
-const executeQuery = async (sql, params = [], retries = 1) => {
-  try {
-    return await db.promise().query(sql, params);
-  } catch (error) {
-    console.error(
-      `Database query error: ${error.message} for query: ${sql.substring(
-        0,
-        100
-      )}...`
-    );
-
-    if (
-      error.message.includes("connection is in closed state") &&
-      retries > 0
-    ) {
-      console.log(
-        "Connection closed, waiting for reconnection and retrying..."
-      );
-
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      return executeQuery(sql, params, retries - 1);
-    }
-
-    throw error;
-  }
-};
-
 const getAll = async ({ page = 1, limit = 10, type = "" }) => {
   const offset = (page - 1) * limit;
 

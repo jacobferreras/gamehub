@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://radianthub.live", "https://radianthub.me"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "Content-disposition"],
     credentials: true,
@@ -35,17 +35,19 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 let db;
 
 const createDatabasePool = () => {
-  db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-    enableKeepAlive: true,
-    keepAliveInitialDelay: 10000,
-  });
+  db = mysql
+    .createPool({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
+      enableKeepAlive: true,
+      keepAliveInitialDelay: 10000,
+    })
+    .promise();
 
   db.on("connection", (connection) => {
     console.log("New database connection established");
@@ -85,6 +87,7 @@ const createDatabasePool = () => {
       .then(() => console.log("Keepalive query successful"))
       .catch((err) => console.error("Keepalive query failed:", err));
   }, 60000);
+
   return db;
 };
 

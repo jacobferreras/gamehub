@@ -25,12 +25,13 @@ const getAllAgents = async ({
   params.push(Number(limit));
   params.push(Number(offset));
 
-  const result = await db.promise().query(sql, params);
+  const result = await db.query(sql, params);
 
   const totalCountQuery = `SELECT COUNT(*) as total FROM agent${condition}`;
-  const totalCountResult = await db
-    .promise()
-    .query(totalCountQuery, params.slice(0, params.length - 2));
+  const totalCountResult = await db.query(
+    totalCountQuery,
+    params.slice(0, params.length - 2)
+  );
   const totalCount = totalCountResult[0][0].total;
   const totalPages = totalCount ? Math.ceil(totalCount / limit) : 1;
 
@@ -44,7 +45,7 @@ const getAllAgents = async ({
 
 const getAgentById = async (id) => {
   const sql = `SELECT * FROM agent WHERE id = ?`;
-  const result = await db.promise().query(sql, [id]);
+  const result = await db.query(sql, [id]);
 
   if (result[0].length === 0) {
     return {
