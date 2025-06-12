@@ -11,7 +11,7 @@ const Carousel = () => {
   const { players: cards } = usePlayer(1, limit, random);
 
   return (
-    <div className="container mx-auto px-4 py-6 sm:px-32 md:px-2 lg:px-22 xl:px-38 3xl:px-34">
+    <div className="container mx-auto px-4 sm:px-32 md:px-2 lg:px-22 xl:px-38 3xl:px-34">
       <div className="text-center mb-4">
         <h1 className="font-bold text-4xl text-white">Top Player</h1>
       </div>
@@ -37,14 +37,6 @@ const Carousel = () => {
           1024: {
             slidesPerView: 2,
             spaceBetween: 20,
-          },
-          1115: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          1280: {
-            slidesPerView: 3,
-            spaceBetween: 40,
           },
           1536: {
             slidesPerView: 3,
