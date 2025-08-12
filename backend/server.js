@@ -101,9 +101,6 @@ function reconnectDatabase(retries = 5, delay = 2000) {
   }
 
   setTimeout(() => {
-    console.log(
-      `Attempting to reconnect to the database. Retries left: ${retries}`
-    );
     try {
       if (db) {
         try {
@@ -132,7 +129,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to the GameHub API!");
 });
 
-//routes
 app.use("/valorantAccount", valorantAccountRoute);
 app.use("/proplayers", proPlayerRoute);
 app.use("/articles", articleRoute);
