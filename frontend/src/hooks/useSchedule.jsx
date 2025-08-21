@@ -24,8 +24,6 @@ const useSchedule = (page, region, limit) => {
         setLoading(false);
       }
     };
-
-    getSchedules();
   }, [page, region, limit]);
 
   return {
