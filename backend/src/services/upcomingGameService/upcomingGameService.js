@@ -47,16 +47,34 @@ const getAll = async ({
 };
 
 const moveToGameResults = async () => {
-  await db.promise().query(
-    `INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
-       SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < NOW()`
-  );
+  try {
+    // First check if connection is active with a simple query
+    await db.promise().query("SELECT 1");
 
-  await db.promise().query(`
-    DELETE FROM upcoming_games WHERE unix_timestamp < NOW()
-  `);
+    // Then run the actual operation
+    await db.promise().query(
+      `INSERT INTO game_result(id, game, team1, team2, logo1, logo2, match_series, match_event, region)
+       SELECT id, game, team1, team2, logo1, logo2, match_series, match_event, region FROM upcoming_games WHERE unix_timestamp < NOW()`
+    );
+
+    await db.promise().query(`
+      DELETE FROM upcoming_games WHERE unix_timestamp < NOW()
+    `);
+    console.log("Successfully moved past games to results");
+  } catch (error) {
+    console.error("Error in moveToGameResults cron job:", error.message);
+    // Don't rethrow - allow cron to continue next time
+  }
 };
-cron.schedule("* * * * *", moveToGameResults);
+
+// Wrap the cron handler in a try/catch as well for extra safety
+cron.schedule("* * * * *", async () => {
+  try {
+    await moveToGameResults();
+  } catch (error) {
+    console.error("Cron job error:", error.message);
+  }
+});
 
 export default {
   getAll,
